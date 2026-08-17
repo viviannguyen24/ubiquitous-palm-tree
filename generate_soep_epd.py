@@ -1,0 +1,1150 @@
+from getpass import getpass
+from pathlib import Path
+from typing import Literal
+from datetime import date, datetime
+import re
+
+import pandas as pd
+from openai import OpenAI
+from pydantic import BaseModel, Field
+
+
+# Dit is de vaste hoofdprompt. Deze blijft voor iedere fictieve patiënt gelijk.
+MAIN_PROMPT = """
+Je maakt uitsluitend synthetische Nederlandse huisartsendossiers voor onderzoek.
+Alle personen en gebeurtenissen moeten fictief zijn. Neem nooit gegevens van een
+bestaande patiënt over.
+
+Schrijf beknopt en realistisch in Nederlandse huisartsentaal. Maak een logisch,
+chronologisch dossier zonder medische tegenstrijdigheden. Gebruik bij ieder
+deelcontact de SOEP-structuur:
+- S: klachten, ervaringen en informatie van de patiënt.
+- O: objectieve bevindingen, lichamelijk onderzoek en relevante meetwaarden.
+- E: beoordeling of diagnose, zo mogelijk met een passende ICPC-code tussen haken.
+- P: beleid, medicatie, controles, adviezen en eventuele verwijzing.
+
+Verdeel de contacten logisch over huisarts, POH-S en doktersassistente. Maak alleen
+uitslagen, medicatie en verwijzingen die medisch passen bij de fictieve casus.
+
+Genereer daarnaast een medicatielijst die volledig aansluit op het journaal.
+Neem actuele medicatie en relevante gestopte of eenmalige medicatie uit de
+dossierperiode op. Als medicatie wordt gestart, gewijzigd of gestopt, moet dit
+logisch terugkomen in de P-regels van het journaal en in de medicatielijst.
+Gebruik geen medicatie zonder passende indicatie.
+
+Genereer daarnaast volledige fictieve verwijsbrieven en bijbehorende
+specialistenbrieven wanneer een verwijzing klinisch logisch is. Iedere verwijzing
+en de bijbehorende specialistenbrief vormen samen een traject en krijgen hetzelfde
+traject-ID, bijvoorbeeld T001. De verwijsbrief is altijd van de huisarts aan de
+specialist. De specialistenbrief is van de specialist aan de huisarts en heeft
+altijd een latere datum dan de bijbehorende verwijsbrief.
+
+Een verwijsbrief bevat in beknopte maar volledige vorm de reden van verwijzing,
+relevante voorgeschiedenis, relevante bevindingen en uitslagen, relevante
+medicatie en een duidelijke vraagstelling aan de specialist. Een specialistenbrief
+bevat in beknopte maar volledige vorm de reden van beoordeling, bevindingen,
+eventueel verricht onderzoek, conclusie of diagnose, beleid en vervolgadvies.
+Gebruik geen namen, adressen, geboortedata of andere identificerende gegevens in
+de brieven.
+
+Laat de correspondentie volledig aansluiten op het journaal en de medicatielijst.
+Een verwijzing moet terugkomen in de P-regel van een passend deelcontact. Een
+relevant advies, diagnose of medicatiewijziging uit een specialistenbrief moet
+logisch terugkomen in een later deelcontact en zo nodig in de medicatielijst.
+
+Volg voor allergieën, microbiologie en laboratorium altijd de gekozen modus uit
+de patiëntenprompt: 'Automatisch', 'Zelf invoeren' of 'Geen'. Bij 'Zelf
+invoeren' moeten de opgegeven items herkenbaar en volledig in de uitvoer worden
+verwerkt. Bij 'Geen' moet de betreffende lijst leeg blijven.
+
+Een allergieoverzicht vermeldt het allergeen, het type allergie, de reactie, de
+ernst, de registratiedatum en de status. Als een geneesmiddelenallergie aanwezig
+is, mag een geneesmiddel uit die groep nergens in het dossier worden
+voorgeschreven.
+
+Een microbiologische uitslag vermeldt datum, episode, materiaal, onderzoek,
+uitslag, eventuele verwekker, hoeveelheid of groei,
+gevoeligheid/resistentie en conclusie. Laat iedere uitslag logisch aansluiten
+op de klachten, het journaal en het antibioticabeleid.
+
+Een laboratoriumuitslag vermeldt datum, episode, bepaling, waarde, eenheid,
+referentiewaarde, afwijking en conclusie. Laat laboratoriumonderzoek aansluiten
+op de episodes, medicatie en controles. Een aanvraag of relevante uitslag moet
+terugkomen in een passende O- of P-regel. Laat een afwijkende uitslag die beleid
+vereist logisch doorwerken in een E- en P-regel en eventueel in de medicatielijst.
+Gebruik alleen medisch passende combinaties van waarden, eenheden en
+referentiewaarden.
+
+Gebruik datums in de vorm JJJJ-MM-DD. Voeg geen uitleg buiten de gevraagde
+gestructureerde uitvoer toe.
+""".strip()
+
+
+SETTINGS_BESTANDSNAAM = "patient_settings_lab_automatisch.xlsx"
+
+
+class AllergieInstelling(BaseModel):
+    """Een door de gebruiker opgegeven allergie uit het instellingenbestand."""
+
+    allergeen: str
+    type_allergie: str = "Model bepaalt"
+    reactie: str = "Model bepaalt"
+    ernst: str = "Model bepaalt"
+    status: str = "Actief"
+
+
+class MicrobiologieInstelling(BaseModel):
+    """Een door de gebruiker gewenste microbiologische bepaling of uitslag."""
+
+    episode: str = "Model bepaalt"
+    materiaal: str = "Model bepaalt"
+    onderzoek: str = "Model bepaalt"
+    gewenste_uitslag: str = "Model bepaalt"
+    verwekker: str = "Model bepaalt"
+
+
+class LaboratoriumInstelling(BaseModel):
+    """Een door de gebruiker gewenste laboratoriumbepaling."""
+
+    episode: str = "Model bepaalt"
+    bepaling: str
+    gewenste_waarde: str = "Model bepaalt"
+    eenheid: str = "Model bepaalt"
+
+
+class PatientInstellingen(BaseModel):
+    patient_id: str
+    geslacht: str
+    leeftijd: int
+    aantal_jaren: int
+    aantal_deelcontacten: int
+    ruisniveau: Literal["Geen", "Laag", "Matig"]
+    allergie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
+    microbiologie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
+    laboratorium_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
+    episodes: list[str]
+    handmatige_allergieen: list[AllergieInstelling]
+    handmatige_microbiologie: list[MicrobiologieInstelling]
+    handmatig_laboratorium: list[LaboratoriumInstelling]
+
+
+def waarde_is_leeg(waarde: object) -> bool:
+    """Controleer of een cel uit Excel leeg is."""
+    return waarde is None or pd.isna(waarde) or str(waarde).strip() == ""
+
+
+def lees_tekst(waarde: object) -> str:
+    """Zet een optionele Excelwaarde veilig om naar tekst."""
+    if waarde_is_leeg(waarde):
+        return ""
+    return str(waarde).strip()
+
+
+def lees_geheel_getal(waarde: object, naam: str, minimum: int = 0) -> int:
+    """Lees en valideer een geheel getal uit het instellingenbestand."""
+    if waarde_is_leeg(waarde):
+        raise ValueError(f"Instelling '{naam}' is verplicht.")
+
+    try:
+        getal = float(waarde)
+    except (TypeError, ValueError) as fout:
+        raise ValueError(f"Instelling '{naam}' moet een geheel getal zijn.") from fout
+
+    if not getal.is_integer() or getal < minimum:
+        raise ValueError(
+            f"Instelling '{naam}' moet een geheel getal van minimaal {minimum} zijn."
+        )
+    return int(getal)
+
+
+def normaliseer_modus(waarde: object, naam: str) -> str:
+    """Normaliseer een gebruikersvriendelijke keuzewaarde uit Excel."""
+    invoer = lees_tekst(waarde).lower()
+    omzetting = {
+        "automatisch": "Automatisch",
+        "zelf invoeren": "Zelf invoeren",
+        "zelf": "Zelf invoeren",
+        "geen": "Geen",
+    }
+    if invoer not in omzetting:
+        raise ValueError(
+            f"Instelling '{naam}' moet Automatisch, Zelf invoeren of Geen zijn."
+        )
+    return omzetting[invoer]
+
+
+def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
+    """Lees patiëntkenmerken en episodes uit patient_settings.xlsx."""
+    if not instellingenpad.exists():
+        raise FileNotFoundError(
+            f"Instellingenbestand niet gevonden: {instellingenpad}. "
+            f"Plaats {SETTINGS_BESTANDSNAAM} in dezelfde map als dit Python-bestand."
+        )
+
+    try:
+        patient_dataframe = pd.read_excel(
+            instellingenpad,
+            sheet_name="Patient",
+            header=2,
+        )
+        episodes_dataframe = pd.read_excel(
+            instellingenpad,
+            sheet_name="Episodes",
+        )
+    except ValueError as fout:
+        raise ValueError(
+            "Het instellingenbestand moet de tabbladen 'Patient' en 'Episodes' bevatten."
+        ) from fout
+
+    # Deze twee tabbladen zijn alleen verplicht wanneer de bijbehorende modus
+    # op 'Zelf invoeren' staat. Anders mogen ze leeg zijn of ontbreken.
+    try:
+        allergie_dataframe = pd.read_excel(
+            instellingenpad,
+            sheet_name="Allergieen",
+        )
+    except ValueError:
+        allergie_dataframe = pd.DataFrame()
+
+    try:
+        microbiologie_dataframe = pd.read_excel(
+            instellingenpad,
+            sheet_name="Microbiologie",
+        )
+    except ValueError:
+        microbiologie_dataframe = pd.DataFrame()
+
+    try:
+        laboratorium_dataframe = pd.read_excel(
+            instellingenpad,
+            sheet_name="Laboratorium",
+        )
+    except ValueError:
+        laboratorium_dataframe = pd.DataFrame()
+
+    vereiste_patientkolommen = {"Instelling", "Waarde"}
+    if not vereiste_patientkolommen.issubset(patient_dataframe.columns):
+        raise ValueError(
+            "Het tabblad 'Patient' moet de kolommen 'Instelling' en 'Waarde' bevatten."
+        )
+
+    waarden = {}
+    for _, rij in patient_dataframe.iterrows():
+        sleutel = lees_tekst(rij.get("Instelling"))
+        if sleutel:
+            waarden[sleutel] = rij.get("Waarde")
+
+    verplichte_sleutels = {
+        "patient_id",
+        "geslacht",
+        "leeftijd",
+        "aantal_jaren",
+        "aantal_deelcontacten",
+        "ruisniveau",
+        "allergie_modus",
+        "microbiologie_modus",
+        "laboratorium_modus",
+    }
+    ontbrekend = sorted(verplichte_sleutels - waarden.keys())
+    if ontbrekend:
+        raise ValueError(
+            "Deze verplichte instellingen ontbreken op het tabblad 'Patient': "
+            + ", ".join(ontbrekend)
+        )
+
+    vereiste_episodekolommen = {"episode"}
+    if not vereiste_episodekolommen.issubset(episodes_dataframe.columns):
+        raise ValueError(
+            "Het tabblad 'Episodes' moet de kolom 'episode' bevatten."
+        )
+
+    episodes = []
+    for _, rij in episodes_dataframe.iterrows():
+        episodenaam = lees_tekst(rij.get("episode"))
+        if not episodenaam:
+            continue
+        episodes.append(episodenaam)
+
+    if not episodes:
+        raise ValueError("Vul minimaal één episode in op het tabblad 'Episodes'.")
+
+    patient_id = lees_tekst(waarden["patient_id"])
+    geslacht = lees_tekst(waarden["geslacht"])
+    ruisniveau = lees_tekst(waarden["ruisniveau"]).capitalize()
+    if not patient_id:
+        raise ValueError("Instelling 'patient_id' mag niet leeg zijn.")
+    if not geslacht:
+        raise ValueError("Instelling 'geslacht' mag niet leeg zijn.")
+    if ruisniveau not in {"Geen", "Laag", "Matig"}:
+        raise ValueError("Instelling 'ruisniveau' moet Geen, Laag of Matig zijn.")
+
+    allergie_modus = normaliseer_modus(
+        waarden["allergie_modus"],
+        "allergie_modus",
+    )
+    microbiologie_modus = normaliseer_modus(
+        waarden["microbiologie_modus"],
+        "microbiologie_modus",
+    )
+    laboratorium_modus = normaliseer_modus(
+        waarden["laboratorium_modus"],
+        "laboratorium_modus",
+    )
+
+    handmatige_allergieen = []
+    if allergie_modus == "Zelf invoeren":
+        vereiste_kolom = {"allergeen"}
+        if not vereiste_kolom.issubset(allergie_dataframe.columns):
+            raise ValueError(
+                "Bij allergie_modus 'Zelf invoeren' moet het tabblad "
+                "'Allergieen' minimaal de kolom 'allergeen' bevatten."
+            )
+
+        for _, rij in allergie_dataframe.iterrows():
+            allergeen = lees_tekst(rij.get("allergeen"))
+            if not allergeen:
+                continue
+            handmatige_allergieen.append(
+                AllergieInstelling(
+                    allergeen=allergeen,
+                    type_allergie=lees_tekst(rij.get("type_allergie"))
+                    or "Model bepaalt",
+                    reactie=lees_tekst(rij.get("reactie")) or "Model bepaalt",
+                    ernst=lees_tekst(rij.get("ernst")) or "Model bepaalt",
+                    status=lees_tekst(rij.get("status")) or "Actief",
+                )
+            )
+
+        if not handmatige_allergieen:
+            raise ValueError(
+                "allergie_modus staat op 'Zelf invoeren', maar op het tabblad "
+                "'Allergieen' is geen allergeen ingevuld."
+            )
+
+    handmatige_microbiologie = []
+    if microbiologie_modus == "Zelf invoeren":
+        mogelijke_kolommen = {
+            "episode",
+            "materiaal",
+            "onderzoek",
+            "gewenste_uitslag",
+            "verwekker",
+        }
+        if microbiologie_dataframe.empty or not mogelijke_kolommen.intersection(
+            microbiologie_dataframe.columns
+        ):
+            raise ValueError(
+                "Bij microbiologie_modus 'Zelf invoeren' moet het tabblad "
+                "'Microbiologie' de daarvoor bestemde kolommen bevatten."
+            )
+
+        for _, rij in microbiologie_dataframe.iterrows():
+            waarden_rij = {
+                kolom: lees_tekst(rij.get(kolom)) for kolom in mogelijke_kolommen
+            }
+            if not any(waarden_rij.values()):
+                continue
+            handmatige_microbiologie.append(
+                MicrobiologieInstelling(
+                    episode=waarden_rij["episode"] or "Model bepaalt",
+                    materiaal=waarden_rij["materiaal"] or "Model bepaalt",
+                    onderzoek=waarden_rij["onderzoek"] or "Model bepaalt",
+                    gewenste_uitslag=waarden_rij["gewenste_uitslag"]
+                    or "Model bepaalt",
+                    verwekker=waarden_rij["verwekker"] or "Model bepaalt",
+                )
+            )
+
+        if not handmatige_microbiologie:
+            raise ValueError(
+                "microbiologie_modus staat op 'Zelf invoeren', maar het tabblad "
+                "'Microbiologie' bevat geen ingevulde regel."
+            )
+
+    handmatig_laboratorium = []
+    if laboratorium_modus == "Zelf invoeren":
+        if "bepaling" not in laboratorium_dataframe.columns:
+            raise ValueError(
+                "Bij laboratorium_modus 'Zelf invoeren' moet het tabblad "
+                "'Laboratorium' minimaal de kolom 'bepaling' bevatten."
+            )
+
+        for _, rij in laboratorium_dataframe.iterrows():
+            bepaling = lees_tekst(rij.get("bepaling"))
+            if not bepaling:
+                continue
+            handmatig_laboratorium.append(
+                LaboratoriumInstelling(
+                    episode=lees_tekst(rij.get("episode")) or "Model bepaalt",
+                    bepaling=bepaling,
+                    gewenste_waarde=lees_tekst(rij.get("gewenste_waarde"))
+                    or "Model bepaalt",
+                    eenheid=lees_tekst(rij.get("eenheid")) or "Model bepaalt",
+                )
+            )
+
+        if not handmatig_laboratorium:
+            raise ValueError(
+                "laboratorium_modus staat op 'Zelf invoeren', maar op het tabblad "
+                "'Laboratorium' is geen bepaling ingevuld."
+            )
+
+    return PatientInstellingen(
+        patient_id=patient_id,
+        geslacht=geslacht,
+        leeftijd=lees_geheel_getal(
+            waarden["leeftijd"],
+            "leeftijd",
+            minimum=0,
+        ),
+        aantal_jaren=lees_geheel_getal(
+            waarden["aantal_jaren"],
+            "aantal_jaren",
+            minimum=1,
+        ),
+        aantal_deelcontacten=lees_geheel_getal(
+            waarden["aantal_deelcontacten"],
+            "aantal_deelcontacten",
+            minimum=1,
+        ),
+        ruisniveau=ruisniveau,
+        allergie_modus=allergie_modus,
+        microbiologie_modus=microbiologie_modus,
+        laboratorium_modus=laboratorium_modus,
+        episodes=episodes,
+        handmatige_allergieen=handmatige_allergieen,
+        handmatige_microbiologie=handmatige_microbiologie,
+        handmatig_laboratorium=handmatig_laboratorium,
+    )
+
+
+def bepaal_dossierperiode(aantal_jaren: int) -> tuple[str, str]:
+    """Bereken automatisch een periode die eindigt op de uitvoerdatum."""
+    einddatum = date.today()
+    try:
+        startdatum = einddatum.replace(year=einddatum.year - aantal_jaren)
+    except ValueError:
+        # Alleen relevant als het script op 29 februari wordt uitgevoerd.
+        startdatum = einddatum.replace(
+            year=einddatum.year - aantal_jaren,
+            day=28,
+        )
+    return startdatum.isoformat(), einddatum.isoformat()
+
+
+def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
+    """Bouw de variabele patiëntenprompt uit het Excel-instellingenbestand."""
+    startdatum, einddatum = bepaal_dossierperiode(instellingen.aantal_jaren)
+    episode_regels = []
+    for nummer, episode in enumerate(instellingen.episodes, start=1):
+        episode_regels.append(f"{nummer}. {episode}")
+
+    ruisinstructies = {
+        "Geen": (
+            "Schrijf zonder opzettelijke spelfouten en gebruik alleen gangbare "
+            "medische afkortingen."
+        ),
+        "Laag": (
+            "Gebruik incidenteel een gangbare afkorting, telegramstijl of kleine "
+            "typefout zoals die in een huisartsendossier kan voorkomen, maar houd "
+            "de tekst goed leesbaar."
+        ),
+        "Matig": (
+            "Gebruik geregeld realistische afkortingen, telegramstijl en kleine "
+            "typefouten, zonder de medische betekenis onduidelijk te maken."
+        ),
+    }
+
+    if instellingen.allergie_modus == "Automatisch":
+        allergie_instructie = (
+            "Bepaal zelf of een klinisch relevante allergie bij de casus past. "
+            "Het allergieoverzicht mag leeg zijn. Als je een allergie opneemt, "
+            "laat deze dan consistent terugkomen in het voorschrijfbeleid en de "
+            "medicatielijst."
+        )
+    elif instellingen.allergie_modus == "Geen":
+        allergie_instructie = (
+            "Neem geen allergieën op. Geef voor allergieen een lege lijst terug."
+        )
+    else:
+        allergieregels = []
+        for nummer, allergie in enumerate(
+            instellingen.handmatige_allergieen,
+            start=1,
+        ):
+            allergieregels.append(
+                f"{nummer}. allergeen={allergie.allergeen}; "
+                f"type={allergie.type_allergie}; reactie={allergie.reactie}; "
+                f"ernst={allergie.ernst}; status={allergie.status}"
+            )
+        allergie_instructie = (
+            "Neem de onderstaande allergieën verplicht op en voeg geen andere "
+            "allergieën toe. Kies alleen voor velden met 'Model bepaalt' zelf "
+            "een passende waarde. Kies een passende registratiedatum binnen de "
+            "dossierperiode en stem medicatie en beleid hierop af.\n"
+            + "\n".join(allergieregels)
+        )
+
+    if instellingen.microbiologie_modus == "Automatisch":
+        microbiologie_instructie = (
+            "Genereer alleen microbiologische uitslagen als de episodes of het "
+            "klinische beloop daar aanleiding toe geven. De microbiologielijst "
+            "mag leeg zijn."
+        )
+    elif instellingen.microbiologie_modus == "Geen":
+        microbiologie_instructie = (
+            "Neem geen microbiologische uitslagen op. Geef voor microbiologie "
+            "een lege lijst terug."
+        )
+    else:
+        microbiologieregels = []
+        for nummer, bepaling in enumerate(
+            instellingen.handmatige_microbiologie,
+            start=1,
+        ):
+            microbiologieregels.append(
+                f"{nummer}. episode={bepaling.episode}; materiaal={bepaling.materiaal}; "
+                f"onderzoek={bepaling.onderzoek}; "
+                f"gewenste uitslag={bepaling.gewenste_uitslag}; "
+                f"verwekker={bepaling.verwekker}"
+            )
+        microbiologie_instructie = (
+            "Verwerk de onderstaande microbiologische bepalingen verplicht en "
+            "voeg geen andere bepalingen toe. Kies alleen voor velden met "
+            "'Model bepaalt' zelf een passende waarde. Kies passende datums, "
+            "hoeveelheid/groei en gevoeligheid/resistentie en laat alles "
+            "aansluiten op journaal en behandelbeleid.\n"
+            + "\n".join(microbiologieregels)
+        )
+
+    if instellingen.laboratorium_modus == "Automatisch":
+        laboratorium_instructie = (
+            "Genereer laboratoriumuitslagen wanneer deze passen bij diagnostiek, "
+            "medicatiebewaking of controles van de opgegeven episodes. Laat bij "
+            "chronische aandoeningen zo nodig meerdere meetmomenten zien, zonder "
+            "onnodige bepalingen of onrealistisch veel uitslagen toe te voegen. "
+            "De laboratoriumlijst mag leeg zijn als geen enkele episode daar "
+            "aanleiding toe geeft."
+        )
+    elif instellingen.laboratorium_modus == "Geen":
+        laboratorium_instructie = (
+            "Neem geen laboratoriumuitslagen op. Geef voor laboratorium een lege "
+            "lijst terug."
+        )
+    else:
+        laboratoriumregels = []
+        for nummer, bepaling in enumerate(
+            instellingen.handmatig_laboratorium,
+            start=1,
+        ):
+            laboratoriumregels.append(
+                f"{nummer}. episode={bepaling.episode}; bepaling={bepaling.bepaling}; "
+                f"gewenste waarde={bepaling.gewenste_waarde}; "
+                f"eenheid={bepaling.eenheid}"
+            )
+        laboratorium_instructie = (
+            "Verwerk de onderstaande laboratoriumbepalingen verplicht en voeg "
+            "geen andere bepalingen toe. Kies alleen voor velden met 'Model "
+            "bepaalt' zelf een passende waarde. Kies passende datums en "
+            "referentiewaarden en laat aanvragen, uitslagen en eventueel beleid "
+            "aansluiten op het journaal.\n"
+            + "\n".join(laboratoriumregels)
+        )
+
+    return f"""
+Maak een synthetisch huisartsendossier voor:
+
+- fictieve patiënt-ID: {instellingen.patient_id}
+- geslacht: {instellingen.geslacht}
+- leeftijd aan het einde van de dossierperiode: {instellingen.leeftijd} jaar
+- duur van het dossier: {instellingen.aantal_jaren} jaar
+- automatisch berekende periode: {startdatum} tot en met {einddatum}
+- gewenst aantal deelcontacten: {instellingen.aantal_deelcontacten}
+
+Episodes:
+{chr(10).join(episode_regels)}
+
+Genereer een realistisch longitudinaal huisartsendossier over de volledige
+automatisch berekende periode. Verdeel het gewenste aantal deelcontacten
+chronologisch en medisch logisch. Het aantal contacten hoeft niet gelijk over
+alle jaren verdeeld te zijn; bij een klein testaantal mogen sommige jaren
+weinig contacten bevatten. Laat ontwikkelingen uit eerdere contacten logisch
+terugkomen in latere contacten. Gebruik per deelcontact precies één S-, O-, E-
+en P-regel.
+
+Bepaal zelf het realistische beloop van iedere opgegeven episode. Een episode
+mag bijvoorbeeld chronisch actief, eenmalig of later afgesloten zijn. Laat
+chronische episodes terugkomen in passende controles en voeg enkele passende
+tussentijdse contacten toe.
+
+Maak een medicatielijst die volledig aansluit op het journaal. Geef bij actieve
+medicatie een lege einddatum en bij gestopte of eenmalige medicatie een passende
+einddatum. Laat iedere start, wijziging of stop ook terugkomen in het journaal.
+
+Genereer alleen verwijstrajecten als deze klinisch logisch volgen uit de
+opgegeven episodes en het verloop van de klachten. Forceer geen vast aantal.
+Maak bij iedere verwijzing één verwijsbrief en één latere specialistenbrief met
+hetzelfde traject-ID. De lijst met correspondentie mag leeg zijn als geen
+verwijzing nodig is.
+
+Allergieën — gekozen modus: {instellingen.allergie_modus}
+{allergie_instructie}
+
+Microbiologie — gekozen modus: {instellingen.microbiologie_modus}
+{microbiologie_instructie}
+
+Laboratorium — gekozen modus: {instellingen.laboratorium_modus}
+{laboratorium_instructie}
+
+Stijl en ruis:
+{ruisinstructies[instellingen.ruisniveau]}
+
+Zorg dat journaal, medicatie, correspondentie, allergieën, microbiologie en
+laboratorium onderling consistent zijn.
+""".strip()
+
+
+def veilige_bestandsnaam(waarde: str) -> str:
+    """Maak van de fictieve patiënt-ID een veilige bestandsnaam."""
+    veilig = re.sub(r"[^A-Za-z0-9_-]+", "_", waarde.strip())
+    return veilig.strip("_") or "patient"
+
+
+class Deelcontact(BaseModel):
+    contact_id: str = Field(description="Uniek contactnummer, bijvoorbeeld C001")
+    datum: str = Field(description="Datum in JJJJ-MM-DD")
+    zorgverlener: Literal["Huisarts", "POH-S", "Doktersassistente"]
+    contactvorm: Literal[
+        "Praktijkconsult", "Telefonisch", "Huisbezoek", "Administratief"
+    ]
+    episode: str
+    s: str = Field(description="Subjectieve SOEP-regel")
+    o: str = Field(description="Objectieve SOEP-regel")
+    e: str = Field(description="Evaluatie met passende diagnose en eventueel ICPC-code")
+    p: str = Field(description="Plan en beleid")
+
+
+class MedicatieRegel(BaseModel):
+    geneesmiddel: str = Field(description="Naam van het geneesmiddel")
+    sterkte: str = Field(description="Sterkte, bijvoorbeeld 500 mg")
+    dosering: str = Field(description="Dosering en frequentie, bijvoorbeeld 2dd1")
+    indicatie: str = Field(description="Episode of reden waarvoor het middel wordt gebruikt")
+    startdatum: str = Field(description="Startdatum in JJJJ-MM-DD")
+    einddatum: str = Field(
+        description="Einddatum in JJJJ-MM-DD; leeg laten als de medicatie actief is"
+    )
+    status: Literal["Actief", "Gestopt", "Eenmalig"]
+
+
+class CorrespondentieRegel(BaseModel):
+    traject_id: str = Field(
+        description=(
+            "Gedeeld trajectnummer voor een verwijsbrief en de bijbehorende "
+            "specialistenbrief, bijvoorbeeld T001"
+        )
+    )
+    datum: str = Field(description="Datum van de brief in JJJJ-MM-DD")
+    type_brief: Literal["Verwijsbrief", "Specialistenbrief"]
+    specialisme: str = Field(description="Betrokken specialisme, bijvoorbeeld Urologie")
+    episode: str = Field(description="Episode waarop de correspondentie betrekking heeft")
+    van: str = Field(description="Afzender, bijvoorbeeld Huisarts of Uroloog")
+    aan: str = Field(description="Ontvanger, bijvoorbeeld Uroloog of Huisarts")
+    onderwerp: str = Field(description="Beknopt onderwerp van de brief")
+    inhoud: str = Field(
+        description="Volledige fictieve brieftekst; niet alleen een samenvatting"
+    )
+
+
+class AllergieRegel(BaseModel):
+    allergeen: str = Field(description="Stof of geneesmiddel waarvoor de allergie bestaat")
+    type_allergie: Literal["Geneesmiddel", "Voedsel", "Omgeving", "Overig"]
+    reactie: str = Field(description="Klinische reactie, bijvoorbeeld huiduitslag")
+    ernst: Literal["Mild", "Matig", "Ernstig", "Onbekend"]
+    registratiedatum: str = Field(description="Registratiedatum in JJJJ-MM-DD")
+    status: Literal["Actief", "Inactief"]
+
+
+class MicrobiologieRegel(BaseModel):
+    datum: str = Field(description="Datum van de microbiologische uitslag in JJJJ-MM-DD")
+    episode: str = Field(description="Episode waarop de uitslag betrekking heeft")
+    materiaal: str = Field(description="Onderzocht materiaal, bijvoorbeeld urine")
+    onderzoek: str = Field(description="Type onderzoek, bijvoorbeeld urinekweek")
+    uitslag: str = Field(description="Hoofduitslag, bijvoorbeeld positief of negatief")
+    verwekker: str = Field(
+        description="Aangetoonde verwekker; leeg laten wanneer geen verwekker is gevonden"
+    )
+    hoeveelheid: str = Field(
+        description="Hoeveelheid of groei indien relevant; anders leeg laten"
+    )
+    gevoeligheid_resistentie: str = Field(
+        description="Beknopt en klinisch relevant gevoeligheids- of resistentiepatroon"
+    )
+    conclusie: str = Field(description="Beknopte klinische conclusie van de uitslag")
+
+
+class LaboratoriumRegel(BaseModel):
+    datum: str = Field(description="Datum van de laboratoriumuitslag in JJJJ-MM-DD")
+    episode: str = Field(description="Episode waarop de uitslag betrekking heeft")
+    bepaling: str = Field(description="Naam van de bepaling, bijvoorbeeld HbA1c")
+    waarde: str = Field(description="Gemeten waarde zonder eenheid")
+    eenheid: str = Field(description="Bijpassende eenheid, bijvoorbeeld mmol/mol")
+    referentiewaarde: str = Field(
+        description="Passende referentiewaarde of streefwaarde als tekst"
+    )
+    afwijking: Literal["Laag", "Normaal", "Hoog", "Niet van toepassing"]
+    conclusie: str = Field(description="Beknopte klinische duiding van de uitslag")
+
+
+class SynthetischDossier(BaseModel):
+    contacten: list[Deelcontact]
+    medicatie: list[MedicatieRegel]
+    correspondentie: list[CorrespondentieRegel]
+    allergieen: list[AllergieRegel]
+    microbiologie: list[MicrobiologieRegel]
+    laboratorium: list[LaboratoriumRegel]
+
+
+def datum_naar_nederlands(datum: str) -> str:
+    """Zet JJJJ-MM-DD om naar DD-MM-JJJJ voor weergave in Excel."""
+    if not datum:
+        return ""
+
+    try:
+        return datetime.strptime(datum, "%Y-%m-%d").strftime("%d-%m-%Y")
+    except ValueError:
+        # Laat de oorspronkelijke waarde staan als het model onverwacht een
+        # andere notatie heeft gebruikt.
+        return datum
+
+
+def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
+    """Zet alle onderdelen van het synthetische EPD op hetzelfde tabblad."""
+    rijen = []
+
+    for contact in dossier.contacten:
+        metadata = (
+            f"[{contact.contact_id} | {datum_naar_nederlands(contact.datum)} | "
+            f"{contact.zorgverlener} | "
+            f"{contact.contactvorm} | Episode: {contact.episode}]"
+        )
+        for soep_code, tekst in (
+            ("S", contact.s),
+            ("O", contact.o),
+            ("E", contact.e),
+            ("P", contact.p),
+        ):
+            rijen.append({"SOEP": soep_code, "Inhoud": f"{metadata} {tekst}"})
+
+    dataframe = pd.DataFrame(rijen, columns=["SOEP", "Inhoud"])
+
+    medicatie_rijen = []
+    for medicijn in dossier.medicatie:
+        medicatie_rijen.append(
+            {
+                "Geneesmiddel": medicijn.geneesmiddel,
+                "Sterkte": medicijn.sterkte,
+                "Dosering": medicijn.dosering,
+                "Indicatie": medicijn.indicatie,
+                "Startdatum": datum_naar_nederlands(medicijn.startdatum),
+                "Einddatum": datum_naar_nederlands(medicijn.einddatum),
+                "Status": medicijn.status,
+            }
+        )
+
+    medicatie_dataframe = pd.DataFrame(
+        medicatie_rijen,
+        columns=[
+            "Geneesmiddel",
+            "Sterkte",
+            "Dosering",
+            "Indicatie",
+            "Startdatum",
+            "Einddatum",
+            "Status",
+        ],
+    )
+
+    correspondentie_rijen = []
+    # Sorteer eerst op de interne JJJJ-MM-DD-notatie. Daarna zetten we de datum
+    # pas om naar DD-MM-JJJJ voor de zichtbare Excel-uitvoer.
+    gesorteerde_correspondentie = sorted(
+        dossier.correspondentie,
+        key=lambda brief: (brief.datum, brief.traject_id),
+    )
+    for brief in gesorteerde_correspondentie:
+        correspondentie_rijen.append(
+            {
+                "Traject-ID": brief.traject_id,
+                "Datum": datum_naar_nederlands(brief.datum),
+                "Type": brief.type_brief,
+                "Specialisme": brief.specialisme,
+                "Episode": brief.episode,
+                "Van": brief.van,
+                "Aan": brief.aan,
+                "Onderwerp": brief.onderwerp,
+                "Brieftekst": brief.inhoud,
+            }
+        )
+
+    correspondentie_dataframe = pd.DataFrame(
+        correspondentie_rijen,
+        columns=[
+            "Traject-ID",
+            "Datum",
+            "Type",
+            "Specialisme",
+            "Episode",
+            "Van",
+            "Aan",
+            "Onderwerp",
+            "Brieftekst",
+        ],
+    )
+
+    allergie_rijen = []
+    for allergie in dossier.allergieen:
+        allergie_rijen.append(
+            {
+                "Allergeen": allergie.allergeen,
+                "Type": allergie.type_allergie,
+                "Reactie": allergie.reactie,
+                "Ernst": allergie.ernst,
+                "Registratiedatum": datum_naar_nederlands(allergie.registratiedatum),
+                "Status": allergie.status,
+            }
+        )
+
+    allergie_dataframe = pd.DataFrame(
+        allergie_rijen,
+        columns=[
+            "Allergeen",
+            "Type",
+            "Reactie",
+            "Ernst",
+            "Registratiedatum",
+            "Status",
+        ],
+    )
+
+    microbiologie_rijen = []
+    for uitslag in sorted(dossier.microbiologie, key=lambda regel: regel.datum):
+        microbiologie_rijen.append(
+            {
+                "Datum": datum_naar_nederlands(uitslag.datum),
+                "Episode": uitslag.episode,
+                "Materiaal": uitslag.materiaal,
+                "Onderzoek": uitslag.onderzoek,
+                "Uitslag": uitslag.uitslag,
+                "Verwekker": uitslag.verwekker,
+                "Hoeveelheid/groei": uitslag.hoeveelheid,
+                "Gevoeligheid/resistentie": uitslag.gevoeligheid_resistentie,
+                "Conclusie": uitslag.conclusie,
+            }
+        )
+
+    microbiologie_dataframe = pd.DataFrame(
+        microbiologie_rijen,
+        columns=[
+            "Datum",
+            "Episode",
+            "Materiaal",
+            "Onderzoek",
+            "Uitslag",
+            "Verwekker",
+            "Hoeveelheid/groei",
+            "Gevoeligheid/resistentie",
+            "Conclusie",
+        ],
+    )
+
+    laboratorium_rijen = []
+    for uitslag in sorted(
+        dossier.laboratorium,
+        key=lambda regel: (regel.datum, regel.bepaling),
+    ):
+        laboratorium_rijen.append(
+            {
+                "Datum": datum_naar_nederlands(uitslag.datum),
+                "Episode": uitslag.episode,
+                "Bepaling": uitslag.bepaling,
+                "Waarde": uitslag.waarde,
+                "Eenheid": uitslag.eenheid,
+                "Referentiewaarde": uitslag.referentiewaarde,
+                "Afwijking": uitslag.afwijking,
+                "Conclusie": uitslag.conclusie,
+            }
+        )
+
+    laboratorium_dataframe = pd.DataFrame(
+        laboratorium_rijen,
+        columns=[
+            "Datum",
+            "Episode",
+            "Bepaling",
+            "Waarde",
+            "Eenheid",
+            "Referentiewaarde",
+            "Afwijking",
+            "Conclusie",
+        ],
+    )
+
+    # Plaats de correspondentie enkele rijen onder de medicatielijst.
+    # Deze variabele is een Excel-rijnummer (Excel telt vanaf 1).
+    correspondentie_titelrij = len(medicatie_dataframe) + 5
+    correspondentie_eindrij = correspondentie_titelrij + 1 + len(
+        correspondentie_dataframe
+    )
+    allergie_titelrij = correspondentie_eindrij + 3
+    allergie_eindrij = allergie_titelrij + 1 + len(allergie_dataframe)
+    microbiologie_titelrij = allergie_eindrij + 3
+    microbiologie_eindrij = microbiologie_titelrij + 1 + len(
+        microbiologie_dataframe
+    )
+    laboratorium_titelrij = microbiologie_eindrij + 3
+    laboratorium_eindrij = laboratorium_titelrij + 1 + len(
+        laboratorium_dataframe
+    )
+
+    with pd.ExcelWriter(uitvoerpad, engine="openpyxl") as writer:
+        dataframe.to_excel(writer, sheet_name="Journaal", index=False)
+        medicatie_dataframe.to_excel(
+            writer,
+            sheet_name="Journaal",
+            index=False,
+            startrow=1,
+            startcol=3,
+        )
+        correspondentie_dataframe.to_excel(
+            writer,
+            sheet_name="Journaal",
+            index=False,
+            startrow=correspondentie_titelrij,
+            startcol=3,
+        )
+        allergie_dataframe.to_excel(
+            writer,
+            sheet_name="Journaal",
+            index=False,
+            startrow=allergie_titelrij,
+            startcol=3,
+        )
+        microbiologie_dataframe.to_excel(
+            writer,
+            sheet_name="Journaal",
+            index=False,
+            startrow=microbiologie_titelrij,
+            startcol=3,
+        )
+        laboratorium_dataframe.to_excel(
+            writer,
+            sheet_name="Journaal",
+            index=False,
+            startrow=laboratorium_titelrij,
+            startcol=3,
+        )
+
+        werkblad = writer.book["Journaal"]
+        werkblad.freeze_panes = "A2"
+        werkblad.auto_filter.ref = f"A1:B{len(dataframe) + 1}"
+        werkblad.column_dimensions["A"].width = 10
+        werkblad.column_dimensions["B"].width = 115
+
+        werkblad.merge_cells("D1:J1")
+        werkblad["D1"] = "MEDICATIELIJST"
+        werkblad.column_dimensions["D"].width = 24
+        werkblad.column_dimensions["E"].width = 14
+        werkblad.column_dimensions["F"].width = 22
+        werkblad.column_dimensions["G"].width = 32
+        werkblad.column_dimensions["H"].width = 14
+        werkblad.column_dimensions["I"].width = 14
+        werkblad.column_dimensions["J"].width = 12
+        werkblad.column_dimensions["K"].width = 30
+        werkblad.column_dimensions["L"].width = 100
+
+        werkblad.merge_cells(
+            start_row=correspondentie_titelrij,
+            start_column=4,
+            end_row=correspondentie_titelrij,
+            end_column=12,
+        )
+        correspondentie_titelcel = werkblad.cell(
+            row=correspondentie_titelrij,
+            column=4,
+        )
+        correspondentie_titelcel.value = (
+            "CORRESPONDENTIE – VERWIJS- EN SPECIALISTENBRIEVEN"
+        )
+
+        werkblad.merge_cells(
+            start_row=allergie_titelrij,
+            start_column=4,
+            end_row=allergie_titelrij,
+            end_column=9,
+        )
+        allergie_titelcel = werkblad.cell(row=allergie_titelrij, column=4)
+        allergie_titelcel.value = "ALLERGIEËN"
+
+        werkblad.merge_cells(
+            start_row=microbiologie_titelrij,
+            start_column=4,
+            end_row=microbiologie_titelrij,
+            end_column=12,
+        )
+        microbiologie_titelcel = werkblad.cell(
+            row=microbiologie_titelrij,
+            column=4,
+        )
+        microbiologie_titelcel.value = "MICROBIOLOGIE"
+
+        werkblad.merge_cells(
+            start_row=laboratorium_titelrij,
+            start_column=4,
+            end_row=laboratorium_titelrij,
+            end_column=11,
+        )
+        laboratorium_titelcel = werkblad.cell(
+            row=laboratorium_titelrij,
+            column=4,
+        )
+        laboratorium_titelcel.value = "LABORATORIUMUITSLAGEN"
+
+        from openpyxl.styles import Alignment, Font, PatternFill
+
+        for cel in werkblad[1][0:2]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="1F4E78")
+            cel.alignment = Alignment(vertical="center")
+
+        werkblad["D1"].font = Font(bold=True, color="FFFFFF")
+        werkblad["D1"].fill = PatternFill("solid", fgColor="548235")
+        werkblad["D1"].alignment = Alignment(horizontal="center")
+
+        for cel in werkblad[2][3:10]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="70AD47")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+
+        correspondentie_titelcel.font = Font(bold=True, color="FFFFFF")
+        correspondentie_titelcel.fill = PatternFill("solid", fgColor="7030A0")
+        correspondentie_titelcel.alignment = Alignment(horizontal="center")
+
+        for cel in werkblad[correspondentie_titelrij + 1][3:12]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="9E66B4")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+
+        allergie_titelcel.font = Font(bold=True, color="FFFFFF")
+        allergie_titelcel.fill = PatternFill("solid", fgColor="C65911")
+        allergie_titelcel.alignment = Alignment(horizontal="center")
+
+        for cel in werkblad[allergie_titelrij + 1][3:9]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="ED7D31")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+
+        microbiologie_titelcel.font = Font(bold=True, color="FFFFFF")
+        microbiologie_titelcel.fill = PatternFill("solid", fgColor="008C95")
+        microbiologie_titelcel.alignment = Alignment(horizontal="center")
+
+        for cel in werkblad[microbiologie_titelrij + 1][3:12]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="00A6B2")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+
+        laboratorium_titelcel.font = Font(bold=True, color="FFFFFF")
+        laboratorium_titelcel.fill = PatternFill("solid", fgColor="2F5597")
+        laboratorium_titelcel.alignment = Alignment(horizontal="center")
+
+        for cel in werkblad[laboratorium_titelrij + 1][3:11]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="4472C4")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+
+        for rij in werkblad.iter_rows(min_row=2, max_col=2):
+            rij[0].alignment = Alignment(horizontal="center", vertical="top")
+            rij[1].alignment = Alignment(wrap_text=True, vertical="top")
+
+        for rij in werkblad.iter_rows(
+            min_row=3,
+            max_row=len(medicatie_dataframe) + 2,
+            min_col=4,
+            max_col=10,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+        for rij in werkblad.iter_rows(
+            min_row=correspondentie_titelrij + 2,
+            max_row=correspondentie_eindrij,
+            min_col=4,
+            max_col=12,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+        for rij in werkblad.iter_rows(
+            min_row=allergie_titelrij + 2,
+            max_row=allergie_eindrij,
+            min_col=4,
+            max_col=9,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+        for rij in werkblad.iter_rows(
+            min_row=microbiologie_titelrij + 2,
+            max_row=microbiologie_eindrij,
+            min_col=4,
+            max_col=12,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+        for rij in werkblad.iter_rows(
+            min_row=laboratorium_titelrij + 2,
+            max_row=laboratorium_eindrij,
+            min_col=4,
+            max_col=11,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+
+def main() -> None:
+    instellingenpad = Path(__file__).with_name(SETTINGS_BESTANDSNAAM)
+    instellingen = lees_patientinstellingen(instellingenpad)
+    patient_prompt = maak_patient_prompt(instellingen)
+
+    api_key = getpass("Plak hier je API-key en druk op Enter: ").strip()
+    if not api_key:
+        raise ValueError("Er is geen API-key ingevoerd.")
+
+    client = OpenAI(api_key=api_key)
+
+    response = client.responses.parse(
+        model="gpt-5.6",
+        input=[
+            {"role": "system", "content": MAIN_PROMPT},
+            {"role": "user", "content": patient_prompt},
+        ],
+        text_format=SynthetischDossier,
+    )
+
+    dossier = response.output_parsed
+    if dossier is None:
+        raise RuntimeError("Het model leverde geen bruikbaar gestructureerd dossier op.")
+
+    # Elke run krijgt een uniek tijdstip in de bestandsnaam, zodat eerdere
+    # gegenereerde dossiers niet worden overschreven.
+    tijdstip = datetime.now().strftime("%Y%m%d_%H%M%S")
+    patient_id = veilige_bestandsnaam(instellingen.patient_id)
+    uitvoerpad = Path(__file__).with_name(
+        f"synthetisch_epd_{patient_id}_{tijdstip}.xlsx"
+    )
+    dossier_naar_excel(dossier, uitvoerpad)
+    print(f"Klaar: {uitvoerpad.resolve()}")
+
+
+if __name__ == "__main__":
+    main()
