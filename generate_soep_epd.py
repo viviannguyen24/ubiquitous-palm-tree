@@ -67,20 +67,43 @@ uitslag, eventuele verwekker, hoeveelheid of groei,
 gevoeligheid/resistentie en conclusie. Laat iedere uitslag logisch aansluiten
 op de klachten, het journaal en het antibioticabeleid.
 
-Een laboratoriumuitslag vermeldt datum, episode, bepaling, waarde, eenheid,
-referentiewaarde, afwijking en conclusie. Laat laboratoriumonderzoek aansluiten
-op de episodes, medicatie en controles. Een aanvraag of relevante uitslag moet
-terugkomen in een passende O- of P-regel. Laat een afwijkende uitslag die beleid
-vereist logisch doorwerken in een E- en P-regel en eventueel in de medicatielijst.
-Gebruik alleen medisch passende combinaties van waarden, eenheden en
-referentiewaarden.
+Groepeer laboratoriumbepalingen per realistisch prikmoment. Alle bepalingen uit
+dezelfde aanvraag krijgen hetzelfde aanvraag-ID, dezelfde datum en dezelfde
+aanvraagreden. Een laboratoriumuitslag vermeldt daarnaast episode, bepaling,
+waarde, eenheid, referentiewaarde, afwijking en conclusie. Een aanvraag mag
+meerdere klinisch samenhangende bepalingen bevatten en hoeft dus niet beperkt
+te blijven tot één episode-specifieke waarde. Neem ook normale bepalingen op als
+die bij hetzelfde pakket zijn aangevraagd.
+
+Laat laboratoriumonderzoek aansluiten op de episodes, medicatie, controles,
+leeftijd en klachten. Overweeg bij een passende cardiovasculaire controle onder
+andere nierfunctie, elektrolyten, glucose, lipiden en urine-albuminurie, afhankelijk
+van medicatie, risico en controle-interval. Een beperkt algemeen
+laboratoriumonderzoek kan passen bij aspecifieke klachten, maar forceer geen
+volledig bloedbeeld of breed pakket zonder indicatie. Een aanvraag of relevante
+uitslag moet terugkomen in een passende O- of P-regel. Laat een afwijkende
+uitslag die beleid vereist logisch doorwerken in een E- en P-regel en eventueel
+in de medicatielijst. Gebruik alleen medisch passende combinaties van waarden,
+eenheden en referentiewaarden.
 
 Gebruik datums in de vorm JJJJ-MM-DD. Voeg geen uitleg buiten de gevraagde
 gestructureerde uitvoer toe.
 """.strip()
 
 
-SETTINGS_BESTANDSNAAM = "patient_settings_lab_automatisch.xlsx"
+SETTINGS_BESTANDSNAAM = "patient_settings_uitgebreid.xlsx"
+
+
+RuisNiveau = Literal["Geen", "Laag", "Gemiddeld"]
+
+
+class EpisodeInstelling(BaseModel):
+    """Een episode met chronologische volgorde en optionele patiëntspecificatie."""
+
+    volgorde: int
+    episode: str
+    patient_specifieke_omschrijving: str = ""
+    aantal_deelcontacten: int | None = None
 
 
 class AllergieInstelling(BaseModel):
@@ -107,6 +130,7 @@ class LaboratoriumInstelling(BaseModel):
     """Een door de gebruiker gewenste laboratoriumbepaling."""
 
     episode: str = "Model bepaalt"
+    aanvraagreden: str = "Model bepaalt"
     bepaling: str
     gewenste_waarde: str = "Model bepaalt"
     eenheid: str = "Model bepaalt"
@@ -118,11 +142,15 @@ class PatientInstellingen(BaseModel):
     leeftijd: int
     aantal_jaren: int
     aantal_deelcontacten: int
-    ruisniveau: Literal["Geen", "Laag", "Matig"]
+    ruis_spelfouten: RuisNiveau
+    ruis_afkortingen: RuisNiveau
+    ruis_telegramstijl: RuisNiveau
+    ruis_interpunctie: RuisNiveau
+    ruis_herhaling: RuisNiveau
     allergie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
     microbiologie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
     laboratorium_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
-    episodes: list[str]
+    episodes: list[EpisodeInstelling]
     handmatige_allergieen: list[AllergieInstelling]
     handmatige_microbiologie: list[MicrobiologieInstelling]
     handmatig_laboratorium: list[LaboratoriumInstelling]
@@ -157,6 +185,31 @@ def lees_geheel_getal(waarde: object, naam: str, minimum: int = 0) -> int:
     return int(getal)
 
 
+def valideer_episodecontactaantallen(
+    episodes: list[EpisodeInstelling],
+    totaal_deelcontacten: int,
+) -> None:
+    """Controleer de optionele verdeling van deelcontacten over episodes."""
+    ingevulde_contactaantallen = [
+        episode.aantal_deelcontacten
+        for episode in episodes
+        if episode.aantal_deelcontacten is not None
+    ]
+    if ingevulde_contactaantallen and len(ingevulde_contactaantallen) != len(episodes):
+        raise ValueError(
+            "Vul 'aantal_deelcontacten' op het tabblad 'Episodes' óf voor alle "
+            "episodes in, óf laat de volledige kolom leeg voor automatische verdeling."
+        )
+    if ingevulde_contactaantallen:
+        totaal_per_episode = sum(ingevulde_contactaantallen)
+        if totaal_per_episode != totaal_deelcontacten:
+            raise ValueError(
+                "De aantallen deelcontacten op het tabblad 'Episodes' tellen op tot "
+                f"{totaal_per_episode}, maar op het tabblad 'Patient' staat "
+                f"{totaal_deelcontacten}. Maak deze totalen gelijk."
+            )
+
+
 def normaliseer_modus(waarde: object, naam: str) -> str:
     """Normaliseer een gebruikersvriendelijke keuzewaarde uit Excel."""
     invoer = lees_tekst(waarde).lower()
@@ -169,6 +222,23 @@ def normaliseer_modus(waarde: object, naam: str) -> str:
     if invoer not in omzetting:
         raise ValueError(
             f"Instelling '{naam}' moet Automatisch, Zelf invoeren of Geen zijn."
+        )
+    return omzetting[invoer]
+
+
+def normaliseer_ruisniveau(waarde: object, naam: str) -> str:
+    """Normaliseer een afzonderlijk ruisniveau uit het instellingenbestand."""
+    invoer = lees_tekst(waarde).lower()
+    omzetting = {
+        "geen": "Geen",
+        "laag": "Laag",
+        "gemiddeld": "Gemiddeld",
+        # 'Matig' uit oudere instellingenbestanden wordt als Gemiddeld gelezen.
+        "matig": "Gemiddeld",
+    }
+    if invoer not in omzetting:
+        raise ValueError(
+            f"Instelling '{naam}' moet Geen, Laag of Gemiddeld zijn."
         )
     return omzetting[invoer]
 
@@ -240,7 +310,11 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
         "leeftijd",
         "aantal_jaren",
         "aantal_deelcontacten",
-        "ruisniveau",
+        "ruis_spelfouten",
+        "ruis_afkortingen",
+        "ruis_telegramstijl",
+        "ruis_interpunctie",
+        "ruis_herhaling",
         "allergie_modus",
         "microbiologie_modus",
         "laboratorium_modus",
@@ -252,10 +326,21 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
             + ", ".join(ontbrekend)
         )
 
-    vereiste_episodekolommen = {"episode"}
+    totaal_deelcontacten = lees_geheel_getal(
+        waarden["aantal_deelcontacten"],
+        "aantal_deelcontacten",
+        minimum=1,
+    )
+
+    vereiste_episodekolommen = {
+        "volgorde",
+        "episode",
+        "patient_specifieke_omschrijving",
+    }
     if not vereiste_episodekolommen.issubset(episodes_dataframe.columns):
         raise ValueError(
-            "Het tabblad 'Episodes' moet de kolom 'episode' bevatten."
+            "Het tabblad 'Episodes' moet de kolommen 'volgorde', 'episode' en "
+            "'patient_specifieke_omschrijving' bevatten."
         )
 
     episodes = []
@@ -263,20 +348,47 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
         episodenaam = lees_tekst(rij.get("episode"))
         if not episodenaam:
             continue
-        episodes.append(episodenaam)
+        episodes.append(
+            EpisodeInstelling(
+                volgorde=lees_geheel_getal(
+                    rij.get("volgorde"),
+                    "volgorde op het tabblad Episodes",
+                    minimum=1,
+                ),
+                episode=episodenaam,
+                patient_specifieke_omschrijving=lees_tekst(
+                    rij.get("patient_specifieke_omschrijving")
+                ),
+                aantal_deelcontacten=(
+                    None
+                    if waarde_is_leeg(rij.get("aantal_deelcontacten"))
+                    else lees_geheel_getal(
+                        rij.get("aantal_deelcontacten"),
+                        "aantal_deelcontacten op het tabblad Episodes",
+                        minimum=1,
+                    )
+                ),
+            )
+        )
 
     if not episodes:
         raise ValueError("Vul minimaal één episode in op het tabblad 'Episodes'.")
 
+    volgordes = [episode.volgorde for episode in episodes]
+    if len(volgordes) != len(set(volgordes)):
+        raise ValueError(
+            "Iedere episode moet op het tabblad 'Episodes' een unieke volgorde hebben."
+        )
+    episodes.sort(key=lambda episode: episode.volgorde)
+
+    valideer_episodecontactaantallen(episodes, totaal_deelcontacten)
+
     patient_id = lees_tekst(waarden["patient_id"])
     geslacht = lees_tekst(waarden["geslacht"])
-    ruisniveau = lees_tekst(waarden["ruisniveau"]).capitalize()
     if not patient_id:
         raise ValueError("Instelling 'patient_id' mag niet leeg zijn.")
     if not geslacht:
         raise ValueError("Instelling 'geslacht' mag niet leeg zijn.")
-    if ruisniveau not in {"Geen", "Laag", "Matig"}:
-        raise ValueError("Instelling 'ruisniveau' moet Geen, Laag of Matig zijn.")
 
     allergie_modus = normaliseer_modus(
         waarden["allergie_modus"],
@@ -376,6 +488,8 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
             handmatig_laboratorium.append(
                 LaboratoriumInstelling(
                     episode=lees_tekst(rij.get("episode")) or "Model bepaalt",
+                    aanvraagreden=lees_tekst(rij.get("aanvraagreden"))
+                    or "Model bepaalt",
                     bepaling=bepaling,
                     gewenste_waarde=lees_tekst(rij.get("gewenste_waarde"))
                     or "Model bepaalt",
@@ -402,12 +516,27 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
             "aantal_jaren",
             minimum=1,
         ),
-        aantal_deelcontacten=lees_geheel_getal(
-            waarden["aantal_deelcontacten"],
-            "aantal_deelcontacten",
-            minimum=1,
+        aantal_deelcontacten=totaal_deelcontacten,
+        ruis_spelfouten=normaliseer_ruisniveau(
+            waarden["ruis_spelfouten"],
+            "ruis_spelfouten",
         ),
-        ruisniveau=ruisniveau,
+        ruis_afkortingen=normaliseer_ruisniveau(
+            waarden["ruis_afkortingen"],
+            "ruis_afkortingen",
+        ),
+        ruis_telegramstijl=normaliseer_ruisniveau(
+            waarden["ruis_telegramstijl"],
+            "ruis_telegramstijl",
+        ),
+        ruis_interpunctie=normaliseer_ruisniveau(
+            waarden["ruis_interpunctie"],
+            "ruis_interpunctie",
+        ),
+        ruis_herhaling=normaliseer_ruisniveau(
+            waarden["ruis_herhaling"],
+            "ruis_herhaling",
+        ),
         allergie_modus=allergie_modus,
         microbiologie_modus=microbiologie_modus,
         laboratorium_modus=laboratorium_modus,
@@ -436,24 +565,113 @@ def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
     """Bouw de variabele patiëntenprompt uit het Excel-instellingenbestand."""
     startdatum, einddatum = bepaal_dossierperiode(instellingen.aantal_jaren)
     episode_regels = []
-    for nummer, episode in enumerate(instellingen.episodes, start=1):
-        episode_regels.append(f"{nummer}. {episode}")
+    for episode in instellingen.episodes:
+        regel = f"{episode.volgorde}. {episode.episode}"
+        if episode.patient_specifieke_omschrijving:
+            regel += (
+                " | patiëntspecifieke omschrijving: "
+                f"{episode.patient_specifieke_omschrijving}"
+            )
+        if episode.aantal_deelcontacten is not None:
+            regel += (
+                " | exact aantal deelcontacten: "
+                f"{episode.aantal_deelcontacten}"
+            )
+        episode_regels.append(regel)
+
+    contactaantallen_ingevuld = all(
+        episode.aantal_deelcontacten is not None
+        for episode in instellingen.episodes
+    )
+    if contactaantallen_ingevuld:
+        contactverdeling_instructie = (
+            "Gebruik voor iedere episode exact het opgegeven aantal deelcontacten. "
+            f"Deze aantallen tellen samen op tot {instellingen.aantal_deelcontacten}. "
+            "Koppel ieder deelcontact in het veld 'episode' aan precies één primaire "
+            "episode uit de opgegeven lijst. Een contact waarin meerdere problemen "
+            "worden besproken telt slechts eenmaal, bij de primaire episode. Maak in "
+            f"totaal exact {instellingen.aantal_deelcontacten} deelcontacten."
+        )
+    else:
+        contactverdeling_instructie = (
+            "Er zijn geen aantallen per episode opgegeven. Verdeel daarom het totale "
+            "aantal deelcontacten zelf medisch logisch over de episodes. Maak in "
+            f"totaal exact {instellingen.aantal_deelcontacten} deelcontacten."
+        )
 
     ruisinstructies = {
-        "Geen": (
-            "Schrijf zonder opzettelijke spelfouten en gebruik alleen gangbare "
-            "medische afkortingen."
-        ),
-        "Laag": (
-            "Gebruik incidenteel een gangbare afkorting, telegramstijl of kleine "
-            "typefout zoals die in een huisartsendossier kan voorkomen, maar houd "
-            "de tekst goed leesbaar."
-        ),
-        "Matig": (
-            "Gebruik geregeld realistische afkortingen, telegramstijl en kleine "
-            "typefouten, zonder de medische betekenis onduidelijk te maken."
-        ),
+        "spelfouten": {
+            "Geen": "Gebruik geen opzettelijke spelfouten of typefouten.",
+            "Laag": (
+                "Gebruik incidenteel een kleine, realistische type- of spelfout, "
+                "terwijl ieder woord goed te reconstrueren blijft."
+            ),
+            "Gemiddeld": (
+                "Gebruik verspreid door het dossier regelmatig kleine, realistische "
+                "type- of spelfouten, zonder medische termen onherkenbaar te maken."
+            ),
+        },
+        "afkortingen": {
+            "Geen": "Schrijf termen in de vrije tekst zo veel mogelijk voluit.",
+            "Laag": (
+                "Gebruik incidenteel een gangbare Nederlandse medische afkorting."
+            ),
+            "Gemiddeld": (
+                "Gebruik geregeld gangbare Nederlandse huisartsafkortingen, maar "
+                "zorg dat de betekenis uit de context duidelijk blijft."
+            ),
+        },
+        "telegramstijl": {
+            "Geen": "Gebruik grammaticaal volledige zinnen.",
+            "Laag": (
+                "Gebruik incidenteel korte zinsdelen of weggelaten lidwoorden zoals "
+                "in een realistische huisartsnotitie."
+            ),
+            "Gemiddeld": (
+                "Gebruik geregeld beknopte telegramstijl en korte zinsdelen, zonder "
+                "klinisch relevante informatie weg te laten."
+            ),
+        },
+        "interpunctie en hoofdletters": {
+            "Geen": "Gebruik consequente interpunctie en hoofdletters.",
+            "Laag": (
+                "Laat incidenteel een punt of hoofdletter weg in vrije tekst."
+            ),
+            "Gemiddeld": (
+                "Gebruik geregeld licht inconsistente interpunctie of hoofdletters, "
+                "maar behoud de leesbaarheid."
+            ),
+        },
+        "herhaling": {
+            "Geen": "Vermijd onnodige herhaling van eerder vastgelegde informatie.",
+            "Laag": (
+                "Herhaal incidenteel een korte relevante voorgeschiedenis of een "
+                "eerder beleidspunt in een later deelcontact."
+            ),
+            "Gemiddeld": (
+                "Laat regelmatig beperkte, realistische herhaling van relevante "
+                "voorgeschiedenis of beleid voorkomen, zonder volledige notities te "
+                "dupliceren."
+            ),
+        },
     }
+
+    gekozen_ruis = [
+        ("Spelfouten", instellingen.ruis_spelfouten, "spelfouten"),
+        ("Afkortingen", instellingen.ruis_afkortingen, "afkortingen"),
+        ("Telegramstijl", instellingen.ruis_telegramstijl, "telegramstijl"),
+        (
+            "Interpunctie en hoofdletters",
+            instellingen.ruis_interpunctie,
+            "interpunctie en hoofdletters",
+        ),
+        ("Herhaling", instellingen.ruis_herhaling, "herhaling"),
+    ]
+    ruis_regels = []
+    for label, niveau, sleutel in gekozen_ruis:
+        ruis_regels.append(
+            f"- {label} — {niveau}: {ruisinstructies[sleutel][niveau]}"
+        )
 
     if instellingen.allergie_modus == "Automatisch":
         allergie_instructie = (
@@ -520,11 +738,20 @@ def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
     if instellingen.laboratorium_modus == "Automatisch":
         laboratorium_instructie = (
             "Genereer laboratoriumuitslagen wanneer deze passen bij diagnostiek, "
-            "medicatiebewaking of controles van de opgegeven episodes. Laat bij "
-            "chronische aandoeningen zo nodig meerdere meetmomenten zien, zonder "
-            "onnodige bepalingen of onrealistisch veel uitslagen toe te voegen. "
-            "De laboratoriumlijst mag leeg zijn als geen enkele episode daar "
-            "aanleiding toe geeft."
+            "medicatiebewaking of controles van de opgegeven episodes. Maak van "
+            "ieder prikmoment een herkenbare aanvraag met een aanvraag-ID zoals "
+            "L001. Gebruik voor alle bepalingen uit hetzelfde prikmoment dezelfde "
+            "datum en aanvraagreden. Genereer per aanvraag een realistisch pakket "
+            "van meerdere samenhangende bepalingen in plaats van uitsluitend één "
+            "episode-specifieke waarde. Neem ook normale nevenbepalingen op die bij "
+            "hetzelfde pakket plausibel zijn aangevraagd. Combineer controles voor "
+            "meerdere aandoeningen zo nodig in één prikmoment. Laat bij chronische "
+            "aandoeningen passende meetmomenten terugkomen, zonder onnodige "
+            "bepalingen of onrealistisch veel uitslagen toe te voegen. Bij alleen "
+            "hypertensie is een volledig bloedbeeld niet standaard verplicht; "
+            "kies het pakket op basis van cardiovasculair risico, medicatie en "
+            "eventuele bijkomende klachten. De laboratoriumlijst mag leeg zijn als "
+            "geen enkele episode daar aanleiding toe geeft."
         )
     elif instellingen.laboratorium_modus == "Geen":
         laboratorium_instructie = (
@@ -538,16 +765,19 @@ def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
             start=1,
         ):
             laboratoriumregels.append(
-                f"{nummer}. episode={bepaling.episode}; bepaling={bepaling.bepaling}; "
+                f"{nummer}. episode={bepaling.episode}; "
+                f"aanvraagreden={bepaling.aanvraagreden}; "
+                f"bepaling={bepaling.bepaling}; "
                 f"gewenste waarde={bepaling.gewenste_waarde}; "
                 f"eenheid={bepaling.eenheid}"
             )
         laboratorium_instructie = (
             "Verwerk de onderstaande laboratoriumbepalingen verplicht en voeg "
             "geen andere bepalingen toe. Kies alleen voor velden met 'Model "
-            "bepaalt' zelf een passende waarde. Kies passende datums en "
-            "referentiewaarden en laat aanvragen, uitslagen en eventueel beleid "
-            "aansluiten op het journaal.\n"
+            "bepaalt' zelf een passende waarde. Groepeer bepalingen die medisch bij "
+            "hetzelfde prikmoment passen onder één aanvraag-ID, datum en "
+            "aanvraagreden. Kies passende datums en referentiewaarden en laat "
+            "aanvragen, uitslagen en eventueel beleid aansluiten op het journaal.\n"
             + "\n".join(laboratoriumregels)
         )
 
@@ -563,6 +793,16 @@ Maak een synthetisch huisartsendossier voor:
 
 Episodes:
 {chr(10).join(episode_regels)}
+
+De kolom 'volgorde' uit het instellingenbestand bepaalt de chronologische
+volgorde waarin de episodes voor het eerst optreden of voor het eerst in het
+dossier worden geregistreerd. Respecteer deze volgorde. Een patiëntspecifieke
+omschrijving is een bindende specificatie van de betreffende episode en moet
+consistent terugkomen in relevante SOEP-regels, bevindingen, medicatie,
+correspondentie en uitslagen.
+
+Verdeling van deelcontacten:
+{contactverdeling_instructie}
 
 Genereer een realistisch longitudinaal huisartsendossier over de volledige
 automatisch berekende periode. Verdeel het gewenste aantal deelcontacten
@@ -597,7 +837,12 @@ Laboratorium — gekozen modus: {instellingen.laboratorium_modus}
 {laboratorium_instructie}
 
 Stijl en ruis:
-{ruisinstructies[instellingen.ruisniveau]}
+{chr(10).join(ruis_regels)}
+
+Pas ruis uitsluitend toe op vrije tekst. Verander door ruis nooit patiënt-ID's,
+datums, geneesmiddelnamen, doseringen, meetwaarden, eenheden, uitslagen,
+diagnoses of traject-ID's. Ruis mag geen medische onjuistheden,
+tegenstrijdigheden of klinische onduidelijkheid veroorzaken.
 
 Zorg dat journaal, medicatie, correspondentie, allergieën, microbiologie en
 laboratorium onderling consistent zijn.
@@ -683,7 +928,19 @@ class MicrobiologieRegel(BaseModel):
 
 
 class LaboratoriumRegel(BaseModel):
+    aanvraag_id: str = Field(
+        description=(
+            "Gedeeld nummer voor alle bepalingen uit hetzelfde prikmoment, "
+            "bijvoorbeeld L001"
+        )
+    )
     datum: str = Field(description="Datum van de laboratoriumuitslag in JJJJ-MM-DD")
+    aanvraagreden: str = Field(
+        description=(
+            "Reden of type aanvraag, bijvoorbeeld jaarlijkse CVRM-controle of "
+            "algemeen onderzoek wegens vermoeidheid"
+        )
+    )
     episode: str = Field(description="Episode waarop de uitslag betrekking heeft")
     bepaling: str = Field(description="Naam van de bepaling, bijvoorbeeld HbA1c")
     waarde: str = Field(description="Gemeten waarde zonder eenheid")
@@ -860,11 +1117,13 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
     laboratorium_rijen = []
     for uitslag in sorted(
         dossier.laboratorium,
-        key=lambda regel: (regel.datum, regel.bepaling),
+        key=lambda regel: (regel.datum, regel.aanvraag_id, regel.bepaling),
     ):
         laboratorium_rijen.append(
             {
+                "Aanvraag-ID": uitslag.aanvraag_id,
                 "Datum": datum_naar_nederlands(uitslag.datum),
+                "Aanvraagreden": uitslag.aanvraagreden,
                 "Episode": uitslag.episode,
                 "Bepaling": uitslag.bepaling,
                 "Waarde": uitslag.waarde,
@@ -878,14 +1137,16 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
     laboratorium_dataframe = pd.DataFrame(
         laboratorium_rijen,
         columns=[
+            "Aanvraag-ID",
             "Datum",
+            "Aanvraagreden",
             "Episode",
             "Bepaling",
             "Waarde",
             "Eenheid",
             "Referentiewaarde",
-            "Afwijking",
             "Conclusie",
+            "Afwijking",
         ],
     )
 
@@ -961,6 +1222,7 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
         werkblad.column_dimensions["J"].width = 12
         werkblad.column_dimensions["K"].width = 30
         werkblad.column_dimensions["L"].width = 100
+        werkblad.column_dimensions["M"].width = 14
 
         werkblad.merge_cells(
             start_row=correspondentie_titelrij,
@@ -1001,13 +1263,13 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
             start_row=laboratorium_titelrij,
             start_column=4,
             end_row=laboratorium_titelrij,
-            end_column=11,
+            end_column=13,
         )
         laboratorium_titelcel = werkblad.cell(
             row=laboratorium_titelrij,
             column=4,
         )
-        laboratorium_titelcel.value = "LABORATORIUMUITSLAGEN"
+        laboratorium_titelcel.value = "LABORATORIUMAANVRAGEN EN -UITSLAGEN"
 
         from openpyxl.styles import Alignment, Font, PatternFill
 
@@ -1056,7 +1318,7 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
         laboratorium_titelcel.fill = PatternFill("solid", fgColor="2F5597")
         laboratorium_titelcel.alignment = Alignment(horizontal="center")
 
-        for cel in werkblad[laboratorium_titelrij + 1][3:11]:
+        for cel in werkblad[laboratorium_titelrij + 1][3:13]:
             cel.font = Font(bold=True, color="FFFFFF")
             cel.fill = PatternFill("solid", fgColor="4472C4")
             cel.alignment = Alignment(horizontal="center", vertical="center")
@@ -1105,7 +1367,7 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
             min_row=laboratorium_titelrij + 2,
             max_row=laboratorium_eindrij,
             min_col=4,
-            max_col=11,
+            max_col=13,
         ):
             for cel in rij:
                 cel.alignment = Alignment(wrap_text=True, vertical="top")
