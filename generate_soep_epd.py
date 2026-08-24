@@ -2,14 +2,16 @@ from getpass import getpass
 from pathlib import Path
 from typing import Literal
 from datetime import date, datetime
+import calendar
+import hashlib
 import re
 
 import pandas as pd
 from openai import OpenAI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, create_model
 
 
-# Dit is de vaste hoofdprompt. Deze blijft voor iedere fictieve patiënt gelijk.
+# Vaste hoofdprompt. Deze blijft voor iedere fictieve patiënt gelijk.
 MAIN_PROMPT = """
 Je maakt uitsluitend synthetische Nederlandse huisartsendossiers voor onderzoek.
 Alle personen en gebeurtenissen moeten fictief zijn. Neem nooit gegevens van een
@@ -25,6 +27,21 @@ deelcontact de SOEP-structuur:
 
 Verdeel de contacten logisch over huisarts, POH-S en doktersassistente. Maak alleen
 uitslagen, medicatie en verwijzingen die medisch passen bij de fictieve casus.
+
+Genereer een overzicht met persoons- en achtergrondgegevens. Neem daarin een
+rookstatus, alcoholgebruik, familieanamnese, woonsituatie, beroep of dagbesteding
+en functionele context op. Laat deze gegevens aansluiten op leeftijd, episodes en
+zorgbehoefte, maar vermijd stereotiepe of onnodig gedetailleerde invulling. Als
+een achtergrondgegeven in de patiëntenprompt handmatig is opgegeven, moet die
+waarde exact inhoudelijk worden gevolgd.
+
+Genereer daarnaast een afzonderlijke episode-/probleemlijst. Neem iedere episode
+uit de patiëntenprompt precies één keer op en behoud de opgegeven volgorde en
+episodenaam. Vermeld per episode een passende ICPC-code, begin- en eventuele
+einddatum, status, attentiewaarde, een korte samenvatting van het beloop en het
+actuele of afsluitende beleid. Een actieve episode heeft geen einddatum. Een
+afgesloten episode heeft een passende einddatum. Een begindatum mag vóór de
+dossierperiode liggen als de aandoening aantoonbaar al eerder bestond.
 
 Genereer daarnaast een medicatielijst die volledig aansluit op het journaal.
 Neem actuele medicatie en relevante gestopte of eenmalige medicatie uit de
@@ -150,6 +167,11 @@ class PatientInstellingen(BaseModel):
     allergie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
     microbiologie_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
     laboratorium_modus: Literal["Automatisch", "Zelf invoeren", "Geen"]
+    rookstatus: str = "Automatisch"
+    alcoholgebruik: str = "Automatisch"
+    familieanamnese: str = "Automatisch"
+    woonsituatie: str = "Automatisch"
+    beroep_functionele_context: str = "Automatisch"
     episodes: list[EpisodeInstelling]
     handmatige_allergieen: list[AllergieInstelling]
     handmatige_microbiologie: list[MicrobiologieInstelling]
@@ -540,6 +562,16 @@ def lees_patientinstellingen(instellingenpad: Path) -> PatientInstellingen:
         allergie_modus=allergie_modus,
         microbiologie_modus=microbiologie_modus,
         laboratorium_modus=laboratorium_modus,
+        rookstatus=lees_tekst(waarden.get("rookstatus")) or "Automatisch",
+        alcoholgebruik=lees_tekst(waarden.get("alcoholgebruik")) or "Automatisch",
+        familieanamnese=(
+            lees_tekst(waarden.get("familieanamnese")) or "Automatisch"
+        ),
+        woonsituatie=lees_tekst(waarden.get("woonsituatie")) or "Automatisch",
+        beroep_functionele_context=(
+            lees_tekst(waarden.get("beroep_functionele_context"))
+            or "Automatisch"
+        ),
         episodes=episodes,
         handmatige_allergieen=handmatige_allergieen,
         handmatige_microbiologie=handmatige_microbiologie,
@@ -561,9 +593,45 @@ def bepaal_dossierperiode(aantal_jaren: int) -> tuple[str, str]:
     return startdatum.isoformat(), einddatum.isoformat()
 
 
+def bepaal_fictieve_geboortedatum(
+    patient_id: str,
+    leeftijd: int,
+    einddatum: str,
+) -> str:
+    """Maak reproduceerbaar een fictieve geboortedatum die exact bij de leeftijd past."""
+    einde = date.fromisoformat(einddatum)
+    digest = hashlib.sha256(patient_id.encode("utf-8")).digest()
+    maand = digest[0] % 12 + 1
+    maximaal_aantal_dagen = calendar.monthrange(2000, maand)[1]
+    dag = digest[1] % maximaal_aantal_dagen + 1
+
+    geboortejaar = einde.year - leeftijd
+    if (maand, dag) > (einde.month, einde.day):
+        geboortejaar -= 1
+    if maand == 2 and dag == 29 and not calendar.isleap(geboortejaar):
+        dag = 28
+
+    return date(geboortejaar, maand, dag).isoformat()
+
+
+def maak_achtergrondregel(label: str, waarde: str) -> str:
+    """Maak een promptregel voor een automatisch of handmatig achtergrondgegeven."""
+    if waarde.strip().lower() == "automatisch":
+        return (
+            f"- {label}: bepaal automatisch een realistische waarde die past bij "
+            "de patiënt en het klinische verloop"
+        )
+    return f"- {label}: gebruik verplicht de volgende specificatie: {waarde}"
+
+
 def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
     """Bouw de variabele patiëntenprompt uit het Excel-instellingenbestand."""
     startdatum, einddatum = bepaal_dossierperiode(instellingen.aantal_jaren)
+    geboortedatum = bepaal_fictieve_geboortedatum(
+        instellingen.patient_id,
+        instellingen.leeftijd,
+        einddatum,
+    )
     episode_regels = []
     for episode in instellingen.episodes:
         regel = f"{episode.volgorde}. {episode.episode}"
@@ -672,6 +740,17 @@ def maak_patient_prompt(instellingen: PatientInstellingen) -> str:
         ruis_regels.append(
             f"- {label} — {niveau}: {ruisinstructies[sleutel][niveau]}"
         )
+
+    achtergrond_regels = [
+        maak_achtergrondregel("rookstatus", instellingen.rookstatus),
+        maak_achtergrondregel("alcoholgebruik", instellingen.alcoholgebruik),
+        maak_achtergrondregel("familieanamnese", instellingen.familieanamnese),
+        maak_achtergrondregel("woonsituatie", instellingen.woonsituatie),
+        maak_achtergrondregel(
+            "beroep, dagbesteding en functionele context",
+            instellingen.beroep_functionele_context,
+        ),
+    ]
 
     if instellingen.allergie_modus == "Automatisch":
         allergie_instructie = (
@@ -786,6 +865,7 @@ Maak een synthetisch huisartsendossier voor:
 
 - fictieve patiënt-ID: {instellingen.patient_id}
 - geslacht: {instellingen.geslacht}
+- fictieve geboortedatum: {geboortedatum}
 - leeftijd aan het einde van de dossierperiode: {instellingen.leeftijd} jaar
 - duur van het dossier: {instellingen.aantal_jaren} jaar
 - automatisch berekende periode: {startdatum} tot en met {einddatum}
@@ -793,6 +873,15 @@ Maak een synthetisch huisartsendossier voor:
 
 Episodes:
 {chr(10).join(episode_regels)}
+
+Persoons- en achtergrondgegevens:
+{chr(10).join(achtergrond_regels)}
+
+Neem de patiënt-ID, geboortedatum, leeftijd en het formele geslacht exact over.
+Genereer voor iedere opgegeven episode precies één regel in de episodelijst.
+Behoud daarin exact de opgegeven volgorde en episodenaam. Kies een passende
+ICPC-code, begin- en eventuele einddatum, status, attentiewaarde, samenvatting
+en beleid die volledig aansluiten op het journaal.
 
 De kolom 'volgorde' uit het instellingenbestand bepaalt de chronologische
 volgorde waarin de episodes voor het eerst optreden of voor het eerst in het
@@ -811,6 +900,14 @@ alle jaren verdeeld te zijn; bij een klein testaantal mogen sommige jaren
 weinig contacten bevatten. Laat ontwikkelingen uit eerdere contacten logisch
 terugkomen in latere contacten. Gebruik per deelcontact precies één S-, O-, E-
 en P-regel.
+
+BELANGRIJK: koppel ieder deelcontact aan precies één primaire episode. Vul in
+het veld 'episode' letterlijk en ongewijzigd precies één episodenaam uit de
+hierboven opgegeven episodelijst in. Combineer in dit veld nooit meerdere
+episodenamen met een komma, puntkomma, schuine streep of het woord 'en'. Als
+meerdere gezondheidsproblemen tijdens één werkelijk contact worden besproken,
+registreer die als afzonderlijke deelcontacten, ieder gekoppeld aan één primaire
+episode. Houd daarbij het totale gewenste aantal deelcontacten gelijk.
 
 Bepaal zelf het realistische beloop van iedere opgegeven episode. Een episode
 mag bijvoorbeeld chronisch actief, eenmalig of later afgesloten zijn. Laat
@@ -844,8 +941,8 @@ datums, geneesmiddelnamen, doseringen, meetwaarden, eenheden, uitslagen,
 diagnoses of traject-ID's. Ruis mag geen medische onjuistheden,
 tegenstrijdigheden of klinische onduidelijkheid veroorzaken.
 
-Zorg dat journaal, medicatie, correspondentie, allergieën, microbiologie en
-laboratorium onderling consistent zijn.
+Zorg dat patiëntgegevens, episodelijst, journaal, medicatie, correspondentie,
+allergieën, microbiologie en laboratorium onderling consistent zijn.
 """.strip()
 
 
@@ -853,6 +950,43 @@ def veilige_bestandsnaam(waarde: str) -> str:
     """Maak van de fictieve patiënt-ID een veilige bestandsnaam."""
     veilig = re.sub(r"[^A-Za-z0-9_-]+", "_", waarde.strip())
     return veilig.strip("_") or "patient"
+
+
+class PatientAchtergrond(BaseModel):
+    rookstatus: str = Field(
+        description="Rookstatus, bijvoorbeeld nooit gerookt, voormalig roker of roker"
+    )
+    alcoholgebruik: str = Field(
+        description="Beknopte omschrijving van alcoholgebruik in eenheden per week"
+    )
+    familieanamnese: str = Field(
+        description="Klinisch relevante familieanamnese of expliciet geen bijzonderheden"
+    )
+    woonsituatie: str = Field(
+        description="Woonsituatie en relevante sociale ondersteuning"
+    )
+    beroep_dagbesteding: str = Field(
+        description="Beroep, pensioenstatus of relevante dagelijkse bezigheden"
+    )
+    functionele_context: str = Field(
+        description="Beknopte functionele context, bijvoorbeeld mobiliteit en zelfstandigheid"
+    )
+
+
+class EpisodeOverzichtRegel(BaseModel):
+    volgorde: int = Field(description="Volgorde uit de opgegeven episodelijst")
+    episode: str = Field(description="Exacte episodenaam uit de patiëntenprompt")
+    icpc_code: str = Field(description="Passende ICPC-code, bijvoorbeeld T90.02")
+    startdatum: str = Field(description="Begindatum in JJJJ-MM-DD")
+    einddatum: str = Field(
+        description="Einddatum in JJJJ-MM-DD; leeg laten als de episode actief is"
+    )
+    status: Literal["Actief", "Afgesloten"]
+    attentiewaarde: Literal["Ja", "Nee"]
+    samenvatting_beloop: str = Field(
+        description="Beknopte samenvatting van het relevante klinische beloop"
+    )
+    beleid: str = Field(description="Actueel of afsluitend beleid voor deze episode")
 
 
 class Deelcontact(BaseModel):
@@ -953,12 +1087,79 @@ class LaboratoriumRegel(BaseModel):
 
 
 class SynthetischDossier(BaseModel):
+    patient_achtergrond: PatientAchtergrond
+    episodelijst: list[EpisodeOverzichtRegel]
     contacten: list[Deelcontact]
     medicatie: list[MedicatieRegel]
     correspondentie: list[CorrespondentieRegel]
     allergieen: list[AllergieRegel]
     microbiologie: list[MicrobiologieRegel]
     laboratorium: list[LaboratoriumRegel]
+
+
+def maak_dynamisch_dossiermodel(
+    instellingen: PatientInstellingen,
+) -> type[SynthetischDossier]:
+    """Beperk alle episodevelden tot de exacte namen uit het settingsbestand.
+
+    De vaste Pydantic-modellen beschrijven de algemene uitvoerstructuur. Dit
+    dynamische model voegt voor deze patiënt een enum toe met uitsluitend de
+    toegestane episodenamen. Daardoor kan het taalmodel in een episodeveld geen
+    samengestelde of anders geformuleerde episodenaam meer teruggeven.
+    """
+    episodenamen = tuple(episode.episode for episode in instellingen.episodes)
+    episode_keuze = Literal[episodenamen]
+
+    dynamisch_deelcontact = create_model(
+        "DeelcontactMetVasteEpisode",
+        __base__=Deelcontact,
+        episode=(
+            episode_keuze,
+            Field(description="Exact één episodenaam uit het instellingenbestand"),
+        ),
+    )
+    dynamische_episodeoverzichtregel = create_model(
+        "EpisodeOverzichtRegelMetVasteEpisode",
+        __base__=EpisodeOverzichtRegel,
+        episode=(
+            episode_keuze,
+            Field(description="Exacte episodenaam uit het instellingenbestand"),
+        ),
+    )
+    dynamische_correspondentieregel = create_model(
+        "CorrespondentieRegelMetVasteEpisode",
+        __base__=CorrespondentieRegel,
+        episode=(
+            episode_keuze,
+            Field(description="Exacte gekoppelde episode uit het instellingenbestand"),
+        ),
+    )
+    dynamische_microbiologieregel = create_model(
+        "MicrobiologieRegelMetVasteEpisode",
+        __base__=MicrobiologieRegel,
+        episode=(
+            episode_keuze,
+            Field(description="Exacte gekoppelde episode uit het instellingenbestand"),
+        ),
+    )
+    dynamische_laboratoriumregel = create_model(
+        "LaboratoriumRegelMetVasteEpisode",
+        __base__=LaboratoriumRegel,
+        episode=(
+            episode_keuze,
+            Field(description="Exacte gekoppelde episode uit het instellingenbestand"),
+        ),
+    )
+
+    return create_model(
+        "SynthetischDossierMetVasteEpisodes",
+        __base__=SynthetischDossier,
+        episodelijst=(list[dynamische_episodeoverzichtregel], Field(...)),
+        contacten=(list[dynamisch_deelcontact], Field(...)),
+        correspondentie=(list[dynamische_correspondentieregel], Field(...)),
+        microbiologie=(list[dynamische_microbiologieregel], Field(...)),
+        laboratorium=(list[dynamische_laboratoriumregel], Field(...)),
+    )
 
 
 def datum_naar_nederlands(datum: str) -> str:
@@ -974,8 +1175,198 @@ def datum_naar_nederlands(datum: str) -> str:
         return datum
 
 
-def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
-    """Zet alle onderdelen van het synthetische EPD op hetzelfde tabblad."""
+def normaliseer_episodenaam(waarde: str) -> str:
+    """Normaliseer alleen voor een robuuste vergelijking van episodenamen."""
+    return re.sub(r"\s+", " ", waarde.strip()).casefold()
+
+
+def valideer_gegenereerd_dossier(
+    dossier: SynthetischDossier,
+    instellingen: PatientInstellingen,
+) -> None:
+    """Controleer essentiële aantallen, episodenamen en episodechronologie."""
+    fouten = []
+
+    if len(dossier.contacten) != instellingen.aantal_deelcontacten:
+        fouten.append(
+            f"verwacht {instellingen.aantal_deelcontacten} deelcontacten, "
+            f"maar ontving {len(dossier.contacten)}"
+        )
+
+    verwachte_episodes = [episode.episode for episode in instellingen.episodes]
+    ontvangen_episodes = [episode.episode for episode in dossier.episodelijst]
+    if len(ontvangen_episodes) != len(verwachte_episodes):
+        fouten.append(
+            f"verwacht {len(verwachte_episodes)} regels in de episodelijst, "
+            f"maar ontving {len(ontvangen_episodes)}"
+        )
+    else:
+        for index, (verwacht, ontvangen) in enumerate(
+            zip(verwachte_episodes, ontvangen_episodes),
+            start=1,
+        ):
+            if normaliseer_episodenaam(verwacht) != normaliseer_episodenaam(ontvangen):
+                fouten.append(
+                    f"episode {index} heet '{ontvangen}' in plaats van '{verwacht}'"
+                )
+
+    toegestane_episodes = {
+        normaliseer_episodenaam(episode) for episode in verwachte_episodes
+    }
+    onbekende_contactepisodes = sorted(
+        {
+            contact.episode
+            for contact in dossier.contacten
+            if normaliseer_episodenaam(contact.episode) not in toegestane_episodes
+        }
+    )
+    if onbekende_contactepisodes:
+        fouten.append(
+            "onbekende episodenamen in het journaal: "
+            + ", ".join(onbekende_contactepisodes)
+        )
+
+    _, dossier_einddatum = bepaal_dossierperiode(instellingen.aantal_jaren)
+    uiterste_datum = date.fromisoformat(dossier_einddatum)
+    for episode in dossier.episodelijst:
+        try:
+            start = date.fromisoformat(episode.startdatum)
+        except ValueError:
+            fouten.append(
+                f"ongeldige startdatum bij episode '{episode.episode}': "
+                f"{episode.startdatum}"
+            )
+            continue
+
+        if start > uiterste_datum:
+            fouten.append(
+                f"startdatum van episode '{episode.episode}' ligt na de dossierperiode"
+            )
+
+        if episode.status == "Actief" and episode.einddatum:
+            fouten.append(
+                f"actieve episode '{episode.episode}' heeft toch een einddatum"
+            )
+        if episode.status == "Afgesloten" and not episode.einddatum:
+            fouten.append(
+                f"afgesloten episode '{episode.episode}' mist een einddatum"
+            )
+        if episode.einddatum:
+            try:
+                einde = date.fromisoformat(episode.einddatum)
+            except ValueError:
+                fouten.append(
+                    f"ongeldige einddatum bij episode '{episode.episode}': "
+                    f"{episode.einddatum}"
+                )
+                continue
+            if einde < start:
+                fouten.append(
+                    f"einddatum van episode '{episode.episode}' ligt vóór de startdatum"
+                )
+            if einde > uiterste_datum:
+                fouten.append(
+                    f"einddatum van episode '{episode.episode}' ligt na de dossierperiode"
+                )
+
+    if fouten:
+        raise RuntimeError(
+            "Het model leverde een dossier op dat niet aan de basiscontroles voldoet:\n- "
+            + "\n- ".join(fouten)
+        )
+
+
+def dossier_naar_excel(
+    dossier: SynthetischDossier,
+    instellingen: PatientInstellingen,
+    uitvoerpad: Path,
+) -> None:
+    """Exporteer patiëntgegevens, episodelijst en dossieronderdelen naar Excel."""
+    startdatum, einddatum = bepaal_dossierperiode(instellingen.aantal_jaren)
+    geboortedatum = bepaal_fictieve_geboortedatum(
+        instellingen.patient_id,
+        instellingen.leeftijd,
+        einddatum,
+    )
+
+    patient_dataframe = pd.DataFrame(
+        [
+            {"Onderdeel": "Patiënt-ID", "Waarde": instellingen.patient_id},
+            {
+                "Onderdeel": "Geboortedatum",
+                "Waarde": datum_naar_nederlands(geboortedatum),
+            },
+            {
+                "Onderdeel": "Leeftijd einde dossierperiode",
+                "Waarde": f"{instellingen.leeftijd} jaar",
+            },
+            {"Onderdeel": "Formeel geslacht", "Waarde": instellingen.geslacht},
+            {
+                "Onderdeel": "Dossierperiode",
+                "Waarde": (
+                    f"{datum_naar_nederlands(startdatum)} t/m "
+                    f"{datum_naar_nederlands(einddatum)}"
+                ),
+            },
+            {
+                "Onderdeel": "Rookstatus",
+                "Waarde": dossier.patient_achtergrond.rookstatus,
+            },
+            {
+                "Onderdeel": "Alcoholgebruik",
+                "Waarde": dossier.patient_achtergrond.alcoholgebruik,
+            },
+            {
+                "Onderdeel": "Familieanamnese",
+                "Waarde": dossier.patient_achtergrond.familieanamnese,
+            },
+            {
+                "Onderdeel": "Woonsituatie",
+                "Waarde": dossier.patient_achtergrond.woonsituatie,
+            },
+            {
+                "Onderdeel": "Beroep/dagbesteding",
+                "Waarde": dossier.patient_achtergrond.beroep_dagbesteding,
+            },
+            {
+                "Onderdeel": "Functionele context",
+                "Waarde": dossier.patient_achtergrond.functionele_context,
+            },
+        ],
+        columns=["Onderdeel", "Waarde"],
+    )
+
+    episode_rijen = []
+    for episode in sorted(dossier.episodelijst, key=lambda regel: regel.volgorde):
+        episode_rijen.append(
+            {
+                "Volgorde": episode.volgorde,
+                "Episode": episode.episode,
+                "ICPC-code": episode.icpc_code,
+                "Startdatum": datum_naar_nederlands(episode.startdatum),
+                "Einddatum": datum_naar_nederlands(episode.einddatum),
+                "Status": episode.status,
+                "Attentiewaarde": episode.attentiewaarde,
+                "Samenvatting beloop": episode.samenvatting_beloop,
+                "Beleid": episode.beleid,
+            }
+        )
+
+    episodelijst_dataframe = pd.DataFrame(
+        episode_rijen,
+        columns=[
+            "Volgorde",
+            "Episode",
+            "ICPC-code",
+            "Startdatum",
+            "Einddatum",
+            "Status",
+            "Attentiewaarde",
+            "Samenvatting beloop",
+            "Beleid",
+        ],
+    )
+
     rijen = []
 
     for contact in dossier.contacten:
@@ -1168,6 +1559,18 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
     )
 
     with pd.ExcelWriter(uitvoerpad, engine="openpyxl") as writer:
+        patient_dataframe.to_excel(
+            writer,
+            sheet_name="Patiëntgegevens",
+            index=False,
+            startrow=2,
+        )
+        episodelijst_dataframe.to_excel(
+            writer,
+            sheet_name="Episodelijst",
+            index=False,
+            startrow=2,
+        )
         dataframe.to_excel(writer, sheet_name="Journaal", index=False)
         medicatie_dataframe.to_excel(
             writer,
@@ -1204,6 +1607,35 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
             startrow=laboratorium_titelrij,
             startcol=3,
         )
+
+        patient_werkblad = writer.book["Patiëntgegevens"]
+        patient_werkblad.merge_cells("A1:B1")
+        patient_werkblad["A1"] = "PATIËNT- EN ACHTERGRONDGEGEVENS"
+        patient_werkblad.freeze_panes = "A4"
+        patient_werkblad.auto_filter.ref = f"A3:B{len(patient_dataframe) + 3}"
+        patient_werkblad.column_dimensions["A"].width = 32
+        patient_werkblad.column_dimensions["B"].width = 85
+
+        episode_werkblad = writer.book["Episodelijst"]
+        episode_werkblad.merge_cells("A1:I1")
+        episode_werkblad["A1"] = "EPISODE-/PROBLEEMLIJST"
+        episode_werkblad.freeze_panes = "A4"
+        episode_werkblad.auto_filter.ref = (
+            f"A3:I{len(episodelijst_dataframe) + 3}"
+        )
+        episode_breedtes = {
+            "A": 10,
+            "B": 32,
+            "C": 13,
+            "D": 14,
+            "E": 14,
+            "F": 14,
+            "G": 16,
+            "H": 50,
+            "I": 55,
+        }
+        for kolom, breedte in episode_breedtes.items():
+            episode_werkblad.column_dimensions[kolom].width = breedte
 
         werkblad = writer.book["Journaal"]
         werkblad.freeze_panes = "A2"
@@ -1272,6 +1704,45 @@ def dossier_naar_excel(dossier: SynthetischDossier, uitvoerpad: Path) -> None:
         laboratorium_titelcel.value = "LABORATORIUMAANVRAGEN EN -UITSLAGEN"
 
         from openpyxl.styles import Alignment, Font, PatternFill
+
+        patient_werkblad["A1"].font = Font(bold=True, color="FFFFFF", size=14)
+        patient_werkblad["A1"].fill = PatternFill("solid", fgColor="1F4E78")
+        patient_werkblad["A1"].alignment = Alignment(horizontal="center")
+        for cel in patient_werkblad[3][0:2]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="5B9BD5")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+        for rij in patient_werkblad.iter_rows(
+            min_row=4,
+            max_row=len(patient_dataframe) + 3,
+            min_col=1,
+            max_col=2,
+        ):
+            rij[0].font = Font(bold=True, color="1F1F1F")
+            rij[0].fill = PatternFill("solid", fgColor="DDEBF7")
+            rij[1].fill = PatternFill("solid", fgColor="FFF2CC")
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+
+        episode_werkblad["A1"].font = Font(bold=True, color="FFFFFF", size=14)
+        episode_werkblad["A1"].fill = PatternFill("solid", fgColor="1F4E78")
+        episode_werkblad["A1"].alignment = Alignment(horizontal="center")
+        for cel in episode_werkblad[3][0:9]:
+            cel.font = Font(bold=True, color="FFFFFF")
+            cel.fill = PatternFill("solid", fgColor="5B9BD5")
+            cel.alignment = Alignment(horizontal="center", vertical="center")
+        for rij in episode_werkblad.iter_rows(
+            min_row=4,
+            max_row=len(episodelijst_dataframe) + 3,
+            min_col=1,
+            max_col=9,
+        ):
+            for cel in rij:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+            rij[0].alignment = Alignment(horizontal="center", vertical="top")
+            rij[2].alignment = Alignment(horizontal="center", vertical="top")
+            rij[5].alignment = Alignment(horizontal="center", vertical="top")
+            rij[6].alignment = Alignment(horizontal="center", vertical="top")
 
         for cel in werkblad[1][0:2]:
             cel.font = Font(bold=True, color="FFFFFF")
@@ -1377,6 +1848,7 @@ def main() -> None:
     instellingenpad = Path(__file__).with_name(SETTINGS_BESTANDSNAAM)
     instellingen = lees_patientinstellingen(instellingenpad)
     patient_prompt = maak_patient_prompt(instellingen)
+    dossiermodel = maak_dynamisch_dossiermodel(instellingen)
 
     api_key = getpass("Plak hier je API-key en druk op Enter: ").strip()
     if not api_key:
@@ -1390,12 +1862,14 @@ def main() -> None:
             {"role": "system", "content": MAIN_PROMPT},
             {"role": "user", "content": patient_prompt},
         ],
-        text_format=SynthetischDossier,
+        text_format=dossiermodel,
     )
 
     dossier = response.output_parsed
     if dossier is None:
         raise RuntimeError("Het model leverde geen bruikbaar gestructureerd dossier op.")
+
+    valideer_gegenereerd_dossier(dossier, instellingen)
 
     # Elke run krijgt een uniek tijdstip in de bestandsnaam, zodat eerdere
     # gegenereerde dossiers niet worden overschreven.
@@ -1404,7 +1878,7 @@ def main() -> None:
     uitvoerpad = Path(__file__).with_name(
         f"synthetisch_epd_{patient_id}_{tijdstip}.xlsx"
     )
-    dossier_naar_excel(dossier, uitvoerpad)
+    dossier_naar_excel(dossier, instellingen, uitvoerpad)
     print(f"Klaar: {uitvoerpad.resolve()}")
 
 
