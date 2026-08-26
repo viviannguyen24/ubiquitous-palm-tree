@@ -1,0 +1,19 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De apixaban-start is intern gedateerd op 2024-03-25, terwijl de ontslagbrief van 2024-03-22 expliciet vermeldt dat apixaban bij ontslag al was gestart. Medicatielijst, journaal en correspondentie spreken elkaar chronologisch tegen."
+  ],
+  "waarschuwingen": [
+    "De telefonische evaluatie van 2025-08-05 en afsluiting van het valincident zijn in de P-regel van het consult van 2025-07-22 achteraf verwerkt, in plaats van als afzonderlijk chronologisch deelcontact.",
+    "Na verhoging van losartan zijn de controlewaarden van 2026-06-04 wel opgenomen, maar verwerking of terugkoppeling van deze uitslag ontbreekt in het journaal.",
+    "Triamcinolon staat blijvend actief terwijl het beleid alleen korte kuren bij opvlammingen beschrijft; een zo-nodigstatus of afzonderlijke kuurregistraties zouden duidelijker zijn.",
+    "Bij de cataractoperaties ontbreken correspondentie of journaalcontacten rond de feitelijke operatieve besluitvorming en de eerste operatie; de definitieve brief vat dit achteraf samen."
+  ],
+  "herstelinstructies": [
+    "Laat apixaban en atorvastatine starten op de werkelijke ontslagdatum uit de ontslagbrief, of pas de briefdatum/tekst en het journaal consequent aan.",
+    "Registreer de evaluatie van 2025-08-05 als afzonderlijk SOEP-contact en sluit daar de episode af.",
+    "Voeg een uitslagcontact toe voor de controle na losartanverhoging, met besluit tot voortzetten van 100 mg.",
+    "Registreer triamcinolon als zo nodig/intermitterend of als afzonderlijke afgesloten kuren.",
+    "Voeg zo nodig een oogheelkundige vervolgbrief of administratief contact toe rond operatieplanning en de eerste ingreep."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "C026 bevat alleen de eerste beoordeling en het eerste beleid voor het valincident. Herstel, resultaat, nacontrole of expliciete afsluiting op de geplande einddatum 2025-08-05 kan hierin niet aantoonbaar worden uitgewerkt. De samenvatting noemt ten onrechte een nacontrole en afsluiting."
+  ],
+  "waarschuwingen": [
+    "C025 vermeldt periodieke nierfunctie-, kalium- en albuminuriecontrole, maar markeert geen laboratoriumonderdeel.",
+    "Het gehoortraject gebruikt een verwijsbrief en specialistenbrief, terwijl de bestemming ook als audicien wordt omschreven. Een specialistenbrief past alleen bij verwijzing naar een medisch specialist of audiologisch centrum."
+  ],
+  "herstelinstructies": [
+    "Voeg rond 2025-08-05 een afzonderlijk vervolgcontact toe waarin herstel/nacontrole en afsluiting van het valincident worden vastgelegd, of plan C026 expliciet als beoordeling én afsluiting met aantoonbaar resultaat.",
+    "Markeer bij C025 laboratorium als aanvullend onderdeel als daar nierfunctie, kalium en albuminurie worden aangevraagd of beoordeeld.",
+    "Maak C013-C014 eenduidig: verwijs naar een audiologisch centrum/KNO-traject met retourbrief, of behandel audicienrapportage niet als specialistenbrief."
+  ]
+}

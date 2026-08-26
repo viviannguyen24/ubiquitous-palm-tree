@@ -1,0 +1,18 @@
+{
+  "pipeline_versie": "iteratief-v1.3",
+  "model": "gpt-5.6",
+  "gegenereerd_op": "2026-08-24T21:16:35",
+  "patient_id": "P011",
+  "settings_bestand": "patient_settings_uitgebreid.xlsx",
+  "settings_sha256": "605dfe3534f93c8b0ac2a6b8d2ee92e091fea26e8cec38fc8f6f92c589946d71",
+  "main_prompt_sha256": "3d65a7bf14244208d5a1ffdf5dcb99aa31e6d4b31ed858c17c74f13c82ddd1ed",
+  "blokgrootte_jaren": 5,
+  "max_herstelpogingen": 2,
+  "tijdsblokken": [
+    [
+      1,
+      "2021-08-24",
+      "2026-08-24"
+    ]
+  ]
+}

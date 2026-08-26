@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "Op 2016-09-16 wordt chronische nierschade G3a geregistreerd na één nieuwe eGFR van 57, terwijl de vorige eGFR op 2016-08-15 nog 61 was. Voor chroniciteit is doorgaans een afwijking gedurende minimaal drie maanden nodig; eerdere relevante nierfunctiewaarden moeten dit ondersteunen.",
+    "De verwijzing naar een audiologisch centrum en de retourbrief moeten in de uitwerking hetzelfde traject-ID krijgen."
+  ],
+  "herstelinstructies": [
+    "Onderbouw bij C070 dat eerdere metingen al gedurende minimaal drie maanden een eGFR onder 60 of andere markers van nierschade lieten zien, of stel de definitieve registratie uit tot chroniciteit aantoonbaar is.",
+    "Koppel C088 en C089 als regulier verwijs- en retourtraject met één gedeeld traject-ID."
+  ]
+}

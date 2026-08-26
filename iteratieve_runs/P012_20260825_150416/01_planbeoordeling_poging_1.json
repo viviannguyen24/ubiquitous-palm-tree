@@ -1,0 +1,10 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "C013 noemt fysiotherapie als verwijstraject met een verwijsbrief. Voor eerstelijnsfysiotherapie is een formele specialistische verwijsbrief met latere specialistenbrief doorgaans niet passend; leg dit liever vast als gewone verwijzing/aanmelding zonder correspondentie-traject."
+  ],
+  "herstelinstructies": [
+    "Wijzig bij C013 'Verwijsbrief' in een gewone verwijzing naar fysiotherapie, tenzij bewust een regulier specialistisch traject wordt bedoeld."
+  ]
+}

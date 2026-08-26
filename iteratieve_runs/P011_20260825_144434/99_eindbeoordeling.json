@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "Datumconflict rond CVA-opname: de ontslagbrief is gedateerd 2024-03-22, terwijl atriumfibrilleren volgens episode- en medicatiehistorie pas op 2024-03-25 tijdens diezelfde opname is vastgesteld en behandeld. Een ontslagbrief kan niet vóór deze opnamebevinding en medicatiestart liggen."
+  ],
+  "waarschuwingen": [
+    "Na verhoging van losartan op 2026-05-21 zijn nierfunctie en kalium op 2026-06-04 gecontroleerd, maar bloeddruk- en orthostasecontrole staan op 2026-08-25 nog open; opvolging verdient expliciete planning.",
+    "Apixaban 5 mg 2dd kan passend zijn bij eGFR 46, maar periodieke controle van gewicht, nierfunctie en bloedingsrisico blijft nodig voor dosisvalidatie.",
+    "De formulering 'rookt verplicht 1 pakje per dag' is onnatuurlijk; vermoedelijk wordt bedoeld dat deze handmatig opgegeven rookstatus verplicht moest worden gevolgd."
+  ],
+  "samenvatting": "Het dossier is grotendeels consistent, maar het tijdsverloop van de acute CVA-opname, AF-diagnose, apixabanstart en ontslagbrief bevat een kritieke chronologische fout."
+}

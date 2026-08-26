@@ -1,0 +1,270 @@
+{
+  "patient_achtergrond": {
+    "rookstatus": "Roker, 1 pakje per dag",
+    "alcoholgebruik": "Circa 5 eenheden per week",
+    "familieanamnese": "Vader had op latere leeftijd een ischemisch CVA; moeder diabetes mellitus type 2",
+    "woonsituatie": "Woont met echtgenote in een gelijkvloerse woning; dochter woont nabij en ondersteunt zo nodig",
+    "beroep_dagbesteding": "Gepensioneerd onderhoudsmonteur; tuinieren en korte wandelingen",
+    "functionele_context": "Aanvankelijk zelfstandig; lopen beperkt door knieartrose. Na CVA tijdelijk hulp nodig, daarna weer zelfstandig met wandelstok buitenshuis."
+  },
+  "episodeontwerp": [
+    {
+      "volgorde": 1,
+      "episode": "Essentiële hypertensie",
+      "icpc_code": "K86",
+      "geplande_startdatum": "2015-06-12",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Reeds bestaande hypertensie; periodieke controles, doorgaans redelijk gereguleerd met incidenteel verhoogde thuismetingen.",
+      "verwacht_beleid": "Leefstijladvies, bloeddrukcontroles en antihypertensieve behandeling met bewaking nierfunctie en elektrolyten."
+    },
+    {
+      "volgorde": 2,
+      "episode": "Hypercholesterolemie",
+      "icpc_code": "T93",
+      "geplande_startdatum": "2017-09-18",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Bekende dyslipidemie; na ischemisch CVA intensivering van secundaire preventie.",
+      "verwacht_beleid": "Periodieke lipidencontrole, therapietrouw bespreken en krachtige statine voortzetten."
+    },
+    {
+      "volgorde": 3,
+      "episode": "Artrose van beide knieën",
+      "icpc_code": "L90",
+      "geplande_startdatum": "2019-04-08",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Geleidelijk toenemende belastingspijn en mobiliteitsbeperking, conservatief behandelbaar.",
+      "verwacht_beleid": "Bewegen binnen pijngrens, fysiotherapie, gewichtsadvies en paracetamol zo nodig; NSAID terughoudend wegens nierschade en antistolling."
+    },
+    {
+      "volgorde": 4,
+      "episode": "Diabetes mellitus type 2",
+      "icpc_code": "T90.02",
+      "geplande_startdatum": "2021-11-19",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Ontdekt bij cardiovasculaire controle; aanvankelijk leefstijlbeleid, later metformine bij oplopend HbA1c.",
+      "verwacht_beleid": "POH-S-controles, leefstijlbegeleiding, jaarlijkse voet- en oogcontrole en periodieke HbA1c- en nierfunctiebewaking."
+    },
+    {
+      "volgorde": 6,
+      "episode": "Constitutioneel eczeem",
+      "icpc_code": "S87",
+      "geplande_startdatum": "2022-02-14",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Recidiverend droog jeukend eczeem aan onderarmen en onderbenen, reagerend op lokale behandeling.",
+      "verwacht_beleid": "Dagelijks indifferente zalf en kortdurend lokaal corticosteroïd bij opvlamming."
+    },
+    {
+      "volgorde": 7,
+      "episode": "Mictieklachten bij de man",
+      "icpc_code": "Y85",
+      "geplande_startdatum": "2022-05-23",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Toenemende nycturie en zwakke straal passend bij benigne prostaathyperplasie, zonder retentie.",
+      "verwacht_beleid": "Mictieanamnese, urineonderzoek, tamsulosine en controle op effect en orthostase."
+    },
+    {
+      "volgorde": 8,
+      "episode": "Cataract beiderzijds",
+      "icpc_code": "F92",
+      "geplande_startdatum": "2022-09-12",
+      "geplande_einddatum": "2024-06-21",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Progressieve visusdaling; staaroperaties aan beide ogen met goed functioneel herstel.",
+      "verwacht_beleid": "Verwijzing oogarts, perioperatieve begeleiding en afsluiting na succesvolle nacontrole."
+    },
+    {
+      "volgorde": 9,
+      "episode": "Urineweginfectie",
+      "icpc_code": "U71",
+      "geplande_startdatum": "2023-01-16",
+      "geplande_einddatum": "2023-01-30",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Eenmalige symptomatische urineweginfectie bij man; kweekgestuurd behandeld met klinisch herstel.",
+      "verwacht_beleid": "Urinekweek, passende antibioticumkuur en controle bij koorts, retentie of persisterende klachten."
+    },
+    {
+      "volgorde": 10,
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "icpc_code": "H84",
+      "geplande_startdatum": "2023-04-20",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Geleidelijk bilateraal gehoorverlies; audiometrie passend bij presbyacusis, hoortoestellen geven baat.",
+      "verwacht_beleid": "Audiologisch onderzoek, hoortoestelzorg en herbeoordeling bij snelle verslechtering of asymmetrie."
+    },
+    {
+      "volgorde": 11,
+      "episode": "Chronische nierschade stadium G3a",
+      "icpc_code": "U99.01",
+      "geplande_startdatum": "2023-08-18",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Persisterende eGFR 45-59 ml/min/1,73 m², waarschijnlijk vasculair en metabool; stabiel zonder snelle progressie.",
+      "verwacht_beleid": "Periodieke eGFR-, kalium- en albuminuriecontrole, vermijden NSAID en doseringen aanpassen aan nierfunctie."
+    },
+    {
+      "volgorde": 13,
+      "episode": "Actinische keratose",
+      "icpc_code": "S80",
+      "geplande_startdatum": "2023-11-06",
+      "geplande_einddatum": "2024-01-08",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Solitaire ruwe zonbeschadigde laesie op schedel, behandeld met cryotherapie en verdwenen bij controle.",
+      "verwacht_beleid": "Cryotherapie, zonbescherming en herbeoordeling bij recidief of groei."
+    },
+    {
+      "volgorde": 15,
+      "episode": "Ischemisch cerebrovasculair accident",
+      "icpc_code": "K90.03",
+      "geplande_startdatum": "2024-03-14",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Acute ischemische beroerte met lichte linkszijdige uitval; ziekenhuisopname en revalidatie, restklachten beperkt.",
+      "verwacht_beleid": "Secundaire preventie, revalidatie, cardiovasculaire risicocontrole en bewaking van functioneren en recidiefsymptomen."
+    },
+    {
+      "volgorde": 17,
+      "episode": "Atriumfibrilleren",
+      "icpc_code": "K78",
+      "geplande_startdatum": "2024-03-14",
+      "geplande_einddatum": "",
+      "status_einde_dossier": "Actief",
+      "attentiewaarde": "Ja",
+      "kernbeloop": "Tijdens CVA-opname nieuw atriumfibrilleren vastgesteld; frequentie gecontroleerd en blijvende antistolling ingesteld.",
+      "verwacht_beleid": "DOAC en frequentiecontrole voortzetten, nierfunctie en bloedingsrisico periodiek beoordelen."
+    },
+    {
+      "volgorde": 18,
+      "episode": "Pneumonie",
+      "icpc_code": "R81",
+      "geplande_startdatum": "2025-01-09",
+      "geplande_einddatum": "2025-02-06",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Buiten het ziekenhuis behandelde pneumonie met volledig klinisch herstel.",
+      "verwacht_beleid": "Orale antibiotica, vangnetadvies en controle tot herstel; aandacht voor rookstop."
+    },
+    {
+      "volgorde": 19,
+      "episode": "Valincident zonder fractuur",
+      "icpc_code": "A80",
+      "geplande_startdatum": "2025-06-17",
+      "geplande_einddatum": "2025-07-15",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Val buitenshuis met kneuzingen, zonder fractuur of neurologische achteruitgang; mede bij mobiliteitsbeperking.",
+      "verwacht_beleid": "Letselcontrole, valrisicoanalyse, medicatie- en orthostasebeoordeling en fysiotherapeutisch advies."
+    },
+    {
+      "volgorde": 20,
+      "episode": "Obstipatie",
+      "icpc_code": "D12",
+      "geplande_startdatum": "2026-01-12",
+      "geplande_einddatum": "2026-02-23",
+      "status_einde_dossier": "Afgesloten",
+      "attentiewaarde": "Nee",
+      "kernbeloop": "Kortdurende functionele obstipatie bij minder bewegen en vezelarme voeding, hersteld met leefstijl en laxans.",
+      "verwacht_beleid": "Vocht, vezels en beweging stimuleren; tijdelijk macrogol en afsluiten na normalisatie."
+    }
+  ],
+  "blokken": [
+    {
+      "bloknummer": 1,
+      "startdatum": "2021-08-25",
+      "einddatum": "2026-08-25",
+      "aantal_deelcontacten": 30,
+      "episodeverdeling": [
+        {
+          "episode": "Essentiële hypertensie",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Hypercholesterolemie",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Artrose van beide knieën",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Diabetes mellitus type 2",
+          "aantal_deelcontacten": 3
+        },
+        {
+          "episode": "Constitutioneel eczeem",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Mictieklachten bij de man",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Cataract beiderzijds",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Urineweginfectie",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Leeftijdsgebonden gehoorverlies",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Chronische nierschade stadium G3a",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Actinische keratose",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Ischemisch cerebrovasculair accident",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Atriumfibrilleren",
+          "aantal_deelcontacten": 2
+        },
+        {
+          "episode": "Pneumonie",
+          "aantal_deelcontacten": 1
+        },
+        {
+          "episode": "Valincident zonder fractuur",
+          "aantal_deelcontacten": 1
+        },
+        {
+          "episode": "Obstipatie",
+          "aantal_deelcontacten": 1
+        }
+      ],
+      "kernontwikkelingen": [
+        "Start met controles van reeds bekende hypertensie, hypercholesterolemie en knieartrose; daarna diagnose diabetes mellitus type 2.",
+        "In 2022 volgen eczeem, mictieklachten en verwijzing wegens bilateraal cataract.",
+        "In 2023 worden een urineweginfectie, presbyacusis, chronische nierschade G3a en actinische keratose geregistreerd en behandeld.",
+        "In 2024 acuut ischemisch CVA; tijdens opname wordt atriumfibrilleren vastgesteld. Daarna revalidatie en intensieve secundaire preventie; cataracttraject succesvol afgerond.",
+        "Pneumonie en een valincident worden in 2025 afgesloten na herstel; chronische cardiovasculaire en metabole controles lopen door.",
+        "Begin 2026 kortdurende obstipatie; aan het einde blijven hypertensie, dyslipidemie, knieartrose, diabetes, eczeem, mictieklachten, gehoorverlies, nierschade, CVA-nazorg en atriumfibrilleren actief."
+      ]
+    }
+  ]
+}

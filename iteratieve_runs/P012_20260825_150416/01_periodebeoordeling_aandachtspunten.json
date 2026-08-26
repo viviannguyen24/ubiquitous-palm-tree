@@ -1,0 +1,17 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "Na start van lisinopril op 2010-09-03 zijn de controlewaarden van 2010-09-17 wel in de laboratoriumlijst opgenomen, maar nergens in een later SOEP-contact beoordeeld of verwerkt. Daardoor ontbreekt de vereiste klinische opvolging van de ACE-remmercontrole.",
+    "De medicatielijst mist de hydrocortisonkuur die volgens C030 op 2011-02-18 is gestart niet, maar deze is correct aanwezig; geen fout."
+  ],
+  "waarschuwingen": [
+    "Bij HbA1c 54 mmol/mol, slechts 1 mmol/mol boven de individuele streefwaarde, wordt diabetes als onvoldoende verbeterd beoordeeld en metformine gestart. Dit is verdedigbaar gezien het totale risicoprofiel, maar relatief intensief beleid.",
+    "De alcoholformulering 'gemiddeld 1 consumptie per dag en niet dagelijks' is enigszins onduidelijk.",
+    "De jaarlijkse diabetesbewaking is na 2010-01-11 niet meer uitgevoerd binnen dit blok; bij de peildatum zijn HbA1c en albuminurie verouderd."
+  ],
+  "herstelinstructies": [
+    "Voeg na 2010-09-17 een passend SOEP-contact toe waarin de normale kaliumwaarde en aanvaardbare nierfunctieverandering na start lisinopril worden beoordeeld en lisinopril wordt gecontinueerd, of verwerk deze uitslagen aantoonbaar in een bestaand later contact.",
+    "Verwijder de tweede kritieke-foutmelding; deze beschrijft geen fout.",
+    "Formuleer alcoholgebruik eenduidig en laat een diabetesjaarcontrole met HbA1c, nierfunctie en urine-albuminurie logisch terugkomen."
+  ]
+}

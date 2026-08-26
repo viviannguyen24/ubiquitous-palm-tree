@@ -1,0 +1,401 @@
+{
+  "bloknummer": 1,
+  "startdatum": "2006-08-25",
+  "einddatum": "2011-08-24",
+  "aantal_deelcontacten": 32,
+  "contacten": [
+    {
+      "contact_id": "C001",
+      "datum": "2006-08-25",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Beoordeling herhaald verhoogde bloeddruk",
+      "kerngebeurtenis": "Bloeddruk opnieuw verhoogd; thuismetingen en cardiovasculair laboratorium aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C002",
+      "datum": "2006-09-08",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Diagnose bevestigen en behandeling starten",
+      "kerngebeurtenis": "Hypertensie vastgesteld op basis van herhaalde metingen; leefstijl- en rookstopadvies en start antihypertensivum.",
+      "aanvullende_onderdelen": [
+        "Medicatie",
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C003",
+      "datum": "2006-10-06",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Vroege bloeddrukcontrole",
+      "kerngebeurtenis": "Bloeddruk verbeterd maar nog boven streefwaarde; therapietrouw en bijwerkingen geïnventariseerd.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C004",
+      "datum": "2006-11-17",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Behandeling intensiveren",
+      "kerngebeurtenis": "Persisterend verhoogde bloeddruk zonder relevante bijwerkingen; dosering antihypertensivum verhoogd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C005",
+      "datum": "2007-01-19",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Cardiovasculair risico beoordelen",
+      "kerngebeurtenis": "Hypercholesterolemie vastgesteld bij risicostratificatie; statine gestart en leefstijl- en rookstopadvies herhaald.",
+      "aanvullende_onderdelen": [
+        "Medicatie",
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C006",
+      "datum": "2007-02-16",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Bloeddruk na dosisverhoging controleren",
+      "kerngebeurtenis": "Bloeddruk duidelijk verbeterd; behandeling ongewijzigd voortgezet.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C007",
+      "datum": "2007-04-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Statinetolerantie en laboratoriumuitslag bespreken",
+      "kerngebeurtenis": "LDL gedaald en geen spierklachten; statine voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C008",
+      "datum": "2007-06-22",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Periodieke cardiovasculaire controle",
+      "kerngebeurtenis": "Bloeddruk acceptabel; nierfunctie en elektrolyten stabiel, rookstop besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C009",
+      "datum": "2007-09-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Nieuwe bilaterale knieklachten beoordelen",
+      "kerngebeurtenis": "Belastingafhankelijke pijn en startstijfheid, rechts meer dan links, klinisch passend bij knieartrose; conservatief beleid gestart.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C010",
+      "datum": "2007-11-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Effect conservatief beleid evalueren",
+      "kerngebeurtenis": "Enige verbetering met bewegen en paracetamol; bewegingsadvies aangescherpt en fysiotherapie besproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C011",
+      "datum": "2008-01-18",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Routinebloeddruk meten",
+      "kerngebeurtenis": "Bloeddruk rond streefwaarde; geen alarmsymptomen of medicatieproblemen.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C012",
+      "datum": "2008-03-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse lipidencontrole",
+      "kerngebeurtenis": "Lipiden verbeterd onder statine; behandeling voortgezet en leefstijl besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C013",
+      "datum": "2008-06-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Toegenomen kniebelasting beoordelen",
+      "kerngebeurtenis": "Meer pijn bij lopen zonder slotklachten of inflammatoire tekenen; verwijzing naar fysiotherapie voor oefentherapie.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C014",
+      "datum": "2008-09-19",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Cardiovasculaire jaarcontrole",
+      "kerngebeurtenis": "Bloeddruk licht verhoogd; leefstijl en therapietrouw besproken, controlelaboratorium aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C015",
+      "datum": "2008-11-21",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Resultaat oefentherapie beoordelen",
+      "kerngebeurtenis": "Conditie en belastbaarheid verbeterd na fysiotherapie; paracetamol zo nodig en oefeningen voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C016",
+      "datum": "2009-01-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Cardiometabool risico herbeoordelen",
+      "kerngebeurtenis": "LDL redelijk onder behandeling; bij laboratorium tevens verhoogde nuchtere glucose gevonden, herhaalonderzoek gepland.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C017",
+      "datum": "2009-03-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Diabetesdiagnose bevestigen",
+      "kerngebeurtenis": "Herhaald verhoogde nuchtere glucose en HbA1c bevestigen diabetes type 2; leefstijlbehandeling en POH-S-zorg gestart.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C018",
+      "datum": "2009-04-17",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Intake diabetesketenzorg",
+      "kerngebeurtenis": "Voeding, bewegen, gewicht, roken en zelfzorg geïnventariseerd; persoonlijke leefstijlafspraken gemaakt.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C019",
+      "datum": "2009-06-19",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Effect leefstijlbehandeling beoordelen",
+      "kerngebeurtenis": "HbA1c blijft boven afgesproken doel ondanks enige leefstijlverbetering; medicamenteuze behandeling met metformine voorbereid.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C020",
+      "datum": "2009-06-26",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Glucoseverlagende medicatie starten",
+      "kerngebeurtenis": "Metformine gestart na beoordeling van nierfunctie en contra-indicaties; opbouwschema en bijwerkingen besproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie",
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C021",
+      "datum": "2009-08-21",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Telefonisch",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Tolerantie metformine controleren",
+      "kerngebeurtenis": "Metformine wordt na geleidelijke opbouw goed verdragen; therapie voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C022",
+      "datum": "2009-10-16",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Eerste volledige diabetescontrole",
+      "kerngebeurtenis": "HbA1c verbeterd; voetonderzoek zonder risicobevindingen en urine-albuminurie niet verhoogd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C023",
+      "datum": "2010-01-15",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Kwartaalcontrole diabetes",
+      "kerngebeurtenis": "Glykemische instelling redelijk en gewicht stabiel; metformine en leefstijlbeleid voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C024",
+      "datum": "2010-02-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Jeukende huidafwijkingen beoordelen",
+      "kerngebeurtenis": "Mild eczeem van handen en onderbenen vastgesteld; emolliens en korte kuur lokaal corticosteroïd gestart.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C025",
+      "datum": "2010-03-19",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Respons op lokale behandeling evalueren",
+      "kerngebeurtenis": "Jeuk en roodheid sterk verminderd; corticosteroïd afgebouwd en dagelijks emolliens voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C026",
+      "datum": "2010-05-21",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Lipiden en statinegebruik controleren",
+      "kerngebeurtenis": "LDL stabiel en statine goed verdragen; behandeling ongewijzigd voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C027",
+      "datum": "2010-07-16",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Tussentijdse bloeddrukcontrole",
+      "kerngebeurtenis": "Bloeddruk boven streefwaarde bij diabetes; thuismetingen afgesproken.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C028",
+      "datum": "2010-09-03",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Thuismetingen beoordelen en behandeling aanpassen",
+      "kerngebeurtenis": "Thuismetingen bevestigen onvoldoende regulatie; antihypertensieve behandeling geïntensiveerd met controle van nierfunctie en kalium.",
+      "aanvullende_onderdelen": [
+        "Medicatie",
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C029",
+      "datum": "2010-11-19",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Recidief knieklachten beoordelen",
+      "kerngebeurtenis": "Geleidelijke toename van pijn bij traplopen zonder acute afwijkingen; oefeningen hervat en paracetamol gecontinueerd, NSAID's vermeden.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C030",
+      "datum": "2011-02-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Eczeemexacerbatie behandelen",
+      "kerngebeurtenis": "Beperkt recidief aan onderbenen zonder infectietekenen; emolliens geïntensiveerd en opnieuw kort lokaal corticosteroïd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C031",
+      "datum": "2011-05-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse lipidencontrole",
+      "kerngebeurtenis": "Lipiden passend bij primaire preventie en geen bijwerkingen; statine voortgezet, rookstop opnieuw geadviseerd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C032",
+      "datum": "2011-08-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Mobiliteit en pijnbeleid herbeoordelen",
+      "kerngebeurtenis": "Chronische belastingafhankelijke klachten blijven hanteerbaar met oefeningen en paracetamol; conservatief beleid voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    }
+  ],
+  "samenvatting_gepland_beloop": "In dit eerste blok worden achtereenvolgens hypertensie, hypercholesterolemie, bilaterale knieartrose, diabetes type 2 en constitutioneel eczeem geregistreerd. Cardiovasculair risicomanagement wordt opgebouwd met antihypertensieve en lipidenverlagende behandeling, laboratoriumbewaking en herhaalde rookstopadviezen. Diabeteszorg verschuift naar gestructureerde POH-S-controles en metformine. Knieartrose en eczeem worden conservatief behandeld."
+}

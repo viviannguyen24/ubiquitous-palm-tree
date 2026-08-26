@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "In C107 is een intracraniële bloeding op basis van alleen klinische beoordeling niet definitief uit te sluiten; de formulering past beter als ‘geen klinische aanwijzingen voor intracraniële bloeding’.",
+    "De aparte medicatielijst van dit blok bevat vooral gewijzigde of nieuwe middelen en mist meerdere doorlopende actuele middelen, waaronder lisinopril, hydrochloorthiazide, metformine, tamsulosine, paracetamol en cetomacrogol. Deze staan wel correct in de eindstatus."
+  ],
+  "herstelinstructies": [
+    "Nuanceer zo nodig de beoordeling in C107.",
+    "Neem in de medicatielijst ook alle doorlopende actuele medicatie uit de beginstatus op."
+  ]
+}

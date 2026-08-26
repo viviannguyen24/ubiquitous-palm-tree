@@ -1,0 +1,18 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "C018 bevat een specialistenbrief zonder voorafgaande verwijsbrief met hetzelfde traject-ID. Volgens de dossierregels moet iedere specialistenbrief gekoppeld zijn aan een eerdere huisartsenverwijzing; bij een acute ziekenhuisopname is dit trajecttype daarom onjuist gepland.",
+    "C019 bevat opnieuw een specialistenbrief zonder voorafgaande verwijsbrief en kan niet als geldig correspondentie­traject worden uitgewerkt.",
+    "C021 vermeldt een specialistenbrief bij CVA-nazorg zonder voorafgaande verwijsbrief en zonder duidelijk afzonderlijk specialistisch traject."
+  ],
+  "waarschuwingen": [
+    "C015 sluit de episode Actinische keratose niet expliciet af op de geplande einddatum 2024-01-16; C016 op die datum betreft eczeem.",
+    "C025 heeft geen gepland herstelcontact rond de episode-einddatum 2025-02-10, waardoor volledig klinisch herstel en afsluiting niet expliciet in het journaal terugkomen.",
+    "C027 heeft geen vervolgcontact op of rond de geplande einddatum 2025-07-01; afsluiting van het valincident moet daardoor administratief of binnen C027 worden onderbouwd."
+  ],
+  "herstelinstructies": [
+    "Vervang bij C018, C019 en C021 de ongekoppelde specialistenbrieven door passende ziekenhuis-/ontslagcorrespondentie zonder verwijs-traject, of voeg per werkelijk specialistisch traject een eerdere huisartsenverwijzing met gelijk traject-ID toe. Houd de specialistendatum later dan de verwijzingsdatum.",
+    "Plan op 2024-01-16 expliciet een afsluitend contact voor Actinische keratose of leg de genezing en afsluiting op die datum administratief vast.",
+    "Voeg passende herstel-/afsluitregistraties toe voor pneumonie rond 2025-02-10 en het valincident rond 2025-07-01, of motiveer de einddata in bestaande contacten."
+  ]
+}

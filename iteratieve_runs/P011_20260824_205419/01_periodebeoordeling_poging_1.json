@@ -1,0 +1,16 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De leeftijdsgegevens zijn intern strijdig met de patiëntinstelling: ingesteld is 80 jaar, terwijl samenvatting en eindstatus een geboortedatum 1946-01-31 en leeftijd 65 jaar vermelden."
+  ],
+  "waarschuwingen": [
+    "Bij C017 is HbA1c 53 mmol/mol gelijk aan de vermelde individuele streefwaarde ≤53, maar toch als 'Hoog' en boven streefwaarde beoordeeld; de onderbouwing voor starten van metformine is daardoor inconsistent geformuleerd.",
+    "Paracetamol maximaal 4 g/dag is bij deze oudere patiënt een hoge chronische zo-nodigdosering; een lagere maximale dagdosering verdient overweging, afhankelijk van gewicht, voeding, alcohol en leverfunctie.",
+    "De medicatielijst houdt bij actieve metformine de initiële titratietekst aan in plaats van de actuele dosering 500 mg 2dd1."
+  ],
+  "herstelinstructies": [
+    "Laat leeftijd en fictieve geboortedatum aansluiten op de ingestelde leeftijd van 80 jaar en pas sociale/functionele context overeenkomstig aan.",
+    "Markeer HbA1c 53 mmol/mol als op de streefgrens, of leg expliciet een lagere individuele streefwaarde vast als medicatiestart bedoeld is.",
+    "Werk de actuele metforminedosering bij naar 500 mg 2dd1 en heroverweeg de maximale paracetamoldosering voor langdurig gebruik."
+  ]
+}

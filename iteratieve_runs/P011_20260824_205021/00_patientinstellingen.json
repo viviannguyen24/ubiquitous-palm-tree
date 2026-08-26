@@ -1,0 +1,121 @@
+{
+  "patient_id": "P011",
+  "geslacht": "man",
+  "leeftijd": 80,
+  "aantal_jaren": 20,
+  "aantal_deelcontacten": 130,
+  "ruis_spelfouten": "Gemiddeld",
+  "ruis_afkortingen": "Gemiddeld",
+  "ruis_telegramstijl": "Gemiddeld",
+  "ruis_interpunctie": "Gemiddeld",
+  "ruis_herhaling": "Gemiddeld",
+  "allergie_modus": "Automatisch",
+  "microbiologie_modus": "Automatisch",
+  "laboratorium_modus": "Automatisch",
+  "rookstatus": "1 pakje per dag",
+  "alcoholgebruik": "Automatisch",
+  "familieanamnese": "Automatisch",
+  "woonsituatie": "Automatisch",
+  "beroep_functionele_context": "Automatisch",
+  "episodes": [
+    {
+      "volgorde": 2,
+      "episode": "Essentiële hypertensie",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 3,
+      "episode": "Hypercholesterolemie",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 4,
+      "episode": "Artrose van beide knieën",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 5,
+      "episode": "Diabetes mellitus type 2",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 7,
+      "episode": "Constitutioneel eczeem",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 8,
+      "episode": "Mictieklachten bij de man",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 9,
+      "episode": "Cataract beiderzijds",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 10,
+      "episode": "Urineweginfectie",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 11,
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 12,
+      "episode": "Chronische nierschade stadium G3a",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 14,
+      "episode": "Actinische keratose",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 16,
+      "episode": "Ischemisch cerebrovasculair accident",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 18,
+      "episode": "Atriumfibrilleren",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 19,
+      "episode": "Pneumonie",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 20,
+      "episode": "Valincident zonder fractuur",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    },
+    {
+      "volgorde": 21,
+      "episode": "Obstipatie",
+      "patient_specifieke_omschrijving": "",
+      "aantal_deelcontacten": null
+    }
+  ],
+  "handmatige_allergieen": [],
+  "handmatige_microbiologie": [],
+  "handmatig_laboratorium": []
+}

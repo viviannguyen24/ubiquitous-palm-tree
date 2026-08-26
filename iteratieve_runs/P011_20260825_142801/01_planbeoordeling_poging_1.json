@@ -1,0 +1,13 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De episode Pneumonie eindigt op 2025-03-03, maar rond die datum ontbreekt een contact waarin herstel of afsluiting wordt beoordeeld; C024 betreft constitutioneel eczeem.",
+    "De episode Valincident zonder fractuur eindigt op 2025-09-01, maar na C026 op 2025-08-04 ontbreekt een nacontact waarin herstel, resultaat van valpreventie of afsluiting wordt vastgelegd."
+  ],
+  "waarschuwingen": [],
+  "herstelinstructies": [
+    "Voeg rond 2025-03-03 een nacontact voor Pneumonie toe waarin klinisch herstel en afsluiting expliciet worden vastgesteld.",
+    "Voeg rond 2025-09-01 een nacontact voor Valincident zonder fractuur toe waarin herstel, functioneren en het resultaat van de ingezette maatregelen worden beoordeeld en de episode wordt afgesloten.",
+    "Behoud bij toevoeging of vervanging het geplande totaal van 30 deelcontacten."
+  ]
+}

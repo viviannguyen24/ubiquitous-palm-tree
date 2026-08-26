@@ -1,0 +1,15 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De leeftijdsgegevens zijn intern strijdig met de patiëntinstelling: ingesteld is 80 jaar, maar samenvatting en eindstatus vermelden geboortejaar 1946 en leeftijd 65 jaar op 2011-08-23."
+  ],
+  "waarschuwingen": [
+    "Bij HbA1c 53 mmol/mol staat als referentie/streefwaarde ≤53, maar de uitslag is toch als ‘Hoog’ gemarkeerd en gebruikt als reden voor medicatiestart. Start metformine kan door het totale risicoprofiel verdedigbaar zijn, maar de kwalificatie is inconsistent.",
+    "Hydrocortison was voorgeschreven voor exact 7 dagen en geëindigd op 2010-02-15; de instructie op 2010-03-01 om ‘na afbouw’ te stoppen sluit daar niet goed op aan."
+  ],
+  "herstelinstructies": [
+    "Pas geboortejaar, leeftijd en leeftijdsgebonden context consequent aan de instelling van 80 jaar aan, zonder de dossierchronologie te verstoren.",
+    "Markeer HbA1c 53 als op streefwaarde/grenswaarde of pas de expliciete individuele streefwaarde en motivering voor metformine consistent aan.",
+    "Formuleer op 2010-03-01 dat hydrocortison reeds na zeven dagen is gestopt; alleen basiszalf voortzetten."
+  ]
+}

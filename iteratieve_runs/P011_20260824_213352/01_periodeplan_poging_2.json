@@ -1,0 +1,382 @@
+{
+  "bloknummer": 1,
+  "startdatum": "2021-08-24",
+  "einddatum": "2026-08-24",
+  "aantal_deelcontacten": 30,
+  "contacten": [
+    {
+      "contact_id": "C001",
+      "datum": "2021-09-02",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Periodieke CVRM-controle",
+      "kerngebeurtenis": "Bloeddrukmeting, leefstijlbespreking en aanvraag nierfunctie, elektrolyten, glucose en lipiden.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C002",
+      "datum": "2021-09-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Beoordeling CVRM-laboratorium",
+      "kerngebeurtenis": "Lipiden en cardiovasculair risico beoordeeld; bestaande statinebehandeling voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C003",
+      "datum": "2021-10-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Diagnostiek persisterende hyperglykemie",
+      "kerngebeurtenis": "Diabetes vastgesteld op herhaald afwijkende glucose en HbA1c; leefstijladvies en metformine gestart.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C004",
+      "datum": "2021-11-04",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Eerste diabetescontrole",
+      "kerngebeurtenis": "Tolerantie metformine, glucosewaarden en voetstatus gecontroleerd; urine-albuminurie aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C005",
+      "datum": "2021-12-02",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Beoordeling bilaterale belastingspijn",
+      "kerngebeurtenis": "Klinisch beeld passend bij knieartrose; bewegen, fysiotherapie en paracetamol geadviseerd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C006",
+      "datum": "2022-02-08",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Beoordeling jeukende droge huidafwijkingen",
+      "kerngebeurtenis": "Eczeem vastgesteld; indifferente zalf en kortdurend lokaal corticosteroïd gestart.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C007",
+      "datum": "2022-03-03",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Telefonisch",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Evaluatie lokale behandeling",
+      "kerngebeurtenis": "Duidelijke afname van jeuk en roodheid; onderhoud met indifferente zalf afgesproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C008",
+      "datum": "2022-06-21",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Beoordeling nycturie en zwakke straal",
+      "kerngebeurtenis": "Klachten passend bij benigne prostaatobstructie zonder retentie; tamsulosine gestart.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C009",
+      "datum": "2022-07-19",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Evaluatie tamsulosine",
+      "kerngebeurtenis": "Straal en nycturie verbeterd, geen relevante bijwerkingen; behandeling voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C010",
+      "datum": "2022-11-03",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Beoordeling progressief visusverlies",
+      "kerngebeurtenis": "Bilateraal cataract vermoed; reguliere verwijzing naar oogarts voor beoordeling en behandeling.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C011",
+      "datum": "2023-03-13",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Urineweginfectie",
+      "klinisch_doel": "Beoordeling dysurie en frequente mictie",
+      "kerngebeurtenis": "Urineonderzoek wijst op urineweginfectie; kweek ingezet en empirische behandeling gestart.",
+      "aanvullende_onderdelen": [
+        "Microbiologie",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C012",
+      "datum": "2023-03-27",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Urineweginfectie",
+      "klinisch_doel": "Kweek- en herstelcontrole",
+      "kerngebeurtenis": "Kweek bevestigt gevoelige verwekker; klachten verdwenen na passend antibioticum, episode afgesloten.",
+      "aanvullende_onderdelen": [
+        "Microbiologie",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C013",
+      "datum": "2023-07-06",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Beoordeling geleidelijk bilateraal gehoorverlies",
+      "kerngebeurtenis": "Geen cerumenobstructie; audiometrie aangevraagd en verwijzing naar audicien geregeld.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C014",
+      "datum": "2023-08-17",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Beoordeling audiologische terugrapportage",
+      "kerngebeurtenis": "Bilateraal perceptief leeftijdsgebonden verlies bevestigd; hoortoestellen aangemeten met functionele verbetering.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C015",
+      "datum": "2023-10-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Duiden persisterend verminderde nierfunctie",
+      "kerngebeurtenis": "Herhaald eGFR 45–59 met albuminuriebeoordeling; chronische nierschade G3a vastgesteld en medicatiebewaking aangescherpt.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C016",
+      "datum": "2023-11-16",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes met nierschade",
+      "kerngebeurtenis": "HbA1c, voetonderzoek en albuminurie beoordeeld; metforminedosering afgestemd op nierfunctie.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C017",
+      "datum": "2023-12-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Vastleggen oogheelkundig behandelresultaat",
+      "kerngebeurtenis": "Retourbrief oogarts: beide staaroperaties verricht, ongecompliceerd herstel en goede visus; nacontrole gepland.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C018",
+      "datum": "2024-01-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "klinisch_doel": "Beoordeling ruwe plek op de slaap",
+      "kerngebeurtenis": "Solitaire actinische keratose klinisch vastgesteld en behandeld met cryotherapie.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C019",
+      "datum": "2024-02-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Afrondende nacontrole",
+      "kerngebeurtenis": "Visus blijft goed en er zijn geen postoperatieve klachten; cataractepisode afgesloten.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C020",
+      "datum": "2024-03-07",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "klinisch_doel": "Controle na cryotherapie",
+      "kerngebeurtenis": "Laesie volledig verdwenen; zonbescherming besproken en episode afgesloten.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C021",
+      "datum": "2024-05-26",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Ischemisch cerebrovasculair accident",
+      "klinisch_doel": "Registratie acute ziekenhuisopname",
+      "kerngebeurtenis": "Acute presentatie via ambulance wegens focale neurologische uitval; ziekenhuisopname voor ischemisch CVA, zonder huisartsverwijzing.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C022",
+      "datum": "2024-05-27",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Atriumfibrilleren",
+      "klinisch_doel": "Registratie ritmestoornis tijdens opname",
+      "kerngebeurtenis": "Ziekenhuis meldt nieuw paroxismaal atriumfibrilleren tijdens CVA-opname; indicatie voor antistolling vastgesteld.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C023",
+      "datum": "2024-06-04",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Atriumfibrilleren",
+      "klinisch_doel": "Verwerking ontslagbeleid na acute opname",
+      "kerngebeurtenis": "Ontslagbrief ontvangen: atriumfibrilleren bevestigd, DOAC en frequentiecontrole ingesteld met nierfunctiebewaking.",
+      "aanvullende_onderdelen": [
+        "Ontslagbrief",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C024",
+      "datum": "2024-06-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Ischemisch cerebrovasculair accident",
+      "klinisch_doel": "Nazorg na CVA-opname",
+      "kerngebeurtenis": "Milde restzwakte en mobiliteitsbeperking geëvalueerd; revalidatie en secundaire preventie voortgezet.",
+      "aanvullende_onderdelen": [
+        "Ontslagbrief",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C025",
+      "datum": "2024-09-12",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Striktere bloeddrukcontrole na CVA",
+      "kerngebeurtenis": "Bloeddruk en orthostase beoordeeld; antihypertensieve behandeling zo nodig aangepast met nierfunctiecontrole.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C026",
+      "datum": "2024-10-10",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Secundaire preventie na CVA",
+      "kerngebeurtenis": "LDL beoordeeld; statinebehandeling geïntensiveerd conform secundaire preventie.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C027",
+      "datum": "2025-01-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Huisbezoek",
+      "episode": "Pneumonie",
+      "klinisch_doel": "Beoordeling koorts, hoesten en benauwdheid",
+      "kerngebeurtenis": "Klinisch thuis behandelbare pneumonie; antibioticum gestart met veiligheidsnet en telefonische herstelcontrole, herstel bevestigd op 2025-01-30.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C028",
+      "datum": "2025-06-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Valincident zonder fractuur",
+      "klinisch_doel": "Letsel- en valrisicobeoordeling",
+      "kerngebeurtenis": "Mechanische val met kneuzingen, zonder hoofdletsel of fractuur; valpreventie en fysiotherapie ingezet, herstel bevestigd op 2025-07-03.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C029",
+      "datum": "2025-11-13",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Jaarlijkse nierfunctiebewaking",
+      "kerngebeurtenis": "eGFR, kalium en albuminurie stabiel; doseringen en vermijden van NSAID's opnieuw beoordeeld.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C030",
+      "datum": "2026-02-10",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Obstipatie",
+      "klinisch_doel": "Beoordeling moeizame ontlasting",
+      "kerngebeurtenis": "Functionele obstipatie zonder alarmsymptomen; vocht, vezels en bewegen besproken en macrogol gestart.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    }
+  ],
+  "samenvatting_gepland_beloop": "Chronische CVRM, knieartrose en diabetes worden gevolgd. Daarna ontstaan eczeem, mictieklachten, cataract, een UWI, gehoorverlies en stabiele nierschade G3a. Cataract en actinische keratose worden succesvol behandeld. In 2024 volgt een acute CVA-opname met nieuw atriumfibrilleren en secundaire preventie. Pneumonie en valincident herstellen; in 2026 wordt obstipatie behandeld."
+}

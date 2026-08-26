@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "C062 is te algemeen en bevat blauwdruktekst in plaats van een concrete klinische gebeurtenis.",
+    "Na de laboratoriumaanvraag op 2016-08-12 is binnen dit blok geen contact gepland voor beoordeling van de uitslagen; plan zo nodig verwerking in het volgende blok."
+  ],
+  "herstelinstructies": [
+    "Werk C062 uit als concrete statine-, bijwerkingen- of lipidencontrole.",
+    "Laat de uitslagen van 2016-08-12 in een later contact beoordelen en eventuele consequenties verwerken."
+  ]
+}

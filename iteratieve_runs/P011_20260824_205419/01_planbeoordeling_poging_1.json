@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "C008 noemt fysiotherapie als verwijsbrieftraject. Fysiotherapie is doorgaans eerstelijnszorg; een formele specialistische specialistenbrief is hierbij niet passend.",
+    "Bij C017 start de POH-S zelfstandig een orale glucoseverlager. Leg zo nodig vast dat dit volgens protocol of na autorisatie door de huisarts gebeurt."
+  ],
+  "herstelinstructies": [
+    "Verwerk C008 als fysiotherapieverwijzing zonder specialistisch correspondentiepaar, of wijzig het traject naar een klinisch passende specialistische verwijzing.",
+    "Laat bij C017 de huisarts de medicatiestart autoriseren of vermeld expliciet protocollair voorschrijven door de POH-S."
+  ]
+}

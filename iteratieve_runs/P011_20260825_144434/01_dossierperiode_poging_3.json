@@ -1,0 +1,1482 @@
+{
+  "bloknummer": 1,
+  "startdatum": "2021-08-25",
+  "einddatum": "2026-08-25",
+  "contacten": [
+    {
+      "contact_id": "C001",
+      "datum": "2021-09-02",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "s": "Voelt zich goed. Rookt 1 pakje per dag; medicatie trouw.",
+      "o": "RR 154/88 mmHg, pols 72 regulair. Geen orthostatische klachten. CVRM-lab aangevraagd.",
+      "e": "Hypertensie, boven streefwaarde [K86].",
+      "p": "Losartan 50 mg 1dd1 voortzetten. Thuismetingen, zoutbeperking, bewegen en rookstop besproken."
+    },
+    {
+      "contact_id": "C002",
+      "datum": "2021-10-07",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "s": "Simvastatine wordt naar eigen zeggen vrijwel dagelijks ingenomen; geen spierklachten.",
+      "o": "LDL 3,0 mmol/L, totaal cholesterol 5,2 mmol/L. RR 148/84 mmHg.",
+      "e": "Hypercholesterolemie, onvoldoende gereguleerd [T93].",
+      "p": "Therapietrouw benadrukt; simvastatine verhoogd van 20 naar 40 mg 1dd 's avonds. Lipidencontrole over 3 mnd."
+    },
+    {
+      "contact_id": "C003",
+      "datum": "2021-10-28",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "s": "Jarenlang belastingspijn beide knieën, rechts meer; startstijfheid kort, geen slotklachten.",
+      "o": "Crepitaties en geringe varusstand beiderzijds. Geen hydrops, roodheid of warmte. Loopt zelfstandig.",
+      "e": "Artrose beide knieën [L90].",
+      "p": "Paracetamol 500 mg, zo nodig 2 tabletten tot 3dd. Verwijzing fysiotherapie, beweeg- en gewichtsadvies; orale NSAID vermijden."
+    },
+    {
+      "contact_id": "C004",
+      "datum": "2021-11-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "s": "Meer dorst, geen gewichtsverlies. Familie: vader had diabetes en myocardinfarct rond 68 jr.",
+      "o": "Nuchtere glucose herhaald 8,1 en 8,3 mmol/L; HbA1c 52 mmol/mol. BMI 29,1 kg/m².",
+      "e": "Diabetes mellitus type 2 [T90.02].",
+      "p": "Metformine 500 mg 1dd bij avondeten gestart; dieet, bewegen en rookstop besproken. Controle POH-S over 3-4 mnd."
+    },
+    {
+      "contact_id": "C005",
+      "datum": "2022-02-07",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "s": "Droge, jeukende plekken onderarmen en schenen; vooral 's avonds krabben.",
+      "o": "Erythemateuze schilferende plaques, geen nattend eczeem of infectie.",
+      "e": "Constitutioneel eczeem [S87].",
+      "p": "Cetomacrogolzalf dagelijks; triamcinolonacetonide 0,1% zalf 1dd gedurende 7 dagen, daarna stoppen. Smeerinstructie gegeven."
+    },
+    {
+      "contact_id": "C006",
+      "datum": "2022-03-17",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "s": "Metformine goed verdragen, voeding wat aangepast. Geen hypo's.",
+      "o": "HbA1c 47 mmol/mol. Voeten: intacte huid, pulsaties en monofilament normaal.",
+      "e": "DM2, verbeterde regulatie [T90.02].",
+      "p": "Metformine 500 mg 1dd voortzetten. Jaarlijkse oog- en voetscreening; controle over 6 mnd."
+    },
+    {
+      "contact_id": "C007",
+      "datum": "2022-05-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "s": "Nycturie 3x, slappe straal en nadruppelen. Geen hematurie, koorts of botpijn.",
+      "o": "Buik soepel, blaas niet palpabel. Prostaat glad, symmetrisch, matig vergroot. Urinestick negatief; PSA 2,8 µg/L.",
+      "e": "LUTS passend bij benigne prostaatvergroting [Y06].",
+      "p": "Tamsulosine 0,4 mg 1dd na avondeten gestart. Uitleg orthostase en alarmsymptomen; evaluatie na 4 weken."
+    },
+    {
+      "contact_id": "C008",
+      "datum": "2022-06-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Mictieklachten bij de man",
+      "s": "Straal beter, nycturie nu 1-2x. Geen relevante duizeligheid.",
+      "o": "Telefonisch geen aanwijzingen voor retentie, infectie of hematurie.",
+      "e": "LUTS verbeteren op alfablokker [Y06].",
+      "p": "Tamsulosine 0,4 mg 1dd voortzetten; bellen bij retentie, bloedverlies of duizligheid."
+    },
+    {
+      "contact_id": "C009",
+      "datum": "2022-09-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Cataract beiderzijds",
+      "s": "Geleidelijk waziger zien en hinder van koplampen; bril helpt onvoldoende.",
+      "o": "Visus met correctie rechts 0,5, links 0,6. Rode reflex beiderzijds verminderd.",
+      "e": "Verdenking cataract beiderzijds [F92].",
+      "p": "Reguliere verwijzing oogarts (T001) voor beoordeling en operatieve mogelijkheden."
+    },
+    {
+      "contact_id": "C010",
+      "datum": "2023-01-23",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Urineweginfectie",
+      "s": "Sinds 2 dagen dysurie en frequente kleine beetjes. Geen koorts, flankpijn of retentie.",
+      "o": "Temp 36,8 °C. Urinestick nitriet positief, leukocyten 2+, bloed 1+. Kweek ingezet; nierfunctie eGFR 57.",
+      "e": "Afebriele urineweginfectie man [U71].",
+      "p": "Na overleg huisarts ciprofloxacine 500 mg 2dd 7 dagen gestart. Vangnet bij koorts, flankpijn, ziek zijn of retentie."
+    },
+    {
+      "contact_id": "C011",
+      "datum": "2023-02-02",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Urineweginfectie",
+      "s": "Kuur voltooid; klachten volledig weg, geen koorts gehad.",
+      "o": "Kweek: Escherichia coli >10^5 kve/ml, gevoelig voor ciprofloxacine. Geen restklachten.",
+      "e": "UWI genezen [U71].",
+      "p": "Geen verdere antibiotica. Episode afgesloten; herbeoordeling bij recidief of koorts."
+    },
+    {
+      "contact_id": "C012",
+      "datum": "2023-03-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "s": "Opnieuw jeukende plekken op onderarmen; basiszalf onregelmatig gebruikt.",
+      "o": "Milde droge erythemateuze plaques, geen impetiginisatie.",
+      "e": "Milde opvlamming constitutioneel eczeem [S87].",
+      "p": "Cetomacrogolzalf dagelijks hervatten. Triamcinolonacetonide 0,1% zalf 1dd maximaal 7 dagen, daarna stoppen; zo nodig bij latere opvlamming na beoordeling."
+    },
+    {
+      "contact_id": "C013",
+      "datum": "2023-04-17",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "s": "Al jaren beiderzijds minder verstaan, vooral in groepen. Geen tinnitus, pijn of plots verlies.",
+      "o": "Geen cerumen; trommelvliezen normaal. Fluisterspraak beiderzijds verminderd, geen duidelijke asymmetrie.",
+      "e": "Waarschijnlijk leeftijdsgebonden gehoorverlies [H84].",
+      "p": "Verwijzing audiologisch centrum (T002) voor audiometrie en hoorrevalidatieadvies."
+    },
+    {
+      "contact_id": "C014",
+      "datum": "2023-06-01",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "s": "Geen nieuw contact; retourbrief audiologisch centrum ontvangen.",
+      "o": "Audiogram: symmetrisch licht-matig perceptief verlies, vooral hoge tonen; spraakdiscriminatie passend.",
+      "e": "Presbyacusis beiderzijds [H84].",
+      "p": "Hoortoesteladvies via audicien overgenomen. Geen KNO-indicatie; terug bij asymmetrie of onvoldoende effect."
+    },
+    {
+      "contact_id": "C015",
+      "datum": "2023-08-21",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Chronische nierschade stadium G3a",
+      "s": "Geen oedeem of mictieverandering. Gebruikt geen vrij verkrijgbare NSAID's.",
+      "o": "Creatinine 118 µmol/L, eGFR 54; eerdere eGFR 55-57. Kalium 4,6 mmol/L, ACR 2,4 mg/mmol.",
+      "e": "Chronische nierschade G3a, waarschijnlijk vasculair/diabetisch [U99.01].",
+      "p": "Jaarlijks eGFR, kalium en ACR. Metformine en losartan passend gedoseerd; NSAID en dehydratie vermijden."
+    },
+    {
+      "contact_id": "C016",
+      "datum": "2023-11-06",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "s": "Ruw plekje kruin, blijft schilferen; geen bloeding of snelle groei.",
+      "o": "Solitaire 7 mm erythemateuze hyperkeratotische laesie op zonbeschadigde hoofdhuid, niet geïndureerd.",
+      "e": "Actinische keratose [S80].",
+      "p": "Cryotherapie 2 cycli verricht. Zonprotectie; controle bij persisteren, groei, bloeding of ulceratie."
+    },
+    {
+      "contact_id": "C017",
+      "datum": "2024-01-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "s": "Plek na behandeling verdwenen, geen klachten.",
+      "o": "Hoofdhuid genezen; geen palpabele of schilferende restlaesie.",
+      "e": "Actinische keratose verdwenen na cryotherapie [S80].",
+      "p": "Episode afgesloten. Zonbescherming en zelfcontrole geadviseerd."
+    },
+    {
+      "contact_id": "C018",
+      "datum": "2024-03-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Huisbezoek",
+      "episode": "Ischemisch cerebrovasculair accident",
+      "s": "Echtgenote meldt plots scheve mond, onduidelijke spraak en krachtsverlies links, begonnen circa 40 min geleden.",
+      "o": "Wakker, dysartrie, links facialisparese en arm/beenparese. Glucose 7,6 mmol/L, RR 182/96, pols 96 onregelmatig.",
+      "e": "Acute verdenking ischemisch CVA [K90.03].",
+      "p": "Direct 112; per ambulance naar SEH/stroke-unit. Geen reguliere verwijzing. Ziekenhuis verzocht ritme als mogelijke emboliebron te onderzoeken."
+    },
+    {
+      "contact_id": "C019",
+      "datum": "2024-03-25",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Atriumfibrilleren",
+      "s": "Ontslagbrief na CVA-opname verwerkt; echtgenote meldt dat patiënt inmiddels in geriatrische revalidatie verblijft.",
+      "o": "Tijdens opname paroxismaal AF vastgesteld. Ontslagdatum 2024-03-22; eGFR 53 ml/min/1,73 m².",
+      "e": "Paroxismaal atriumfibrilleren, waarschijnlijke emboliebron van CVA [K78].",
+      "p": "Apixaban 5 mg 2dd en atorvastatine 40 mg 1dd zijn door ziekenhuis gestart op 2024-03-22; simvastatine gestopt. Nierfunctie en bloedingen bewaken, revalidatie vervolgen."
+    },
+    {
+      "contact_id": "C020",
+      "datum": "2024-05-30",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Cataract beiderzijds",
+      "s": "Definitieve oogheelkundige brief ontvangen; patiënt ervaart duidelijk betere visus.",
+      "o": "Rechter cataractoperatie 2023-02-14 en linker 2024-04-18 ongecompliceerd; postoperatieve visus rechts 0,9 en links 0,8.",
+      "e": "Cataract beiderzijds succesvol geopereerd [F92].",
+      "p": "Specialistische nacontrole beëindigd; reguliere diabetes-oogscreening en optiekcontrole. Episode afgesloten."
+    },
+    {
+      "contact_id": "C021",
+      "datum": "2024-07-11",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Ischemisch cerebrovasculair accident",
+      "s": "Na revalidatie weer thuis. Loopt met stok buiten; nog lichte onhandigheid linkerhand. Geen nieuwe uitval of bloedingen.",
+      "o": "Spraak helder, geringe linkszijdige fijne-motoriekstoornis, kracht 4+/5 links. RR 136/78. LDL 1,9, eGFR 52.",
+      "e": "Herstel na ischemisch CVA met geringe restuitval [K90.03].",
+      "p": "Apixaban, atorvastatine 40 mg en losartan voortzetten. Secundaire preventie, fysio-oefeningen en alarmsymptomen herhaald."
+    },
+    {
+      "contact_id": "C022",
+      "datum": "2024-10-10",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "s": "Atorvastatine dagelijks ingenomen; geen spierpijn.",
+      "o": "LDL 2,0 mmol/L, boven individuele streefwaarde <1,8 na CVA; ALAT 24 U/L.",
+      "e": "Hypercholesterolemie onvoldoende op secundaire-preventiestreefwaarde [T93].",
+      "p": "Atorvastatine verhoogd naar 80 mg 1dd. Lipiden en bijwerkingen over 3 mnd controleren."
+    },
+    {
+      "contact_id": "C023",
+      "datum": "2025-01-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Huisbezoek",
+      "episode": "Pneumonie",
+      "s": "Vier dagen hoesten, koorts en moe; wat kortademig bij lopen. Geen verwardheid of pijn op de borst.",
+      "o": "Temp 38,4 °C, RR 138/76, pols 92, AF 20/min, saturatie 94%. Rechts basaal crepitaties; niet respiratoir uitgeput.",
+      "e": "Thuis behandelbare pneumonie [R81].",
+      "p": "Amoxicilline 500 mg 3dd 7 dagen. Drinken, rust en strak vangnet bij dyspneu/verslechtering; rookstop opnieuw besproken."
+    },
+    {
+      "contact_id": "C024",
+      "datum": "2025-02-03",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Pneumonie",
+      "s": "Koorts en benauwdheid verdwenen; conditie bijna op oud nivo.",
+      "o": "Afebriel, saturatie 97%, longen vesiculair zonder crepitaties.",
+      "e": "Pneumonie klinisch genezen [R81].",
+      "p": "Episode afgesloten. Activiteit geleidelijk opbouwen; terug bij recidiefklachten."
+    },
+    {
+      "contact_id": "C025",
+      "datum": "2025-04-17",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Chronische nierschade stadium G3a",
+      "s": "Geen oedeem, bloedingen of NSAID-gebruik. Medicatie wordt met weekdoos ingenomen.",
+      "o": "Creatinine 121 µmol/L, eGFR 52, kalium 4,7 mmol/L, ACR 2,8 mg/mmol. RR 142/82.",
+      "e": "Stabiele chronische nierschade G3a [U99.01].",
+      "p": "Doseringen ongewijzigd passend. Jaarlijkse controle; NSAID en dehydratie blijven vermijden."
+    },
+    {
+      "contact_id": "C026",
+      "datum": "2025-07-22",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Valincident zonder fractuur",
+      "s": "Gisteren over stoeprand gevallen, op rechterheup en elleboog. Geen hoofdcontact, bewustzijnsverlies of neurologische klachten.",
+      "o": "Hematoom rechterheup en schaafwond elleboog; volledig belastbaar, heuprotatie pijnvrij. Neurologisch onveranderd, geen fractuurtekenen.",
+      "e": "Mechanische val met kneuzingen, zonder aanwijzing fractuur of hoofdletsel [A80].",
+      "p": "Paracetamol zo nodig; geen NSAID vanwege CKD/apixaban. Instructie vertraagde bloeding, valpreventie en fysio-balansadvies. Controle 2025-08-05 afgesproken."
+    },
+    {
+      "contact_id": "C027",
+      "datum": "2025-11-13",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "s": "Geen hypo's, polyurie of voetklachten. Beweegt minder door knieën.",
+      "o": "HbA1c 53 mmol/mol, eGFR 51, ACR 3,2 mg/mmol. Voeten intact, monofilament normaal.",
+      "e": "DM2 redelijk gereguleerd, geringe albuminurie [T90.02].",
+      "p": "Metformine 500 mg 1dd voortzetten gezien leeftijd/eGFR. Voet- en voedingsadvies; jaarlijkse oogscreening."
+    },
+    {
+      "contact_id": "C028",
+      "datum": "2026-02-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Obstipatie",
+      "s": "Sinds weken harde ontlasting om de 3-4 dagen. Minder bewegen en drinken; geen bloed, buikpijn of gewichtsverlies.",
+      "o": "Buik soepel, niet drukpijnlijk, normale peristaltiek; geen palpabele massa.",
+      "e": "Functionele obstipatie zonder alarmsymptomen [D12].",
+      "p": "Vocht, vezels en dagelijks bewegen. Macrogol 13,7 g 1dd zo nodig gestart; terug bij bloedverlies, pijn, braken of uitblijven effect."
+    },
+    {
+      "contact_id": "C029",
+      "datum": "2026-05-21",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "s": "Thuismetingen meestal 145-150 systolisch. Geen duizeligheid; medicatie trouw.",
+      "o": "RR zittend 148/82, staand 144/80; pols 70 regulair. eGFR 50, kalium 4,5 mmol/L.",
+      "e": "Hypertensie boven streefwaarde, zonder orthostase [K86].",
+      "p": "Losartan verhoogd van 50 naar 100 mg 1dd. Controle RR, creatinine en kalium na 2 weken; thuismetingen voortzetten."
+    },
+    {
+      "contact_id": "C030",
+      "datum": "2026-08-13",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "s": "Belastingspijn toegenomen, traplopen lastig. Geen nachtelijke rustpijn, roodheid of zwelling.",
+      "o": "Antalgisch looppatroon, crepitaties en beperkte flexie beiderzijds; geen warmte of hydrops.",
+      "e": "Toegenomen klachten bij knieartrose beiderzijds [L90].",
+      "p": "Paracetamol 1000 mg tot 3dd zo nodig en fysiotherapeutische oefentherapie voortzetten. Geen orale NSAID wegens CKD en apixaban."
+    },
+    {
+      "contact_id": "C031",
+      "datum": "2025-08-05",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Valincident zonder fractuur",
+      "s": "Blauwe plek en pijn vrijwel verdwenen; loopt weer op oude niveau. Geen hoofdpijn, duizeligheid of nieuwe val.",
+      "o": "Telefonisch geen aanwijzing voor fractuurcomplicatie of vertraagde bloeding; fysiotherapeut gaf balans- en loopadvies.",
+      "e": "Hersteld na valincident zonder fractuur [A80].",
+      "p": "Episode afgesloten. Valpreventie, goede schoenen en stok buitenshuis blijven toepassen."
+    },
+    {
+      "contact_id": "C032",
+      "datum": "2026-06-05",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Essentiële hypertensie",
+      "s": "Losartan 100 mg goed verdragen; geen duizeligheid. Thuismetingen gemiddeld 134/76.",
+      "o": "Creatinine 126 µmol/L, eGFR 49, kalium 4,7 mmol/L; verandering acceptabel na dosisverhoging.",
+      "e": "Hypertensie op streefwaarde na losartanverhoging [K86].",
+      "p": "Losartan 100 mg 1dd voortzetten. Reguliere nierfunctie- en bloeddrukcontrole."
+    }
+  ],
+  "medicatie": [
+    {
+      "geneesmiddel": "Losartan",
+      "sterkte": "50 mg",
+      "dosering": "1dd1",
+      "indicatie": "Essentiële hypertensie",
+      "startdatum": "2015-06-12",
+      "einddatum": "2026-05-21",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Losartan",
+      "sterkte": "100 mg",
+      "dosering": "1dd1",
+      "indicatie": "Essentiële hypertensie",
+      "startdatum": "2026-05-21",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Simvastatine",
+      "sterkte": "20 mg",
+      "dosering": "1dd1 's avonds",
+      "indicatie": "Hypercholesterolemie",
+      "startdatum": "2017-03-20",
+      "einddatum": "2021-10-07",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Simvastatine",
+      "sterkte": "40 mg",
+      "dosering": "1dd1 's avonds",
+      "indicatie": "Hypercholesterolemie",
+      "startdatum": "2021-10-07",
+      "einddatum": "2024-03-22",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Paracetamol",
+      "sterkte": "500 mg",
+      "dosering": "2 tabletten tot 3dd zo nodig",
+      "indicatie": "Artrose van beide knieën",
+      "startdatum": "2021-10-28",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Metformine",
+      "sterkte": "500 mg",
+      "dosering": "1dd1 bij avondeten",
+      "indicatie": "Diabetes mellitus type 2",
+      "startdatum": "2021-11-18",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Cetomacrogolzalf",
+      "sterkte": "zonder parfum",
+      "dosering": "1-2dd en na wassen",
+      "indicatie": "Constitutioneel eczeem",
+      "startdatum": "2022-02-07",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Triamcinolonacetonide zalf",
+      "sterkte": "0,1%",
+      "dosering": "1dd gedurende 7 dagen",
+      "indicatie": "Constitutioneel eczeem",
+      "startdatum": "2022-02-07",
+      "einddatum": "2022-02-13",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Triamcinolonacetonide zalf",
+      "sterkte": "0,1%",
+      "dosering": "1dd gedurende maximaal 7 dagen",
+      "indicatie": "Constitutioneel eczeem",
+      "startdatum": "2023-03-09",
+      "einddatum": "2023-03-15",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Tamsulosine",
+      "sterkte": "0,4 mg",
+      "dosering": "1dd1 na avondeten",
+      "indicatie": "Mictieklachten bij de man",
+      "startdatum": "2022-05-16",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Ciprofloxacine",
+      "sterkte": "500 mg",
+      "dosering": "2dd1 gedurende 7 dagen",
+      "indicatie": "Urineweginfectie",
+      "startdatum": "2023-01-23",
+      "einddatum": "2023-01-29",
+      "status": "Eenmalig"
+    },
+    {
+      "geneesmiddel": "Apixaban",
+      "sterkte": "5 mg",
+      "dosering": "2dd1",
+      "indicatie": "Atriumfibrilleren na ischemisch CVA",
+      "startdatum": "2024-03-22",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Atorvastatine",
+      "sterkte": "40 mg",
+      "dosering": "1dd1",
+      "indicatie": "Secundaire preventie na ischemisch CVA",
+      "startdatum": "2024-03-22",
+      "einddatum": "2024-10-10",
+      "status": "Gestopt"
+    },
+    {
+      "geneesmiddel": "Atorvastatine",
+      "sterkte": "80 mg",
+      "dosering": "1dd1",
+      "indicatie": "Hypercholesterolemie en secundaire preventie na CVA",
+      "startdatum": "2024-10-10",
+      "einddatum": "",
+      "status": "Actief"
+    },
+    {
+      "geneesmiddel": "Amoxicilline",
+      "sterkte": "500 mg",
+      "dosering": "3dd1 gedurende 7 dagen",
+      "indicatie": "Pneumonie",
+      "startdatum": "2025-01-09",
+      "einddatum": "2025-01-15",
+      "status": "Eenmalig"
+    },
+    {
+      "geneesmiddel": "Macrogol",
+      "sterkte": "13,7 g",
+      "dosering": "1 sachet 1dd zo nodig",
+      "indicatie": "Obstipatie",
+      "startdatum": "2026-02-12",
+      "einddatum": "",
+      "status": "Actief"
+    }
+  ],
+  "correspondentie": [
+    {
+      "traject_id": "T001",
+      "datum": "2022-09-12",
+      "type_brief": "Verwijsbrief",
+      "specialisme": "Oogheelkunde",
+      "episode": "Cataract beiderzijds",
+      "van": "Huisarts",
+      "aan": "Oogarts",
+      "onderwerp": "Progressief visusverlies, verdenking cataract beiderzijds",
+      "inhoud": "Graag uw beoordeling wegens geleidelijk progressief wazig zien en hinder van tegenlicht. Visus met correctie rechts 0,5 en links 0,6; rode reflex beiderzijds verminderd. Relevante voorgeschiedenis: hypertensie, hypercholesterolemie en diabetes mellitus type 2. Medicatie: losartan, simvastatine en metformine. Vraagstelling: bevestiging cataract en beoordeling voor operatieve behandeling van beide ogen."
+    },
+    {
+      "traject_id": "T001",
+      "datum": "2022-10-06",
+      "type_brief": "Specialistenbrief",
+      "specialisme": "Oogheelkunde",
+      "episode": "Cataract beiderzijds",
+      "van": "Oogarts",
+      "aan": "Huisarts",
+      "onderwerp": "Beoordeling en operatieplanning cataract",
+      "inhoud": "Beoordeeld wegens progressief visusverlies. Spleetlamponderzoek toont rechts meer dan links nucleair cataract; retina zonder diabetische retinopathie. Patiënt wenst behandeling. Rechter cataractextractie met kunstlens gepland als eerste ingreep; linker oog volgt bij aanhoudende functionele hinder. Perioperatieve instructies zijn verstrekt."
+    },
+    {
+      "traject_id": "T001",
+      "datum": "2023-02-28",
+      "type_brief": "Specialistenbrief",
+      "specialisme": "Oogheelkunde",
+      "episode": "Cataract beiderzijds",
+      "van": "Oogarts",
+      "aan": "Huisarts",
+      "onderwerp": "Nacontrole na operatie rechteroog",
+      "inhoud": "Op 2023-02-14 is rechts ongecompliceerde cataractextractie met kunstlens verricht. Nacontrole toont rustige voorste oogkamer en visus 0,9. Patiënt ervaart verbetering. Linker oog blijft functioneel hinderlijk; operatie wordt in overleg later gepland. Geen diabetische retinopathie."
+    },
+    {
+      "traject_id": "T002",
+      "datum": "2023-04-17",
+      "type_brief": "Verwijsbrief",
+      "specialisme": "Audiologisch centrum",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "van": "Huisarts",
+      "aan": "Audiologisch centrum",
+      "onderwerp": "Bilateraal geleidelijk gehoorverlies",
+      "inhoud": "Graag audiologische beoordeling wegens geleidelijk slechter verstaan, vooral bij achtergrondgeluid. Geen tinnitus, otalgie, plots verlies of klinische asymmetrie. Gehoorgangen vrij, trommelvliezen normaal. Vraagstelling: audiometrie, diagnose en advies over hoorrevalidatie of eventuele KNO-indicatie."
+    },
+    {
+      "traject_id": "T002",
+      "datum": "2023-05-25",
+      "type_brief": "Specialistenbrief",
+      "specialisme": "Audiologisch centrum",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "van": "Audioloog",
+      "aan": "Huisarts",
+      "onderwerp": "Audiometrie en hoortoesteladvies",
+      "inhoud": "Toonaudiometrie toont symmetrisch licht tot matig perceptief gehoorverlies, sterker in de hoge frequenties. Spraakdiscriminatie is passend en er zijn geen aanwijzingen voor retrocochleaire pathologie. Conclusie: presbyacusis. Advies: proefaanpassing hoortoestellen via audicien; geen KNO-verwijzing nodig tenzij asymmetrie, plots verlies of onvoldoende resultaat ontstaat."
+    },
+    {
+      "traject_id": "T003",
+      "datum": "2024-03-22",
+      "type_brief": "Ontslagbrief",
+      "specialisme": "Neurologie/Cardiologie",
+      "episode": "Atriumfibrilleren",
+      "van": "Ziekenhuis",
+      "aan": "Huisarts",
+      "onderwerp": "Ontslag na ischemisch CVA; nieuw paroxismaal atriumfibrilleren",
+      "inhoud": "Acute opname op 2024-03-14 wegens plotselinge dysartrie en linkszijdige hemiparese. CT-hersenen zonder bloeding; vervolgbeeldvorming passend bij rechts hemisferisch ischemisch infarct. Telemetrie toonde paroxismaal atriumfibrilleren, beschouwd als waarschijnlijke emboliebron. Klinisch trad duidelijke verbetering op, met geringe resterende linkszijdige zwakte. Ontslagdiagnosen: ischemisch CVA en paroxismaal atriumfibrilleren. Bij ontslag op 2024-03-22 zijn apixaban 5 mg 2dd en atorvastatine 40 mg 1dd gestart; simvastatine is gestopt. Losartan en metformine worden voortgezet. Nierfunctie bij ontslag: eGFR 53 ml/min/1,73 m². Vervolg: geriatrische revalidatie, controle op bloedingen en periodieke nierfunctiecontrole."
+    },
+    {
+      "traject_id": "T001",
+      "datum": "2024-05-23",
+      "type_brief": "Specialistenbrief",
+      "specialisme": "Oogheelkunde",
+      "episode": "Cataract beiderzijds",
+      "van": "Oogarts",
+      "aan": "Huisarts",
+      "onderwerp": "Afronding bilaterale cataractbehandeling",
+      "inhoud": "Na eerdere ongecompliceerde operatie rechts is op 2024-04-18 links cataractextractie met kunstlens verricht. Nacontrole toont rustige ogen, heldere media en visus rechts 0,9 en links 0,8. Patiënt is tevreden. Oogheelkundige nacontrole wordt beëindigd. Advies: reguliere optiekcontrole en voortzetting van diabetische retinascreening."
+    }
+  ],
+  "allergieen": [],
+  "microbiologie": [
+    {
+      "datum": "2023-01-26",
+      "episode": "Urineweginfectie",
+      "materiaal": "Urine",
+      "onderzoek": "Urinekweek",
+      "uitslag": "Positief",
+      "verwekker": "Escherichia coli",
+      "hoeveelheid": ">10^5 kve/ml",
+      "gevoeligheid_resistentie": "Gevoelig voor ciprofloxacine, nitrofurantoïne en trimethoprim; resistent voor amoxicilline",
+      "conclusie": "Significante groei passend bij symptomatische UWI; ingezette ciprofloxacine is passend."
+    }
+  ],
+  "laboratorium": [
+    {
+      "aanvraag_id": "L001",
+      "datum": "2021-09-06",
+      "aanvraagreden": "CVRM-controle bij hypertensie",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Creatinine",
+      "waarde": "105",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Normaal",
+      "conclusie": "Nierfunctie bruikbaar voor voortzetting losartan."
+    },
+    {
+      "aanvraag_id": "L001",
+      "datum": "2021-09-06",
+      "aanvraagreden": "CVRM-controle bij hypertensie",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "eGFR",
+      "waarde": "61",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Normaal",
+      "conclusie": "Geen relevante nierfunctiestoornis volgens deze meting."
+    },
+    {
+      "aanvraag_id": "L001",
+      "datum": "2021-09-06",
+      "aanvraagreden": "CVRM-controle bij hypertensie",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Kalium",
+      "waarde": "4,4",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "3,5-5,0",
+      "afwijking": "Normaal",
+      "conclusie": "Normaal kalium bij losartan."
+    },
+    {
+      "aanvraag_id": "L001",
+      "datum": "2021-09-06",
+      "aanvraagreden": "CVRM-controle bij hypertensie",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "Totaal cholesterol",
+      "waarde": "5,2",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "<5,0",
+      "afwijking": "Hoog",
+      "conclusie": "Totaal cholesterol licht verhoogd."
+    },
+    {
+      "aanvraag_id": "L001",
+      "datum": "2021-09-06",
+      "aanvraagreden": "CVRM-controle bij hypertensie",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "LDL-cholesterol",
+      "waarde": "3,0",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "<2,6",
+      "afwijking": "Hoog",
+      "conclusie": "LDL boven streefwaarde; intensivering statine passend."
+    },
+    {
+      "aanvraag_id": "L002",
+      "datum": "2021-11-15",
+      "aanvraagreden": "Bevestiging diabetes na verhoogde glucose",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "Nuchtere glucose",
+      "waarde": "8,3",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "4,0-6,0",
+      "afwijking": "Hoog",
+      "conclusie": "Herhaald diabetische nuchtere glucose."
+    },
+    {
+      "aanvraag_id": "L002",
+      "datum": "2021-11-15",
+      "aanvraagreden": "Bevestiging diabetes na verhoogde glucose",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "HbA1c",
+      "waarde": "52",
+      "eenheid": "mmol/mol",
+      "referentiewaarde": "<48",
+      "afwijking": "Hoog",
+      "conclusie": "Past samen met herhaalde glucose bij diabetes mellitus type 2."
+    },
+    {
+      "aanvraag_id": "L002",
+      "datum": "2021-11-15",
+      "aanvraagreden": "Bevestiging diabetes na verhoogde glucose",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "ALAT",
+      "waarde": "26",
+      "eenheid": "U/L",
+      "referentiewaarde": "<45",
+      "afwijking": "Normaal",
+      "conclusie": "Geen leverenzymverhoging."
+    },
+    {
+      "aanvraag_id": "L003",
+      "datum": "2022-03-14",
+      "aanvraagreden": "Eerste controle na start metformine",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "HbA1c",
+      "waarde": "47",
+      "eenheid": "mmol/mol",
+      "referentiewaarde": "Individuele streefwaarde <53",
+      "afwijking": "Normaal",
+      "conclusie": "Goede verbetering onder metformine en leefstijl."
+    },
+    {
+      "aanvraag_id": "L003",
+      "datum": "2022-03-14",
+      "aanvraagreden": "Eerste controle na start metformine",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "Creatinine",
+      "waarde": "109",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Normaal",
+      "conclusie": "Metforminedosering passend."
+    },
+    {
+      "aanvraag_id": "L003",
+      "datum": "2022-03-14",
+      "aanvraagreden": "Eerste controle na start metformine",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "eGFR",
+      "waarde": "59",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Licht verminderde nierfunctie; vervolgen."
+    },
+    {
+      "aanvraag_id": "L004",
+      "datum": "2022-05-16",
+      "aanvraagreden": "Diagnostiek LUTS bij man",
+      "episode": "Mictieklachten bij de man",
+      "bepaling": "PSA",
+      "waarde": "2,8",
+      "eenheid": "µg/L",
+      "referentiewaarde": "Leeftijdsafhankelijk, <6,5",
+      "afwijking": "Normaal",
+      "conclusie": "Geen verhoogd PSA voor leeftijd."
+    },
+    {
+      "aanvraag_id": "L004",
+      "datum": "2022-05-16",
+      "aanvraagreden": "Diagnostiek LUTS bij man",
+      "episode": "Mictieklachten bij de man",
+      "bepaling": "Urinenitriet",
+      "waarde": "Negatief",
+      "eenheid": "",
+      "referentiewaarde": "Negatief",
+      "afwijking": "Normaal",
+      "conclusie": "Geen aanwijzing voor urineweginfectie."
+    },
+    {
+      "aanvraag_id": "L005",
+      "datum": "2023-01-23",
+      "aanvraagreden": "Dysurie en frequente mictie",
+      "episode": "Urineweginfectie",
+      "bepaling": "Urinenitriet",
+      "waarde": "Positief",
+      "eenheid": "",
+      "referentiewaarde": "Negatief",
+      "afwijking": "Hoog",
+      "conclusie": "Ondersteunt urineweginfectie."
+    },
+    {
+      "aanvraag_id": "L005",
+      "datum": "2023-01-23",
+      "aanvraagreden": "Dysurie en frequente mictie",
+      "episode": "Urineweginfectie",
+      "bepaling": "Urineleukocyten",
+      "waarde": "2+",
+      "eenheid": "",
+      "referentiewaarde": "Negatief",
+      "afwijking": "Hoog",
+      "conclusie": "Pyurie passend bij UWI."
+    },
+    {
+      "aanvraag_id": "L005",
+      "datum": "2023-01-23",
+      "aanvraagreden": "Dysurie en frequente mictie",
+      "episode": "Urineweginfectie",
+      "bepaling": "eGFR",
+      "waarde": "57",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Licht verminderde nierfunctie, meegewogen bij antibioticabeleid."
+    },
+    {
+      "aanvraag_id": "L006",
+      "datum": "2023-08-17",
+      "aanvraagreden": "Beoordeling persisterend verminderde nierfunctie",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Creatinine",
+      "waarde": "118",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Hoog",
+      "conclusie": "Licht verhoogd en passend bij CKD G3a."
+    },
+    {
+      "aanvraag_id": "L006",
+      "datum": "2023-08-17",
+      "aanvraagreden": "Beoordeling persisterend verminderde nierfunctie",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "eGFR",
+      "waarde": "54",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Persisterend G3a-bereik."
+    },
+    {
+      "aanvraag_id": "L006",
+      "datum": "2023-08-17",
+      "aanvraagreden": "Beoordeling persisterend verminderde nierfunctie",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Kalium",
+      "waarde": "4,6",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "3,5-5,0",
+      "afwijking": "Normaal",
+      "conclusie": "Normaal onder losartan."
+    },
+    {
+      "aanvraag_id": "L006",
+      "datum": "2023-08-17",
+      "aanvraagreden": "Beoordeling persisterend verminderde nierfunctie",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Urine albumine/creatinineratio",
+      "waarde": "2,4",
+      "eenheid": "mg/mmol",
+      "referentiewaarde": "<3,0",
+      "afwijking": "Normaal",
+      "conclusie": "Geen relevante albuminurie."
+    },
+    {
+      "aanvraag_id": "L007",
+      "datum": "2024-07-08",
+      "aanvraagreden": "Secundaire preventie en medicatiecontrole na CVA",
+      "episode": "Ischemisch cerebrovasculair accident",
+      "bepaling": "LDL-cholesterol",
+      "waarde": "1,9",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "<1,8",
+      "afwijking": "Hoog",
+      "conclusie": "Net boven secundaire-preventiestreefwaarde."
+    },
+    {
+      "aanvraag_id": "L007",
+      "datum": "2024-07-08",
+      "aanvraagreden": "Secundaire preventie en medicatiecontrole na CVA",
+      "episode": "Atriumfibrilleren",
+      "bepaling": "eGFR",
+      "waarde": "52",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Stabiele G3a; apixabandosering passend."
+    },
+    {
+      "aanvraag_id": "L007",
+      "datum": "2024-07-08",
+      "aanvraagreden": "Secundaire preventie en medicatiecontrole na CVA",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "HbA1c",
+      "waarde": "50",
+      "eenheid": "mmol/mol",
+      "referentiewaarde": "Individuele streefwaarde <53",
+      "afwijking": "Normaal",
+      "conclusie": "Redelijke glucoseregulatie."
+    },
+    {
+      "aanvraag_id": "L008",
+      "datum": "2024-10-07",
+      "aanvraagreden": "Lipidencontrole na CVA",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "LDL-cholesterol",
+      "waarde": "2,0",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "<1,8",
+      "afwijking": "Hoog",
+      "conclusie": "Boven streefwaarde; statine geïntensiveerd."
+    },
+    {
+      "aanvraag_id": "L008",
+      "datum": "2024-10-07",
+      "aanvraagreden": "Lipidencontrole na CVA",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "HDL-cholesterol",
+      "waarde": "1,1",
+      "eenheid": "mmol/L",
+      "referentiewaarde": ">1,0",
+      "afwijking": "Normaal",
+      "conclusie": "HDL acceptabel."
+    },
+    {
+      "aanvraag_id": "L008",
+      "datum": "2024-10-07",
+      "aanvraagreden": "Lipidencontrole na CVA",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "Triglyceriden",
+      "waarde": "1,7",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "<2,0",
+      "afwijking": "Normaal",
+      "conclusie": "Triglyceriden normaal."
+    },
+    {
+      "aanvraag_id": "L008",
+      "datum": "2024-10-07",
+      "aanvraagreden": "Lipidencontrole na CVA",
+      "episode": "Hypercholesterolemie",
+      "bepaling": "ALAT",
+      "waarde": "24",
+      "eenheid": "U/L",
+      "referentiewaarde": "<45",
+      "afwijking": "Normaal",
+      "conclusie": "Geen leverenzymbezwaar tegen statine-intensivering."
+    },
+    {
+      "aanvraag_id": "L009",
+      "datum": "2025-04-14",
+      "aanvraagreden": "Jaarcontrole chronische nierschade en medicatieveiligheid",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Creatinine",
+      "waarde": "121",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Hoog",
+      "conclusie": "Stabiel licht verhoogd."
+    },
+    {
+      "aanvraag_id": "L009",
+      "datum": "2025-04-14",
+      "aanvraagreden": "Jaarcontrole chronische nierschade en medicatieveiligheid",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "eGFR",
+      "waarde": "52",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Stabiele CKD G3a."
+    },
+    {
+      "aanvraag_id": "L009",
+      "datum": "2025-04-14",
+      "aanvraagreden": "Jaarcontrole chronische nierschade en medicatieveiligheid",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Kalium",
+      "waarde": "4,7",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "3,5-5,0",
+      "afwijking": "Normaal",
+      "conclusie": "Normaal onder RAAS-remming."
+    },
+    {
+      "aanvraag_id": "L009",
+      "datum": "2025-04-14",
+      "aanvraagreden": "Jaarcontrole chronische nierschade en medicatieveiligheid",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "Urine albumine/creatinineratio",
+      "waarde": "2,8",
+      "eenheid": "mg/mmol",
+      "referentiewaarde": "<3,0",
+      "afwijking": "Normaal",
+      "conclusie": "Geen verhoogde albuminurie."
+    },
+    {
+      "aanvraag_id": "L010",
+      "datum": "2025-11-10",
+      "aanvraagreden": "Jaarcontrole diabetes en complicatiescreening",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "HbA1c",
+      "waarde": "53",
+      "eenheid": "mmol/mol",
+      "referentiewaarde": "Individuele streefwaarde <53",
+      "afwijking": "Hoog",
+      "conclusie": "Redelijke regulatie op grens van individuele streefwaarde."
+    },
+    {
+      "aanvraag_id": "L010",
+      "datum": "2025-11-10",
+      "aanvraagreden": "Jaarcontrole diabetes en complicatiescreening",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "Nuchtere glucose",
+      "waarde": "7,4",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "4,0-7,0",
+      "afwijking": "Hoog",
+      "conclusie": "Licht verhoogd."
+    },
+    {
+      "aanvraag_id": "L010",
+      "datum": "2025-11-10",
+      "aanvraagreden": "Jaarcontrole diabetes en complicatiescreening",
+      "episode": "Chronische nierschade stadium G3a",
+      "bepaling": "eGFR",
+      "waarde": "51",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Stabiele CKD G3a; metforminedosis passend."
+    },
+    {
+      "aanvraag_id": "L010",
+      "datum": "2025-11-10",
+      "aanvraagreden": "Jaarcontrole diabetes en complicatiescreening",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "Urine albumine/creatinineratio",
+      "waarde": "3,2",
+      "eenheid": "mg/mmol",
+      "referentiewaarde": "<3,0",
+      "afwijking": "Hoog",
+      "conclusie": "Gering verhoogde albuminurie; vervolgen."
+    },
+    {
+      "aanvraag_id": "L011",
+      "datum": "2026-05-18",
+      "aanvraagreden": "Bloeddruk- en nierfunctiecontrole",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Creatinine",
+      "waarde": "123",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Hoog",
+      "conclusie": "Passend bij bekende CKD G3a."
+    },
+    {
+      "aanvraag_id": "L011",
+      "datum": "2026-05-18",
+      "aanvraagreden": "Bloeddruk- en nierfunctiecontrole",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "eGFR",
+      "waarde": "50",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "Stabiele nierfunctie vóór losartanverhoging."
+    },
+    {
+      "aanvraag_id": "L011",
+      "datum": "2026-05-18",
+      "aanvraagreden": "Bloeddruk- en nierfunctiecontrole",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Kalium",
+      "waarde": "4,5",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "3,5-5,0",
+      "afwijking": "Normaal",
+      "conclusie": "Geen hyperkaliëmie."
+    },
+    {
+      "aanvraag_id": "L011",
+      "datum": "2026-05-18",
+      "aanvraagreden": "Bloeddruk- en nierfunctiecontrole",
+      "episode": "Diabetes mellitus type 2",
+      "bepaling": "HbA1c",
+      "waarde": "52",
+      "eenheid": "mmol/mol",
+      "referentiewaarde": "Individuele streefwaarde <53",
+      "afwijking": "Normaal",
+      "conclusie": "Diabetes redelijk gereguleerd."
+    },
+    {
+      "aanvraag_id": "L012",
+      "datum": "2026-06-04",
+      "aanvraagreden": "Controle na verhoging losartan naar 100 mg",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Creatinine",
+      "waarde": "126",
+      "eenheid": "µmol/L",
+      "referentiewaarde": "60-110",
+      "afwijking": "Hoog",
+      "conclusie": "Beperkte, acceptabele stijging na dosisverhoging."
+    },
+    {
+      "aanvraag_id": "L012",
+      "datum": "2026-06-04",
+      "aanvraagreden": "Controle na verhoging losartan naar 100 mg",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "eGFR",
+      "waarde": "49",
+      "eenheid": "ml/min/1,73 m²",
+      "referentiewaarde": ">60",
+      "afwijking": "Laag",
+      "conclusie": "G3a, zonder relevante acute achteruitgang."
+    },
+    {
+      "aanvraag_id": "L012",
+      "datum": "2026-06-04",
+      "aanvraagreden": "Controle na verhoging losartan naar 100 mg",
+      "episode": "Essentiële hypertensie",
+      "bepaling": "Kalium",
+      "waarde": "4,7",
+      "eenheid": "mmol/L",
+      "referentiewaarde": "3,5-5,0",
+      "afwijking": "Normaal",
+      "conclusie": "Losartan 100 mg kan worden voortgezet."
+    }
+  ],
+  "samenvatting_periode": "Synthetisch dossier P011, man, geboren 1946-01-31. Bekende hypertensie, dyslipidemie en knieartrose; in 2021 DM2 vastgesteld. Later LUTS, presbyacusis en CKD G3a. Cataract beiderzijds operatief behandeld. In maart 2024 ischemisch CVA met tijdens opname ontdekt paroxismaal AF; apixaban en intensieve lipidenbehandeling gestart. Pneumonie, UWI, actinische keratose en valincident herstelden. Rookt verplicht 1 pakje/dag; alcohol circa 5 eenheden/week. Woont met echtgenote in gelijkvloerse huurwoning, gepensioneerd administratief medewerker; wandelt kort en doet lichte tuinwerkzaamheden. Na CVA geringe linkerhandonhandigheid, buitenshuis stok. Zelfstandig in ADL; echtgenote helpt bij weekdoos en administratie.",
+  "eindstatus": {
+    "peildatum": "2026-08-25",
+    "geboortedatum": "1946-01-31",
+    "leeftijd_op_peildatum": 80,
+    "episode_statussen": [
+      {
+        "volgorde": 1,
+        "episode": "Essentiële hypertensie",
+        "icpc_code": "K86",
+        "startdatum": "2015-06-12",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Chronische hypertensie; na CVA en bij CKD strikter bewaakt. Losartan in 2026 verhoogd met goede respons en acceptabele nierfunctie.",
+        "beleid": "Losartan 100 mg 1dd; RR, orthostase, creatinine en kalium periodiek controleren."
+      },
+      {
+        "volgorde": 2,
+        "episode": "Hypercholesterolemie",
+        "icpc_code": "T93",
+        "startdatum": "2017-03-20",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Dyslipidemie; statine geïntensiveerd na ischemisch CVA.",
+        "beleid": "Atorvastatine 80 mg 1dd, therapietrouw en lipiden bewaken."
+      },
+      {
+        "volgorde": 3,
+        "episode": "Artrose van beide knieën",
+        "icpc_code": "L90",
+        "startdatum": "2019-09-05",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Toenemende bilaterale belastingspijn en mobiliteitsbeperking, zonder inflammatoire kenmerken.",
+        "beleid": "Oefentherapie, bewegen binnen belastbaarheid en paracetamol zo nodig; orale NSAID vermijden."
+      },
+      {
+        "volgorde": 4,
+        "episode": "Diabetes mellitus type 2",
+        "icpc_code": "T90.02",
+        "startdatum": "2021-11-18",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Vastgesteld op herhaald verhoogde glucose en HbA1c; redelijk gereguleerd op lage dosis metformine.",
+        "beleid": "Metformine 500 mg 1dd; POH-S-controles, HbA1c, voeten, ogen, nierfunctie en ACR volgen."
+      },
+      {
+        "volgorde": 6,
+        "episode": "Constitutioneel eczeem",
+        "icpc_code": "S87",
+        "startdatum": "2022-02-07",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Recidiverende milde droge jeukende plaques, reagerend op basiszalf en korte corticosteroïdkuren.",
+        "beleid": "Dagelijks cetomacrogol; triamcinolon alleen als afzonderlijke korte kuur bij opvlamming."
+      },
+      {
+        "volgorde": 7,
+        "episode": "Mictieklachten bij de man",
+        "icpc_code": "Y06",
+        "startdatum": "2022-05-16",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "LUTS passend bij benigne prostaatvergroting, verbeterd op tamsulosine; geen retentie.",
+        "beleid": "Tamsulosine voortzetten en alarmsymptomen volgen."
+      },
+      {
+        "volgorde": 8,
+        "episode": "Cataract beiderzijds",
+        "icpc_code": "F92",
+        "startdatum": "2022-09-12",
+        "einddatum": "2024-05-30",
+        "status": "Afgesloten",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Oogheelkundig beoordeeld; rechteroog in 2023 en linkeroog in 2024 ongecompliceerd geopereerd met verbeterde visus.",
+        "beleid": "Reguliere optiekcontrole en diabetische retinascreening."
+      },
+      {
+        "volgorde": 9,
+        "episode": "Urineweginfectie",
+        "icpc_code": "U71",
+        "startdatum": "2023-01-23",
+        "einddatum": "2023-02-02",
+        "status": "Afgesloten",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Afebriele E. coli-UWI, genezen na kweekpassende ciprofloxacinekuur.",
+        "beleid": "Herbeoordelen bij koorts, retentie of recidief."
+      },
+      {
+        "volgorde": 10,
+        "episode": "Leeftijdsgebonden gehoorverlies",
+        "icpc_code": "H84",
+        "startdatum": "2023-04-17",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Symmetrisch perceptief verlies passend bij presbyacusis.",
+        "beleid": "Hoortoestellen via audicien; herbeoordeling bij asymmetrie of onvoldoende effect."
+      },
+      {
+        "volgorde": 11,
+        "episode": "Chronische nierschade stadium G3a",
+        "icpc_code": "U99.01",
+        "startdatum": "2023-08-21",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Stabiele eGFR circa 49-54, waarschijnlijk vasculair/diabetisch, zonder snelle achteruitgang.",
+        "beleid": "Periodiek eGFR, kalium en ACR; doseringen bewaken, NSAID en dehydratie vermijden."
+      },
+      {
+        "volgorde": 13,
+        "episode": "Actinische keratose",
+        "icpc_code": "S80",
+        "startdatum": "2023-11-06",
+        "einddatum": "2024-01-18",
+        "status": "Afgesloten",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Solitaire hoofdhuidlaesie verdwenen na cryotherapie.",
+        "beleid": "Zonprotectie; terug bij recidief, groei, bloeding of ulceratie."
+      },
+      {
+        "volgorde": 15,
+        "episode": "Ischemisch cerebrovasculair accident",
+        "icpc_code": "K90.03",
+        "startdatum": "2024-03-14",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Acute rechtshemisferische ischemische beroerte met linkszijdige uitval; na revalidatie geringe restklachten.",
+        "beleid": "Secundaire preventie, risicofactorcontrole, apixaban wegens AF en functioneren bewaken."
+      },
+      {
+        "volgorde": 17,
+        "episode": "Atriumfibrilleren",
+        "icpc_code": "K78",
+        "startdatum": "2024-03-25",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Ja",
+        "samenvatting_beloop": "Paroxismaal AF tijdens CVA-opname vastgesteld als waarschijnlijke emboliebron.",
+        "beleid": "Apixaban 5 mg 2dd; nierfunctie, pols en bloedingen controleren."
+      },
+      {
+        "volgorde": 18,
+        "episode": "Pneumonie",
+        "icpc_code": "R81",
+        "startdatum": "2025-01-09",
+        "einddatum": "2025-02-03",
+        "status": "Afgesloten",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Thuis behandelde pneumonie, klinisch genezen na amoxicilline.",
+        "beleid": "Geen actief beleid; rookstop blijft aanbevolen."
+      },
+      {
+        "volgorde": 19,
+        "episode": "Valincident zonder fractuur",
+        "icpc_code": "A80",
+        "startdatum": "2025-07-22",
+        "einddatum": "2025-08-05",
+        "status": "Afgesloten",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Mechanische val met kneuzingen, zonder hoofdletsel of fractuur; volledig hersteld.",
+        "beleid": "Valpreventie, goede schoenen, stok buitenshuis en balansadviezen."
+      },
+      {
+        "volgorde": 20,
+        "episode": "Obstipatie",
+        "icpc_code": "D12",
+        "startdatum": "2026-02-12",
+        "einddatum": "",
+        "status": "Actief",
+        "attentiewaarde": "Nee",
+        "samenvatting_beloop": "Functionele obstipatie bij minder bewegen en drinken, zonder alarmsymptomen.",
+        "beleid": "Vocht, vezels en bewegen; macrogol zo nodig, herbeoordeling bij alarmsymptomen."
+      }
+    ],
+    "medicatiehistorie": [
+      {
+        "geneesmiddel": "Losartan",
+        "sterkte": "50 mg",
+        "dosering": "1dd1",
+        "indicatie": "Essentiële hypertensie",
+        "startdatum": "2015-06-12",
+        "einddatum": "2026-05-21",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Losartan",
+        "sterkte": "100 mg",
+        "dosering": "1dd1",
+        "indicatie": "Essentiële hypertensie",
+        "startdatum": "2026-05-21",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Simvastatine",
+        "sterkte": "20 mg",
+        "dosering": "1dd1 's avonds",
+        "indicatie": "Hypercholesterolemie",
+        "startdatum": "2017-03-20",
+        "einddatum": "2021-10-07",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Simvastatine",
+        "sterkte": "40 mg",
+        "dosering": "1dd1 's avonds",
+        "indicatie": "Hypercholesterolemie",
+        "startdatum": "2021-10-07",
+        "einddatum": "2024-03-22",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Paracetamol",
+        "sterkte": "500 mg",
+        "dosering": "2 tabletten tot 3dd zo nodig",
+        "indicatie": "Artrose van beide knieën",
+        "startdatum": "2021-10-28",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Metformine",
+        "sterkte": "500 mg",
+        "dosering": "1dd1 bij avondeten",
+        "indicatie": "Diabetes mellitus type 2",
+        "startdatum": "2021-11-18",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Cetomacrogolzalf",
+        "sterkte": "zonder parfum",
+        "dosering": "1-2dd en na wassen",
+        "indicatie": "Constitutioneel eczeem",
+        "startdatum": "2022-02-07",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Triamcinolonacetonide zalf",
+        "sterkte": "0,1%",
+        "dosering": "1dd gedurende 7 dagen",
+        "indicatie": "Constitutioneel eczeem",
+        "startdatum": "2022-02-07",
+        "einddatum": "2022-02-13",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Triamcinolonacetonide zalf",
+        "sterkte": "0,1%",
+        "dosering": "1dd gedurende maximaal 7 dagen",
+        "indicatie": "Constitutioneel eczeem",
+        "startdatum": "2023-03-09",
+        "einddatum": "2023-03-15",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Tamsulosine",
+        "sterkte": "0,4 mg",
+        "dosering": "1dd1 na avondeten",
+        "indicatie": "Mictieklachten bij de man",
+        "startdatum": "2022-05-16",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Ciprofloxacine",
+        "sterkte": "500 mg",
+        "dosering": "2dd1 gedurende 7 dagen",
+        "indicatie": "Urineweginfectie",
+        "startdatum": "2023-01-23",
+        "einddatum": "2023-01-29",
+        "status": "Eenmalig"
+      },
+      {
+        "geneesmiddel": "Apixaban",
+        "sterkte": "5 mg",
+        "dosering": "2dd1",
+        "indicatie": "Atriumfibrilleren na ischemisch CVA",
+        "startdatum": "2024-03-22",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Atorvastatine",
+        "sterkte": "40 mg",
+        "dosering": "1dd1",
+        "indicatie": "Secundaire preventie na ischemisch CVA",
+        "startdatum": "2024-03-22",
+        "einddatum": "2024-10-10",
+        "status": "Gestopt"
+      },
+      {
+        "geneesmiddel": "Atorvastatine",
+        "sterkte": "80 mg",
+        "dosering": "1dd1",
+        "indicatie": "Hypercholesterolemie en secundaire preventie na CVA",
+        "startdatum": "2024-10-10",
+        "einddatum": "",
+        "status": "Actief"
+      },
+      {
+        "geneesmiddel": "Amoxicilline",
+        "sterkte": "500 mg",
+        "dosering": "3dd1 gedurende 7 dagen",
+        "indicatie": "Pneumonie",
+        "startdatum": "2025-01-09",
+        "einddatum": "2025-01-15",
+        "status": "Eenmalig"
+      },
+      {
+        "geneesmiddel": "Macrogol",
+        "sterkte": "13,7 g",
+        "dosering": "1 sachet 1dd zo nodig",
+        "indicatie": "Obstipatie",
+        "startdatum": "2026-02-12",
+        "einddatum": "",
+        "status": "Actief"
+      }
+    ],
+    "allergieen": [],
+    "laatste_relevante_labwaarden": [
+      {
+        "bepaling": "Creatinine",
+        "waarde": "126",
+        "eenheid": "µmol/L",
+        "datum": "2026-06-04"
+      },
+      {
+        "bepaling": "eGFR",
+        "waarde": "49",
+        "eenheid": "ml/min/1,73 m²",
+        "datum": "2026-06-04"
+      },
+      {
+        "bepaling": "Kalium",
+        "waarde": "4,7",
+        "eenheid": "mmol/L",
+        "datum": "2026-06-04"
+      },
+      {
+        "bepaling": "HbA1c",
+        "waarde": "52",
+        "eenheid": "mmol/mol",
+        "datum": "2026-05-18"
+      },
+      {
+        "bepaling": "Urine albumine/creatinineratio",
+        "waarde": "3,2",
+        "eenheid": "mg/mmol",
+        "datum": "2025-11-10"
+      },
+      {
+        "bepaling": "LDL-cholesterol",
+        "waarde": "2,0",
+        "eenheid": "mmol/L",
+        "datum": "2024-10-07"
+      }
+    ],
+    "openstaande_verwijstrajecten": [],
+    "openstaande_vervolgacties": [
+      "Periodieke CVRM-, diabetes- en nierfunctiecontrole",
+      "Bloedingsrisico en nierfunctie bij apixaban bewaken",
+      "Diabetische oogscreening voortzetten",
+      "Rookstop blijven bespreken"
+    ],
+    "functionele_en_sociale_context": "Fictieve patiënt P011, formeel geslacht man. Rookt 1 pakje per dag; alcohol circa 5 eenheden per week. Vader had diabetes en myocardinfarct rond 68 jaar. Woont met echtgenote in gelijkvloerse huurwoning. Gepensioneerd administratief medewerker; korte wandelingen en lichte tuinwerkzaamheden. Zelfstandig in ADL, echtgenote helpt met weekdoos en administratie. Na CVA geringe onhandigheid linkerhand; gebruikt buitenshuis een stok. Knieartrose beperkt traplopen.",
+    "samenvatting_tot_dusver": "80-jarige man met multimorbiditeit: hypertensie, dyslipidemie, DM2, stabiele CKD G3a en knieartrose. In 2024 ischemisch CVA door waarschijnlijk paroxismaal AF, met goed functioneel herstel; blijvend apixaban en intensieve statine. Cataract beiderzijds succesvol geopereerd. UWI, actinische keratose, pneumonie en valincident afgesloten. Actief beleid richt zich op cardiovasculaire secundaire preventie, nierfunctiebewaking, diabeteszorg, mobiliteit en rookstop."
+  }
+}

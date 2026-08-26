@@ -1,0 +1,22 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "Pneumonie start volgens het ontwerp op 2025-02-10, maar C022 op die datum betreft alleen hypertensie. Er ontbreekt een contact waarin de pneumonie wordt vastgesteld en behandeld.",
+    "Het valincident moet op 2025-09-01 worden afgesloten, maar C026 betreft uitsluitend chronische nierschade. Herstel of afsluiting van het valincident is alleen in de samenvatting genoemd.",
+    "C021 bevat ten onrechte een tweede ontslagbrief bij dezelfde acute CVA-opname. Het acute traject hoort één ontslagbrief te hebben; die staat al bij C020.",
+    "C024 noemt een specialistenbrief zonder voorafgaande reguliere verwijsbrief en zonder duidelijk specialistisch traject."
+  ],
+  "waarschuwingen": [
+    "C013-C014 is als regulier specialistisch traject gemarkeerd, maar de kerntekst beschrijft beoordeling en toestelverstrekking door een audicien. Dit is doorgaans geen specialistenbrieftraject.",
+    "C022 en C026 zijn sjabloonmatig en bevatten onvoldoende concrete bevindingen of uitslagen voor de genoemde controles.",
+    "C011 formuleert 'gerichte antibioticakuur' terwijl de kweek pas later bekend is. Maak onderscheid tussen empirische start en eventuele aanpassing op gevoeligheid."
+  ],
+  "herstelinstructies": [
+    "Vervang of herbestem C022 tot een pneumoniecontact met diagnostische bevindingen, antibioticabeleid en veiligheidsnet; behoud C023 als herstel- en afsluitcontact.",
+    "Maak C026 een nacontrole van het valincident met aantoonbaar herstel en afsluiting op 2025-09-01; plan niercontrole elders indien nodig.",
+    "Verwijder 'Ontslagbrief' uit C021 en gebruik dit contact uitsluitend voor opvolging van de reeds bij C020 verwerkte opnamebrief.",
+    "Verwijder de specialistenbrief uit C024, tenzij een volledig regulier traject met eerdere huisartsverwijzing en latere retourbrief wordt gepland.",
+    "Maak C013-C014 een niet-specialistisch audicienstraject, of beschrijf een echte KNO-verwijzing met gekoppelde latere specialistenbrief.",
+    "Formuleer bij C011 empirische antibiotische behandeling na afname van de kweek en leg bij C012 vast dat de uitslag gevoelig was en geen aanpassing vereiste, of welke gerichte wijziging plaatsvond."
+  ]
+}

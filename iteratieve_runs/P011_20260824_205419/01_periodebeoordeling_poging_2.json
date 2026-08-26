@@ -1,0 +1,17 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De leeftijd is intern inconsistent met de patiëntinstelling: bij een dossierduur van 20 jaar en ingestelde eindleeftijd 80 hoort patiënt in 2011 circa 65 jaar te zijn, maar C017 noemt hem in 2009 van ‘jongere leeftijd’ terwijl de voorgeschreven lagere HbA1c-streefwaarde hiermee wordt gemotiveerd. Dit is klinisch onjuist en strijdig met de vastgelegde leeftijdscontext."
+  ],
+  "waarschuwingen": [
+    "Bij C002 wordt creatinine/kalium na start enalapril gepland, maar C003 vermeldt de beschikbare uitslagen van 2006-09-19 niet; de uitslagen staan alleen in de laboratoriumlijst.",
+    "Bij C019 is de paracetamolinstructie dubbelzinnig: maximaal 3 g/dag zo nodig, maar bij langdurig gebruik maximaal 2 g/dag. Dit vraagt een duidelijker doseerschema.",
+    "Een fysiotherapeut wordt in de correspondentie als specialist behandeld; inhoudelijk is het traject wel consistent.",
+    "De lege allergielijst in automatische modus is mogelijk, maar er staat niet expliciet ‘geen bekende allergieën’ in het journaal."
+  ],
+  "herstelinstructies": [
+    "Verwijder ‘gezien jongere leeftijd’ uit C017 en L011. Motiveer medicatiestart met persisterende hyperglykemie, overgewicht en hoog cardiovasculair risico, of handhaaf bij HbA1c 53 aanvankelijk leefstijlbeleid.",
+    "Verwerk de ACE-remmercontrole van 2006-09-19 kort in de O-regel van C003.",
+    "Formuleer paracetamol eenduidig, bijvoorbeeld 1000 mg zo nodig tot maximaal 3 keer per dag, met herbeoordeling bij structureel gebruik."
+  ]
+}

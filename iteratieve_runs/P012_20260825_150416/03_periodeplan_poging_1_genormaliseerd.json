@@ -1,0 +1,440 @@
+{
+  "bloknummer": 3,
+  "startdatum": "2016-08-25",
+  "einddatum": "2021-08-24",
+  "aantal_deelcontacten": 35,
+  "contacten": [
+    {
+      "contact_id": "C070",
+      "datum": "2016-09-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Beoordelen herhaald verminderde nierfunctie.",
+      "kerngebeurtenis": "Herhaalbepaling toont eGFR 57 met geringe albuminurie; chronische nierschade G3a geregistreerd en NSAID-vermijding vastgelegd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C071",
+      "datum": "2016-10-07",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Kwartaalcontrole diabetes en nierfunctie.",
+      "kerngebeurtenis": "HbA1c blijft rond 52 mmol/mol; voetonderzoek normaal. Metformine 500 mg 2dd1 gecontinueerd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C072",
+      "datum": "2016-12-02",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Bloeddrukcontrole na registratie nierschade.",
+      "kerngebeurtenis": "Bloeddruk acceptabel; lisinopril en hydrochloorthiazide ongewijzigd voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C073",
+      "datum": "2017-01-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Beoordelen toegenomen knieklachten.",
+      "kerngebeurtenis": "Belastingpijn rechts meer dan links zonder inflammatoire tekenen; fysiotherapie hervat en paracetamol gecontinueerd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C074",
+      "datum": "2017-03-17",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse lipiden- en bijwerkingencontrole.",
+      "kerngebeurtenis": "LDL 2,3 mmol/L zonder spierklachten; simvastatine 20 mg gecontinueerd en rookstop besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C075",
+      "datum": "2017-06-02",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "klinisch_doel": "Beoordelen ruwe zonbeschadigde huidafwijkingen.",
+      "kerngebeurtenis": "Meerdere klinisch passende actinische keratosen op kale hoofdhuid en slaap; cryotherapie van afzonderlijke laesies en zonadvies.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    },
+    {
+      "contact_id": "C076",
+      "datum": "2017-08-18",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes.",
+      "kerngebeurtenis": "HbA1c 51 mmol/mol, voetstatus normaal en albuminurie gering; behandeling ongewijzigd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C077",
+      "datum": "2017-09-08",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Evalueren stabiliteit van G3a-nierschade.",
+      "kerngebeurtenis": "eGFR 56 en kalium normaal; geen snelle progressie, jaarlijkse controle afgesproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C078",
+      "datum": "2017-10-13",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Behandelen milde exacerbatie onderbenen.",
+      "kerngebeurtenis": "Droog erythemateus eczeem zonder infectie; hydrocortisonacetaat 1% zeven dagen naast cetomacrogol.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C079",
+      "datum": "2017-11-24",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "klinisch_doel": "Controleren resterende veldschade.",
+      "kerngebeurtenis": "Enkele resterende ruwe plekjes; veldbehandeling met fluorouracilcrème gestart met gebruiksinstructie.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C080",
+      "datum": "2018-01-12",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Periodieke bloeddrukcontrole.",
+      "kerngebeurtenis": "Bloeddruk binnen individuele streefwaarde; antihypertensiva ongewijzigd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C081",
+      "datum": "2018-02-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Actinische keratose",
+      "klinisch_doel": "Nacontrole na veldbehandeling en afsluiting.",
+      "kerngebeurtenis": "Behandelde laesies klinisch verdwenen; fluorouracil gestopt, episode afgesloten met zonprotectie- en terugkomadvies.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C082",
+      "datum": "2018-04-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Evalueren benigne prostaatsymptomen.",
+      "kerngebeurtenis": "Nycturie tweemaal en redelijke straal, zonder hematurie of retentie; tamsulosine gecontinueerd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C083",
+      "datum": "2018-07-06",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Diabetescontrole met voetonderzoek.",
+      "kerngebeurtenis": "HbA1c 53 mmol/mol, voeten intact en geen hypoglykemieën; metformine ongewijzigd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C084",
+      "datum": "2018-09-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Jaarlijkse nierfunctiebewaking.",
+      "kerngebeurtenis": "eGFR 55, kalium 4,7 mmol/L en geringe albuminurie; nierfunctie stabiel, medicatiedoseringen passend.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C085",
+      "datum": "2018-11-09",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "CVRM- en lipidencontrole.",
+      "kerngebeurtenis": "LDL 2,4 mmol/L en statine goed verdragen; simvastatine voortgezet en rookstop opnieuw besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C086",
+      "datum": "2019-01-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Beoordelen toenemende loopbeperking.",
+      "kerngebeurtenis": "Kortere loopafstand en moeite met traplopen; oefentherapie geïntensiveerd, stok geadviseerd en NSAID's afgeraden.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C087",
+      "datum": "2019-03-22",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Bloeddrukcontrole binnen CVRM.",
+      "kerngebeurtenis": "Bloeddruk licht verhoogd bij eerste meting maar acceptabel bij herhaling; huidig beleid gehandhaafd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C088",
+      "datum": "2019-05-17",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Beoordelen geleidelijke achteruitgang ondanks hoortoestellen.",
+      "kerngebeurtenis": "Geen asymmetrie, pijn of cerumen; verwezen naar audiologisch centrum voor herbeoordeling en aanpassing.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C089",
+      "datum": "2019-07-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Verwerken audiologische beoordeling.",
+      "kerngebeurtenis": "Retourbrief meldt symmetrisch perceptief verlies; hoortoestellen bijgesteld met functionele verbetering, controle via audicien.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C090",
+      "datum": "2019-08-23",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes en complicatiescreening.",
+      "kerngebeurtenis": "HbA1c 52 mmol/mol, voetonderzoek normaal en oogscreening zonder diabetische retinopathie; metformine voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C091",
+      "datum": "2019-09-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Beoordelen jaarlijkse nieruitslagen.",
+      "kerngebeurtenis": "eGFR 53 met stabiel kalium en geringe albuminurie; G3a zonder relevante progressie.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C092",
+      "datum": "2019-11-15",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Behandelen recidief handeczeem.",
+      "kerngebeurtenis": "Mild fissurair handeczeem zonder infectie; korte kuur hydrocortisonacetaat 1% en intensiever emolliensgebruik.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C093",
+      "datum": "2020-01-24",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Controle mictiepatroon en medicatie.",
+      "kerngebeurtenis": "Klachten stabiel onder tamsulosine, zonder infectietekenen, hematurie of retentie; beleid voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C094",
+      "datum": "2020-03-06",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse lipidencontrole.",
+      "kerngebeurtenis": "LDL 2,2 mmol/L zonder statinebijwerkingen; simvastatine gecontinueerd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C095",
+      "datum": "2020-05-29",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Telefonisch",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Tussentijdse diabetescontrole op afstand.",
+      "kerngebeurtenis": "Thuismetingen en leefpatroon stabiel, geen hypo- of hyperglykemische klachten; laboratoriumcontrole uitgesteld en medicatie voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C096",
+      "datum": "2020-07-17",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Evalueren verdere mobiliteitsafname.",
+      "kerngebeurtenis": "Pijn en stijfheid beperken langere wandelingen; paracetamol op vaste belastingsdagen en nieuwe fysiotherapieperiode afgesproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C097",
+      "datum": "2020-09-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Chronische nierschade stadium G3a",
+      "klinisch_doel": "Jaarlijkse nierfunctiebewaking en medicatiecheck.",
+      "kerngebeurtenis": "eGFR 51, kalium normaal en albuminurie gering; metformine en lisinopril kunnen in huidige dosering worden voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C098",
+      "datum": "2020-11-13",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Bloeddrukcontrole bij chronische nierschade.",
+      "kerngebeurtenis": "Bloeddruk acceptabel zonder orthostatische klachten; lisinopril 20 mg en hydrochloorthiazide 25 mg voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C099",
+      "datum": "2021-01-22",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Herbeoordelen licht toegenomen nycturie.",
+      "kerngebeurtenis": "Nycturie driemaal maar geen retentie, hematurie of infectie; tamsulosine voortgezet en alarmsymptomen besproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C100",
+      "datum": "2021-03-19",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes met nier- en voetscreening.",
+      "kerngebeurtenis": "HbA1c 54 mmol/mol, voetonderzoek zonder afwijkingen en albuminurie gering; metformine ongewijzigd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C101",
+      "datum": "2021-04-16",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Lipidencontrole en cardiovasculaire leefstijlbegeleiding.",
+      "kerngebeurtenis": "LDL 2,3 mmol/L, geen bijwerkingen; simvastatine voortgezet en rookstop gemotiveerd besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C102",
+      "datum": "2021-05-28",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Functionele evaluatie bij toenemende loopbeperking.",
+      "kerngebeurtenis": "Zelfstandig maar beperkt bij langere afstanden; wandelstok helpt, fysiotherapie en paracetamol gecontinueerd, nog geen wens tot orthopedische verwijzing.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C103",
+      "datum": "2021-07-09",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Bloeddrukcontrole voorafgaand aan jaarcontrole.",
+      "kerngebeurtenis": "Bloeddruk binnen afgesproken streefgebied; geen duizeligheid, antihypertensieve behandeling ongewijzigd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C104",
+      "datum": "2021-08-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Gecombineerde CVRM-controle en medicatiebeoordeling.",
+      "kerngebeurtenis": "Bloeddruk stabiel en nierfunctie passend bij bekende G3a; lisinopril en hydrochloorthiazide voortgezet, rookstop en jaarlijkse controle afgesproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    }
+  ],
+  "samenvatting_gepland_beloop": "In dit blok wordt persisterende eGFR-daling als chronische nierschade G3a geregistreerd en vervolgens stabiel vervolgd. Diabetes, bloeddruk en lipiden blijven redelijk ingesteld onder gecombineerd CVRM-beleid. Knieartrose veroorzaakt geleidelijk meer loopbeperking maar blijft conservatief behandeld. Hoortoestellen worden na audiologische herbeoordeling bijgesteld. Actinische keratosen verdwijnen na cryotherapie en veldbehandeling en worden op 2018-02-16 afgesloten."
+}

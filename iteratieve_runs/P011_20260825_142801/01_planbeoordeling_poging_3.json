@@ -1,0 +1,17 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "Pneumonie start op 2025-02-10, maar C022 op die datum betreft alleen hypertensie. Er ontbreekt een contact waarin de pneumonie wordt vastgesteld en antibiotica wordt gestart; C023 beschrijft uitsluitend herstel na een niet-gepland startcontact.",
+    "Valincident start op 2025-08-04, maar C025 betreft alleen knieartrose. Er ontbreekt een acuut contact met letsel-/neurologische beoordeling, waarna C026 herstel en afsluiting beschrijft."
+  ],
+  "waarschuwingen": [
+    "C022 en C025 bevatten generieke blauwdruktekst in plaats van een concrete klinische gebeurtenis.",
+    "C029 noemt laboratorium bij LUTS zonder te specificeren welk urine- of ander onderzoek wordt verricht."
+  ],
+  "herstelinstructies": [
+    "Maak C022 op 2025-02-10 het initiële pneumoniecontact met klachten, vitale parameters/longbevindingen, diagnose, passend antibioticum en veiligheidsnet; behoud C023 als herstelcontact.",
+    "Maak C025 op 2025-08-04 het acute valcontact met toedracht, letsel- en neurologische beoordeling, orthostase/medicatie-evaluatie en valpreventiebeleid; behoud C026 als nacontrole en afsluiting.",
+    "Plan zo nodig de knieartrose- en hypertensiecontrole op andere contacten zonder het totaal van 30 te overschrijden.",
+    "Specificeer bij C029 het geïndiceerde onderzoek, bijvoorbeeld urineonderzoek ter uitsluiting van infectie."
+  ]
+}

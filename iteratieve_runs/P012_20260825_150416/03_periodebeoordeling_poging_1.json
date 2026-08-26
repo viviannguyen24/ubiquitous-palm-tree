@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "De medicatielijst van het blok bevat alleen nieuw voorgeschreven middelen en niet de actuele chronische medicatie, terwijl om een volledige medicatielijst wordt gevraagd. De volledige actuele medicatie staat wel correct in de eindstatus.",
+    "Bij eGFR 57 op 2016-09-16 is chroniciteit nog niet uitsluitend op basis van deze ene waarde aangetoond; de voorafgaande eGFR was 61. De geringe albuminurie kan nierschade ondersteunen, maar was eveneens nog niet aantoonbaar persisterend."
+  ],
+  "herstelinstructies": [
+    "Neem in de medicatielijst van het blok ook alle actuele chronische medicatie op: lisinopril, hydrochloorthiazide, simvastatine, metformine, tamsulosine, paracetamol en cetomacrogol.",
+    "Onderbouw de diagnose chronische nierschade op 2016-09-16 met een eerdere afwijkende bepaling/ander bewijs van nierschade, of registreer deze pas na bevestiging na ten minste drie maanden."
+  ]
+}

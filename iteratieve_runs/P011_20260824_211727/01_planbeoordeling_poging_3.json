@@ -1,0 +1,19 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "C018 en C019 bevatten specialistenbrieven op 2024-04-09, dezelfde datum als de acute CVA-opname. Een specialistenbrief moet een latere datum hebben dan de bijbehorende verwijzing; bovendien ontbreekt hier een voorafgaande verwijsbrief van de huisarts. Dit kan niet als regulier verwijstraject worden uitgewerkt.",
+    "De episode Cataract beiderzijds eindigt op 2024-06-18 na succesvolle operaties, maar het plan bevat na de operatieplanning in 2023 geen contact of specialistenbrief waarin operaties, resultaat en afsluiting worden vastgelegd. C021 op de einddatum betreft alleen hypercholesterolemie."
+  ],
+  "waarschuwingen": [
+    "C010 noemt een verwijsbrief voor fysiotherapie. Een reguliere eerstelijnsverwijzing naar fysiotherapie vereist doorgaans geen bijbehorende specialistenbrief; dit past niet goed bij het voorgeschreven specialistische correspondentietraject.",
+    "C017 behandelt actinische keratose op 2023-11-14, maar de geplande afsluiting op 2024-01-16 wordt niet door een herbeoordelingscontact ondersteund.",
+    "De pneumonie eindigt gepland op 2025-02-10 en het valincident op 2025-07-01, maar voor beide ontbreekt een herstelcontact op of rond de einddatum.",
+    "C018 en C019 kunnen hetzelfde ziekenhuisbericht betreffen; twee afzonderlijke specialistenbrieven op dezelfde datum zouden onnodige duplicatie geven."
+  ],
+  "herstelinstructies": [
+    "Verwerk de ziekenhuiscorrespondentie rond CVA en atriumfibrilleren als ontvangen ontslag-/specialistenbrief op een datum na opname, gekoppeld aan één geldige voorafgaande huisartsverwijzing, of verwijder de formele trajectaanduiding als het een acute zelfverwijzing/ambulanceopname betreft.",
+    "Voeg uiterlijk 2024-06-18 een cataractcontact met latere oogartsbrief toe waarin beide operaties, goed herstel en afsluiting zijn vastgelegd; verschuif of combineer zo nodig een bestaand contact om op 30 contacten te blijven.",
+    "Verwijder bij C010 de formele verwijsbrief, tenzij een specialistisch traject met passende retourbrief wordt gepland.",
+    "Leg de afsluiting van actinische keratose, pneumonie en valincident vast in een passend vervolgcontact, of pas de einddatums aan naar aantoonbaar herstel binnen bestaande contacten."
+  ]
+}

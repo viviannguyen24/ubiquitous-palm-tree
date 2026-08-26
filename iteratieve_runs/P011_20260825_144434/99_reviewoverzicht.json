@@ -1,0 +1,49 @@
+{
+  "planbeoordelingen": [
+    {
+      "goedgekeurd": false,
+      "kritieke_fouten": [
+        "Cataract heeft op 2022-09-12 een verwijsbrief en op 2024-05-30 een specialistenbrief, maar die retourbrief valt ruim buiten een aannemelijk regulier traject en er ontbreken contacten over beoordeling, operaties en nacontrole.",
+        "De episode 'Valincident zonder fractuur' eindigt volgens het ontwerp op 2025-08-05, maar er is rond die datum geen herstel-, nacontrole- of afsluitcontact; alleen het eerste contact op 2025-07-22 staat gepland."
+      ],
+      "waarschuwingen": [],
+      "herstelinstructies": [
+        "Voeg binnen het cataracttraject tijdig een specialistenbrief na de verwijzing toe en plan de operatieve vervolgstappen logisch; gebruik zo nodig een afzonderlijke latere oogheelkundige brief voor afronding van het tweede oog en afsluiting op 2024-05-30.",
+        "Voeg rond 2025-08-05 een contact toe waarin herstel, afwezigheid van fractuurcomplicaties, valpreventie en afsluiting van het valincident worden vastgelegd."
+      ]
+    }
+  ],
+  "periodebeoordelingen": [
+    {
+      "goedgekeurd": false,
+      "kritieke_fouten": [
+        "De apixaban-start is intern gedateerd op 2024-03-25, terwijl de ontslagbrief van 2024-03-22 expliciet vermeldt dat apixaban bij ontslag al was gestart. Medicatielijst, journaal en correspondentie spreken elkaar chronologisch tegen."
+      ],
+      "waarschuwingen": [
+        "De telefonische evaluatie van 2025-08-05 en afsluiting van het valincident zijn in de P-regel van het consult van 2025-07-22 achteraf verwerkt, in plaats van als afzonderlijk chronologisch deelcontact.",
+        "Na verhoging van losartan zijn de controlewaarden van 2026-06-04 wel opgenomen, maar verwerking of terugkoppeling van deze uitslag ontbreekt in het journaal.",
+        "Triamcinolon staat blijvend actief terwijl het beleid alleen korte kuren bij opvlammingen beschrijft; een zo-nodigstatus of afzonderlijke kuurregistraties zouden duidelijker zijn.",
+        "Bij de cataractoperaties ontbreken correspondentie of journaalcontacten rond de feitelijke operatieve besluitvorming en de eerste operatie; de definitieve brief vat dit achteraf samen."
+      ],
+      "herstelinstructies": [
+        "Laat apixaban en atorvastatine starten op de werkelijke ontslagdatum uit de ontslagbrief, of pas de briefdatum/tekst en het journaal consequent aan.",
+        "Registreer de evaluatie van 2025-08-05 als afzonderlijk SOEP-contact en sluit daar de episode af.",
+        "Voeg een uitslagcontact toe voor de controle na losartanverhoging, met besluit tot voortzetten van 100 mg.",
+        "Registreer triamcinolon als zo nodig/intermitterend of als afzonderlijke afgesloten kuren.",
+        "Voeg zo nodig een oogheelkundige vervolgbrief of administratief contact toe rond operatieplanning en de eerste ingreep."
+      ]
+    }
+  ],
+  "eindbeoordeling": {
+    "goedgekeurd": false,
+    "kritieke_fouten": [
+      "Datumconflict rond CVA-opname: de ontslagbrief is gedateerd 2024-03-22, terwijl atriumfibrilleren volgens episode- en medicatiehistorie pas op 2024-03-25 tijdens diezelfde opname is vastgesteld en behandeld. Een ontslagbrief kan niet vóór deze opnamebevinding en medicatiestart liggen."
+    ],
+    "waarschuwingen": [
+      "Na verhoging van losartan op 2026-05-21 zijn nierfunctie en kalium op 2026-06-04 gecontroleerd, maar bloeddruk- en orthostasecontrole staan op 2026-08-25 nog open; opvolging verdient expliciete planning.",
+      "Apixaban 5 mg 2dd kan passend zijn bij eGFR 46, maar periodieke controle van gewicht, nierfunctie en bloedingsrisico blijft nodig voor dosisvalidatie.",
+      "De formulering 'rookt verplicht 1 pakje per dag' is onnatuurlijk; vermoedelijk wordt bedoeld dat deze handmatig opgegeven rookstatus verplicht moest worden gevolgd."
+    ],
+    "samenvatting": "Het dossier is grotendeels consistent, maar het tijdsverloop van de acute CVA-opname, AF-diagnose, apixabanstart en ontslagbrief bevat een kritieke chronologische fout."
+  }
+}

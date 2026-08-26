@@ -1,0 +1,15 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "C065 bevat een nieuwe specialistenbrief zonder bijbehorende verwijsbrief binnen hetzelfde traject. De verwijsbrief C061 is al gekoppeld aan de specialistenbrief C062; een regulier traject mag niet nog een tweede specialistenbrief bevatten."
+  ],
+  "waarschuwingen": [
+    "C047 vermeldt beoordeling door de huisarts op dezelfde dag, maar het eerstvolgende geplande huisartscontact is pas op 2013-08-12. Maak duidelijk of op 2013-08-09 daadwerkelijk huisartsbeoordeling plaatsvindt of dat veilig op de kweekuitslag wordt gewacht.",
+    "C035 noemt laboratorium zonder duidelijk te maken welk onderzoek of welk klinisch doel dit bij de mictieklachten heeft."
+  ],
+  "herstelinstructies": [
+    "Maak voor de postoperatieve terugrapportage op 2015-11-27 een afzonderlijk regulier traject met een passende huisartsverwijzing en één latere specialistenbrief, of verwerk de uitkomst zonder nieuwe correspondentie op basis van reeds ontvangen oogheelkundige informatie. Behoud rond 2015-11-27 aantoonbare afsluiting van de cataractepisode.",
+    "Stem C047 af op C048: voeg zo nodig een huisartsdeelcontact op 2013-08-09 toe, of wijzig de tekst zodat geen niet-gepland huisartscontact wordt gesuggereerd.",
+    "Specificeer bij C035 beknopt het relevante urineonderzoek en doel, bijvoorbeeld uitsluiten van infectie of hematurie."
+  ]
+}

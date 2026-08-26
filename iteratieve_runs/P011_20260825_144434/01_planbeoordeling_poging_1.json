@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": false,
+  "kritieke_fouten": [
+    "De episode ‘Valincident zonder fractuur’ eindigt volgens het ontwerp op 2025-08-05, maar na het eerste contact op 2025-07-22 ontbreekt een contact rond de einddatum waarin herstel, nacontrole of afsluiting kan worden uitgewerkt.",
+    "Bij C019 is opnieuw een ‘Ontslagbrief’ gepland voor dezelfde acute CVA-opname, terwijl C017 al de ontslagbrief van die opname verwerkt. Een acute opname hoort één ontslagbrief met één traject-ID te hebben."
+  ],
+  "waarschuwingen": [],
+  "herstelinstructies": [
+    "Voeg rond 2025-08-05 een nacontact toe voor herstel en afsluiting van het valincident, of vervang/verplaats een bestaand contact zonder het totaal van 30 deelcontacten te wijzigen.",
+    "Verwijder ‘Ontslagbrief’ uit C019 en behoud dit als regulier nazorgcontact. Laat de enige ontslagbrief bij C017 staan en daarin zowel het CVA als het tijdens dezelfde opname ontdekte atriumfibrilleren beschrijven."
+  ]
+}

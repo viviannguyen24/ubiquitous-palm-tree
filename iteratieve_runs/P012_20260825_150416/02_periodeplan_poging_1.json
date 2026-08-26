@@ -1,0 +1,466 @@
+{
+  "bloknummer": 2,
+  "startdatum": "2011-08-25",
+  "einddatum": "2016-08-24",
+  "aantal_deelcontacten": 37,
+  "contacten": [
+    {
+      "contact_id": "C033",
+      "datum": "2011-09-09",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Periodieke diabetescontrole inclusief voetonderzoek en rookstatus.",
+      "kerngebeurtenis": "Redelijke glucoseregulatie; voeten intact. HbA1c, nierfunctie, kalium en urine-albuminurie aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C034",
+      "datum": "2011-09-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Beoordelen bloeddruk en laboratorium na diabetescontrole.",
+      "kerngebeurtenis": "Bloeddruk en nierfunctie stabiel onder lisinopril en hydrochloorthiazide; medicatie voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C035",
+      "datum": "2011-10-07",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Beoordelen nieuw ontstane nycturie, slappe straal en nadruppelen.",
+      "kerngebeurtenis": "Klachten passen bij benigne prostaatsymptomen; geen koorts, hematurie of retentie. Conservatieve adviezen en symptoomregistratie.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C036",
+      "datum": "2012-01-20",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse CVRM- en lipidencontrole.",
+      "kerngebeurtenis": "Simvastatine wordt goed verdragen; lipidenpakket aangevraagd en rookstop opnieuw besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C037",
+      "datum": "2012-02-03",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Herbeoordelen toenemende belastingafhankelijke kniepijn.",
+      "kerngebeurtenis": "Geen slotverschijnselen of inflammatoire kenmerken; paracetamol en oefeningen voortgezet, nieuwe fysiotherapiebehandeling afgesproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C038",
+      "datum": "2012-03-16",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Behandelen exacerbatie aan handen en onderbenen.",
+      "kerngebeurtenis": "Mild actief eczeem zonder infectie; emolliens geïntensiveerd en korte kuur hydrocortisonacetaat 1% voorgeschreven.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C039",
+      "datum": "2012-05-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Beoordelen geleidelijke visusdaling en hinder bij autorijden.",
+      "kerngebeurtenis": "Bilaterale lensvertroebeling vermoed; reguliere verwijzing naar oogarts voor diagnostiek en behandeladvies.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C040",
+      "datum": "2012-06-22",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Verwerken oogheelkundige beoordeling.",
+      "kerngebeurtenis": "Specialistenbrief bevestigt cataract beiderzijds; voorlopig expectatief beleid en jaarlijkse oogheelkundige controle.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C041",
+      "datum": "2012-09-14",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes inclusief voetonderzoek.",
+      "kerngebeurtenis": "Glykemische instelling redelijk en voetonderzoek zonder afwijkingen; HbA1c, nierfunctie en albuminurie aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C042",
+      "datum": "2012-09-21",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Beoordelen bloeddruk, nierfunctie en elektrolyten.",
+      "kerngebeurtenis": "Waarden stabiel; lisinopril 10 mg en hydrochloorthiazide 25 mg voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C043",
+      "datum": "2012-11-09",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Herbeoordelen persisterende hinderlijke nycturie en zwakke straal.",
+      "kerngebeurtenis": "Geen retentie of infectietekenen; tamsulosine 0,4 mg eenmaal daags gestart met uitleg over orthostase.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C044",
+      "datum": "2013-01-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse evaluatie lipidenbehandeling.",
+      "kerngebeurtenis": "Geen spierklachten; lipiden en leverenzymen gecontroleerd, simvastatine 20 mg voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C045",
+      "datum": "2013-03-15",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Tussentijdse diabetescontrole en leefstijlbegeleiding.",
+      "kerngebeurtenis": "HbA1c licht opgelopen bij ongewijzigd gewicht; voedings-, beweeg- en rookstopadvies, metformine 500 mg tweemaal daags voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C046",
+      "datum": "2013-05-24",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Evalueren functie en pijn na fysiotherapie.",
+      "kerngebeurtenis": "Enige verbetering van lopen, rechts nog meeste pijn; conservatief beleid en paracetamol zo nodig voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C047",
+      "datum": "2013-08-09",
+      "zorgverlener": "Doktersassistente",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Urineweginfectie",
+      "klinisch_doel": "Urineonderzoek bij dysurie en frequente mictie.",
+      "kerngebeurtenis": "Urinedip positief voor nitriet en leukocyten; urinekweek ingezet en beoordeling door huisarts dezelfde dag geregeld.",
+      "aanvullende_onderdelen": [
+        "Microbiologie"
+      ]
+    },
+    {
+      "contact_id": "C048",
+      "datum": "2013-08-12",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Urineweginfectie",
+      "klinisch_doel": "Behandelen kweekbevestigde lage urineweginfectie.",
+      "kerngebeurtenis": "Kweek toont ruime groei van gevoelige Escherichia coli; nitrofurantoïne gestart, zonder aanwijzingen voor pyelonefritis of retentie.",
+      "aanvullende_onderdelen": [
+        "Microbiologie",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C049",
+      "datum": "2013-08-23",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Telefonisch",
+      "episode": "Urineweginfectie",
+      "klinisch_doel": "Controleren herstel en afsluiten episode.",
+      "kerngebeurtenis": "Dysurie en frequente mictie volledig verdwenen na kuur; geen koorts of retentie. Episode afgesloten.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C050",
+      "datum": "2013-09-20",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes en complicatiescreening.",
+      "kerngebeurtenis": "Redelijke instelling, voeten intact; HbA1c, nierfunctie en albuminurie aangevraagd en oogscreening herhaald.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C051",
+      "datum": "2013-10-04",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Jaarlijkse bloeddruk- en medicatiecontrole.",
+      "kerngebeurtenis": "Bloeddruk boven streefwaarde bij goede therapietrouw; lisinopril verhoogd van 10 naar 20 mg, controle nierfunctie en kalium gepland.",
+      "aanvullende_onderdelen": [
+        "Medicatie",
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C052",
+      "datum": "2013-10-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Veiligheidscontrole na dosisverhoging lisinopril.",
+      "kerngebeurtenis": "Kreatinine en kalium blijven acceptabel; lisinopril 20 mg en hydrochloorthiazide 25 mg gehandhaafd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C053",
+      "datum": "2014-01-24",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse lipiden- en therapietrouwcontrole.",
+      "kerngebeurtenis": "LDL blijft passend voor primaire preventie; simvastatine voortgezet en rookstop besproken.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C054",
+      "datum": "2014-04-11",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Beoordelen geleidelijk bilateraal slechter verstaan.",
+      "kerngebeurtenis": "Oren zonder cerumenprop of middenoorafwijking; leeftijdsgebonden perceptief gehoorverlies vermoed, verwijzing voor audiometrie en hoortoesteladvies.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C055",
+      "datum": "2014-05-23",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Verwerken audiologische beoordeling.",
+      "kerngebeurtenis": "Specialistenbrief beschrijft symmetrisch perceptief gehoorverlies; bilaterale hoortoestellen geadviseerd en aangemeten.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C056",
+      "datum": "2014-07-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Constitutioneel eczeem",
+      "klinisch_doel": "Behandelen recidief eczeem onderbenen.",
+      "kerngebeurtenis": "Beperkte droge erythemateuze plekken zonder infectie; cetomacrogol en korte kuur hydrocortisonacetaat 1% geadviseerd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C057",
+      "datum": "2014-09-19",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole met voetonderzoek en laboratoriumscreening.",
+      "kerngebeurtenis": "Diabetes stabiel zonder voetafwijkingen; HbA1c, nierfunctie, kalium en urine-albuminurie aangevraagd.",
+      "aanvullende_onderdelen": [
+        "Laboratorium"
+      ]
+    },
+    {
+      "contact_id": "C058",
+      "datum": "2014-10-03",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Evalueren effect en bijwerkingen van tamsulosine.",
+      "kerngebeurtenis": "Nycturie en straal enigszins verbeterd, geen duizeligheid of retentie; tamsulosine voortgezet.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C059",
+      "datum": "2014-11-14",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Beoordelen geleidelijk toenemende mobiliteitsbeperking.",
+      "kerngebeurtenis": "Belastingpijn zonder alarmsymptomen; bewegen, gewichtsbeleid, paracetamol en hernieuwde fysiotherapie geadviseerd.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C060",
+      "datum": "2015-01-23",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Hypercholesterolemie",
+      "klinisch_doel": "Jaarlijkse beoordeling lipiden en statinetolerantie.",
+      "kerngebeurtenis": "Geen bijwerkingen en lipiden stabiel; simvastatine 20 mg voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C061",
+      "datum": "2015-03-20",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Beoordelen verdere visusdaling en dagelijkse hinder.",
+      "kerngebeurtenis": "Progressieve bilaterale visusdaling; herverwijzing naar oogarts voor operatieve behandeling, rechteroog eerst.",
+      "aanvullende_onderdelen": [
+        "Verwijsbrief"
+      ]
+    },
+    {
+      "contact_id": "C062",
+      "datum": "2015-04-24",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Verwerken oogheelkundig operatieplan.",
+      "kerngebeurtenis": "Specialistenbrief bevestigt operatie-indicatie beiderzijds; cataractextractie rechts gepland, links na herstel.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C063",
+      "datum": "2015-05-22",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Essentiële hypertensie",
+      "klinisch_doel": "Jaarlijkse bloeddruk- en nierfunctiecontrole.",
+      "kerngebeurtenis": "Bloeddruk acceptabel; nierfunctie en elektrolyten stabiel, antihypertensiva ongewijzigd voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C064",
+      "datum": "2015-09-18",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Jaarcontrole diabetes inclusief voetstatus en oogzorg.",
+      "kerngebeurtenis": "HbA1c redelijk, geen voetulcera of neuropathische afwijkingen; nierfunctie en albuminurie gecontroleerd, metformine voortgezet.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C065",
+      "datum": "2015-11-27",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Administratief",
+      "episode": "Cataract beiderzijds",
+      "klinisch_doel": "Vastleggen postoperatieve uitkomst en afsluiten episode.",
+      "kerngebeurtenis": "Oogarts meldt ongecompliceerde operaties van beide ogen, stabiele goede visus en geen verdere controlebehoefte; episode afgesloten.",
+      "aanvullende_onderdelen": [
+        "Specialistenbrief"
+      ]
+    },
+    {
+      "contact_id": "C066",
+      "datum": "2016-01-15",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Mictieklachten bij de man",
+      "klinisch_doel": "Periodieke controle prostaatgerelateerde mictieklachten.",
+      "kerngebeurtenis": "Klachten stabiel onder tamsulosine, zonder hematurie, infecties of retentie; medicatie voortgezet en alarmsymptomen besproken.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C067",
+      "datum": "2016-03-18",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Artrose van beide knieën",
+      "klinisch_doel": "Evalueren pijn en functioneren.",
+      "kerngebeurtenis": "Wisselende belastingpijn, nog zelfstandig mobiel; paracetamol, oefeningen en gedoseerd bewegen voortgezet, geen indicatie voor orthopedische verwijzing.",
+      "aanvullende_onderdelen": [
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C068",
+      "datum": "2016-05-20",
+      "zorgverlener": "POH-S",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Diabetes mellitus type 2",
+      "klinisch_doel": "Tussentijdse metabole controle.",
+      "kerngebeurtenis": "HbA1c blijft redelijk en metformine wordt verdragen; nierfunctie en urine-albuminurie aangevraagd vanwege lichte dalende trend.",
+      "aanvullende_onderdelen": [
+        "Laboratorium",
+        "Medicatie"
+      ]
+    },
+    {
+      "contact_id": "C069",
+      "datum": "2016-07-08",
+      "zorgverlener": "Huisarts",
+      "contactvorm": "Praktijkconsult",
+      "episode": "Leeftijdsgebonden gehoorverlies",
+      "klinisch_doel": "Evalueren functioneren met hoortoestellen.",
+      "kerngebeurtenis": "Duidelijk beter verstaan met bilaterale hoortoestellen; geen asymmetrie, tinnitus of oorpijn. Zo nodig bijstelling via audicien.",
+      "aanvullende_onderdelen": [
+        "Geen"
+      ]
+    }
+  ],
+  "samenvatting_gepland_beloop": "Chronische diabetes-, hypertensie- en lipidencontroles lopen door met stabiele behandeling en passende laboratoriumbewaking. Mictieklachten verbeteren deels met tamsulosine. Een kweekbevestigde lage urineweginfectie geneest na nitrofurantoïne. Cataract beiderzijds wordt na verwijzing en twee succesvolle operaties op 2015-11-27 afgesloten. Bilateraal perceptief gehoorverlies verbetert met hoortoestellen; knieartrose en eczeem blijven conservatief behandeld."
+}

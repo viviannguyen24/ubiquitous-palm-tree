@@ -1,0 +1,12 @@
+{
+  "goedgekeurd": true,
+  "kritieke_fouten": [],
+  "waarschuwingen": [
+    "C127 noemt een specialistenbrief na een fysiotherapieverwijzing bij valpreventie. Een formele specialistenbrief is hierbij minder passend; doorgaans volstaat een fysiotherapierapportage of geen retourbrief.",
+    "C139 plant laboratoriumonderzoek, maar bevat nog geen later contact voor beoordeling van de uitslagen vóór het einde van het blok."
+  ],
+  "herstelinstructies": [
+    "Wijzig bij C127 'Specialistenbrief' in een passende fysiotherapierapportage of laat correspondentie vervallen; behoud het herstel- en afsluitcontact.",
+    "Voeg na C139 een uitslagenbeoordeling toe of verwerk de uitslag expliciet in een later bestaand contact."
+  ]
+}
