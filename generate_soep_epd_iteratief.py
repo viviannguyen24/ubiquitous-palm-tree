@@ -22,7 +22,7 @@ except ImportError as fout:
     ) from fout
 
 
-# Vaste hoofdprompt. Deze blijft voor iedere fictieve patiënt gelijk.
+# Vaste hoofdprompt. blijft voor iedere fictieve patiënt gelijk.
 MAIN_PROMPT = """
 Je maakt uitsluitend synthetische Nederlandse huisartsendossiers voor onderzoek.
 Alle personen en gebeurtenissen moeten fictief zijn. Neem nooit gegevens van een
@@ -145,7 +145,7 @@ gestructureerde uitvoer toe.
 
 SETTINGS_BESTANDSNAAM = "patient_settings_uitgebreid.xlsx"
 
-# De huidige one-shot generator blijft apart bestaan. Dit script gebruikt
+# script gebruikt
 # dezelfde settings, maar genereert eerst een blauwdruk en daarna blokken van
 # maximaal vijf jaar. De grenzen zijn centraal vastgelegd voor reproduceerbare
 # pilotruns.
